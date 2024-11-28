@@ -12,7 +12,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(scaffoldBackgroundColor: AppColors.darkGray),
+        theme: ThemeData(
+            scaffoldBackgroundColor: AppColors.appBackground,
+            textTheme:
+                const TextTheme(bodyMedium: TextStyle(color: Colors.white))),
         debugShowCheckedModeBanner: false,
         home: const HomeScreen());
   }
