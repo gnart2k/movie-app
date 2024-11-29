@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 
-class CommonButton extends StatelessWidget {
+// ignore: must_be_immutable
+class CustomIconButton extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final Color backgroundColor;
-
-  const CommonButton(
+  late String? iconUrl;
+  late IconData? iconData;
+  CustomIconButton(
       {super.key,
       required this.label,
       required this.onTap,
+      this.iconData,
+      this.iconUrl,
       this.backgroundColor = AppColors.primary});
 
   @override
@@ -20,7 +25,15 @@ class CommonButton extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10), color: AppColors.primary),
         padding: const EdgeInsets.all(16.0),
-        child: Text(label, style: const TextStyle(color: Colors.white)),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (iconUrl != null) SvgPicture.asset(iconUrl!),
+            if (iconData != null) Icon(iconData, color: Colors.white),
+            const SizedBox(width: 4),
+            Text(label, style: const TextStyle(color: Colors.white)),
+          ],
+        ),
       ),
     );
   }
