@@ -7,6 +7,8 @@ import 'package:movie_app/core/widgets/header_widgets.dart';
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
 
+import '../../../../core/widgets/category/category_slider_container.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -20,6 +22,14 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   BannerWidget(),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 160),
+                    child: CategorySliderContainer(
+                      title: "Explore our wide variety of categories",
+                      subTitle:
+                          "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
+                    ),
+                  ),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 160),
                     child: Column(
@@ -39,4 +49,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
