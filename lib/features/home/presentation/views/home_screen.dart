@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
 import 'package:movie_app/core/widgets/button/icon_button.dart';
+import 'package:movie_app/core/widgets/button/language_switcher.dart';
 import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
+import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,9 +15,13 @@ class HomeScreen extends StatelessWidget {
         body: Column(
       children: [
         HeaderWidgets(),
-        CommonButton(label: "fsa", onTap: () {}),
-        CustomIconButton(
-            label: 'cvasfdsa', onTap: () {}, iconData: Icons.play_arrow),
+        Container(
+            padding: EdgeInsets.symmetric(horizontal: 160),
+            child: Column(
+              children: [
+                FreeTrialWidget(),
+              ],
+            )),
         FooterWidget(),
       ],
     ));
