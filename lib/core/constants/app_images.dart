@@ -3,4 +3,5 @@ class AppImages {
   static const String format = ".png";
   static const String freeTrialBackground =
       "${basePath}free_trial_background$format";
+  static const String bannerBackground = "${basePath}banner_background$format";
 }

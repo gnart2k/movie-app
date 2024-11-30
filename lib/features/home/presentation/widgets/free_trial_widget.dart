@@ -8,11 +8,13 @@ class FreeTrialWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
+        const SizedBox(height: 80),
         Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                image: const DecorationImage(
                     image: AssetImage(AppImages.freeTrialBackground),
                     fit: BoxFit.fill)),
             width: double.infinity,
@@ -34,6 +36,7 @@ class FreeTrialWidget extends StatelessWidget {
                       ]),
                   CommonButton(label: "Start a Free Trial", onTap: () {})
                 ])),
+        const SizedBox(height: 80),
       ],
     );
   }
