@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
+import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
-import 'package:movie_app/features/home/presentation/widgets/question_list_ui.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,16 +10,29 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-            child: Column(
-      children: [
-        const HeaderWidgets(),
-        SizedBox(
-            child: Column(
-          children: [const FreeTrialWidget(), QuestionListUi()],
-        )),
-        const FooterWidget(),
-      ],
-    )));
+      body: Stack(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const BannerWidget(),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 160),
+                    child: const Column(
+                      children: [
+                        FreeTrialWidget(),
+                      ],
+                    ),
+                  ),
+                  const FooterWidget(),
+                ],
+              ),
+            ),
+          ),
+          const HeaderWidgets(),
+        ],
+      ),
+    );
   }
 }
