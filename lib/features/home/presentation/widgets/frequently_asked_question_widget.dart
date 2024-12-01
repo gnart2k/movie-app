@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class QuestionListUi extends StatelessWidget {
-  QuestionListUi({super.key});
+class FrequentlyAskedQuestionsWidget extends StatelessWidget {
+  FrequentlyAskedQuestionsWidget({super.key});
   final List<Map<String, String>> _bodyList = [
     {
       'What is StreamVibe?':
@@ -40,9 +40,9 @@ class QuestionListUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(children: [
       Container(
-          margin: const EdgeInsets.only(top: 120, left: 80, right: 80),
-          width: 1280,
-          height: 582,
+          margin: const EdgeInsets.only(top: 150, left: 162, right: 162),
+          width: 1596,
+          height: 734,
           child: Column(
             children: [_questionTitle(), _questionBody()],
           ))
@@ -51,8 +51,8 @@ class QuestionListUi extends StatelessWidget {
 
   Widget _questionBody() {
     return Container(
-      width: 1280,
-      height: 446,
+      width: 1596,
+      height: 556,
       margin: const EdgeInsets.only(top: 60),
       child: Row(
         children: [
@@ -94,8 +94,8 @@ class QuestionListUi extends StatelessWidget {
 
   Widget _questionTitle() {
     return SizedBox(
-        width: 1280,
-        height: 76,
+        width: 1596,
+        height: 98,
         child: Row(
           children: [
             const Column(
@@ -103,14 +103,14 @@ class QuestionListUi extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: 1060,
-                  height: 42,
+                  width: 1320,
+                  height: 57,
                   child: Text(
                     'Frequently Asked Questions',
                     style: TextStyle(
                         color: Color(0xFFFFFFFF),
                         fontWeight: FontWeight.w700,
-                        fontSize: 28,
+                        fontSize: 38,
                         height: 1.5),
                   ),
                 ),
@@ -118,14 +118,14 @@ class QuestionListUi extends StatelessWidget {
                   height: 10,
                 ),
                 SizedBox(
-                  width: 1060,
-                  height: 24,
+                  width: 1320,
+                  height: 27,
                   child: Text(
                       'Got questions? We\'ve got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.',
                       style: TextStyle(
                           color: Color(0x99999999),
                           fontWeight: FontWeight.w400,
-                          fontSize: 16,
+                          fontSize: 18,
                           height: 1.5)),
                 )
               ],
@@ -137,8 +137,8 @@ class QuestionListUi extends StatelessWidget {
               children: [
                 Container(
                     // padding: const EdgeInsets.fromLTRB(20, 14, 20, 14),
-                    width: 140,
-                    height: 49,
+                    width: 176,
+                    height: 63,
                     decoration: BoxDecoration(
                         color: const Color(0xFFE50000),
                         borderRadius: BorderRadius.circular(6)),
@@ -148,7 +148,7 @@ class QuestionListUi extends StatelessWidget {
                             style: TextStyle(
                                 color: Color(0xFFFFFFFF),
                                 fontWeight: FontWeight.w600,
-                                fontSize: 14,
+                                fontSize: 18,
                                 height: 1.5))))
               ],
             ))
@@ -200,22 +200,28 @@ class _QuestionItemState extends State<QuestionItem> {
               ),
             ),
           ),
-          width: 620,
-          height: currentText == '' ? 120 : 140,
+          width: 758,
+          height: currentText == '' ? 127 : 175,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: currentText == '' ? CrossAxisAlignment.center : CrossAxisAlignment.start,
             children: [
               Container(
                 alignment: Alignment.center,
-                width: 50,
-                height: 54,
+                width: 62,
+                height: 67,
                 decoration: BoxDecoration(
                     color: const Color(0xFF1F1F1F),
                     borderRadius: BorderRadius.circular(8),
                     border:
                         Border.all(width: 1, color: const Color(0xFF262626))),
-                child: Text('0${widget.index}'),
+                child: Text(
+                  '0${widget.index}',
+                  style: const TextStyle(
+                      color: Color(0xFFFFFFFF),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600),
+                ),
               ),
               const SizedBox(
                 width: 16,
@@ -231,7 +237,7 @@ class _QuestionItemState extends State<QuestionItem> {
                         color: Color(0xFFFFFFFF),
                         fontWeight: FontWeight.w500,
                         height: 1.5,
-                        fontSize: 20),
+                        fontSize: 22),
                   ),
                   currentText == ''
                       ? const SizedBox()
@@ -242,7 +248,10 @@ class _QuestionItemState extends State<QuestionItem> {
                       ? const SizedBox()
                       : Text(
                           currentText,
-                          style: const TextStyle(color: Color(0xFF999999)),
+                          style: const TextStyle(
+                              color: Color(0xFF999999),
+                              fontSize: 18,
+                              height: 1.5),
                         )
                 ],
               )),
@@ -250,12 +259,14 @@ class _QuestionItemState extends State<QuestionItem> {
                 width: 16,
               ),
               IconButton(
-                  onPressed: () {
-                    showText();
-                  },
-                  icon: currentText == ''
-                      ? const Icon(Icons.add)
-                      : const Icon(Icons.remove))
+                iconSize: 30,
+                onPressed: () {
+                  showText();
+                },
+                icon: currentText == ''
+                    ? const Icon(Icons.add)
+                    : const Icon(Icons.remove),
+              )
             ],
           ),
         )
