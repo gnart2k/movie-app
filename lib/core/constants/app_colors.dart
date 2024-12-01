@@ -9,4 +9,5 @@ class AppColors {
   static const topBarBorder = Color(0xff1F1F1F);
   static const itemHovered = Color(0xff1A1A1A);
   static const topBarText = Color(0xffBFBFBF);
+  static const linearGardientColor = Color(0xfE50000);
 }
