@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/widgets/button/common_button.dart';
-import 'package:movie_app/core/widgets/button/icon_button.dart';
-import 'package:movie_app/core/widgets/button/language_switcher.dart';
 import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
+import 'package:movie_app/features/home/presentation/widgets/frequently_asked_question_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -19,12 +17,12 @@ class HomeScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  BannerWidget(),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 160),
+                  const BannerWidget(),
+                  SizedBox(
                     child: Column(
                       children: [
                         const FreeTrialWidget(),
+                        FrequentlyAskedQuestionsWidget()
                       ],
                     ),
                   ),
@@ -39,4 +37,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
