@@ -63,7 +63,7 @@ class MultiPlatformWidget extends StatelessWidget {
                             begin: Alignment.topRight,
                             end: Alignment.bottomCenter,
                             colors: [
-                              Color(0xfE50000),
+                              AppColors.linearGardientColor,
                               Colors.transparent,
                             ],
                           ),
