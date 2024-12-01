@@ -6,6 +6,7 @@ import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
+import 'package:movie_app/features/home/presentation/widgets/multiplatform_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,6 +26,7 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         const FreeTrialWidget(),
+                        const MultiPlatformWidget(),
                       ],
                     ),
                   ),
@@ -39,4 +41,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
