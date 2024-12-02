@@ -10,4 +10,7 @@ class AppColors {
   static const itemHovered = Color(0xff1A1A1A);
   static const topBarText = Color(0xffBFBFBF);
   static const linearGardientColor = Color(0x0fe50000);
+  static const signInText = Color(0xFFFFFFFF);
+  static const signInDescriptionText = Color(0xFF31394D);
+  static const signUpText = Color.fromRGBO(255, 117, 117, 1);
 }

@@ -18,9 +18,9 @@ class CommonButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6), color: AppColors.primary),
+            borderRadius: BorderRadius.circular(6), color: backgroundColor),
         padding: const EdgeInsets.all(16.0),
-        child: Text(label, style: const TextStyle(color: Colors.white)),
+        child: Text(label, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white)),
       ),
     );
   }

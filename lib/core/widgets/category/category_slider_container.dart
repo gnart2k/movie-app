@@ -89,6 +89,7 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
               viewportFraction: 1,
               enableInfiniteScroll: false,
               height: widget.heightCard,
+
               scrollDirection: Axis.horizontal,
               scrollPhysics: const NeverScrollableScrollPhysics(),
               onPageChanged: (index, reason) {
@@ -103,7 +104,6 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
 
   Widget _categoryContent(BuildContext context, List<MovieModel> movieList) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: movieList
           .map((movie) => widget.cardWidgetBuilder(movie)) // Updated
           .toList(),
