@@ -5,7 +5,8 @@ import 'package:movie_app/core/domain/model/plan_model.dart';
 import 'package:movie_app/core/widgets/category/category_card.dart';
 import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
-import 'package:movie_app/core/widgets/plan/plan_container.dart';
+import 'package:movie_app/core/widgets/movie/movie_card.dart';
+import 'package:movie_app/core/widgets/plan/plan_container.dart'
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/frequently_asked_question_widget.dart';
@@ -60,50 +61,121 @@ class HomeScreen extends StatelessWidget {
                       MovieModel(
                           name: 'Adventure', imageUrl: AppImages.categoryImage),
                     ],
-                  ],
-                  title: "Explore our wide variety of categories",
-                  subTitle:
-                      "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
+                    title: "Explore our wide variety of categories",
+                    subTitle:
+                        "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
+                    heightCard: 290,
+                  ),
                 ),
+                Container(
+                  padding: const EdgeInsets.fromLTRB(210, 100, 210, 50),
+                  child: CategorySliderContainer(
+                    cardWidgetBuilder: (movie) {
+                      return MoviesCard(
+                        title: movie.name,
+                        imageUrl: movie.imageUrl,
+                        width: 290.6,
+                        height: 400,
+                        hour: '1h 10min',
+                        isRating: false,
+                       textViewRight: '20k',
+                      );
+                    },
+                    movieList: [
+                      [
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage)
+                      ],
+                      [
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage)
+                      ],
+                      [
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage)
+                      ],
+                    ],
+                    title: "Trending Now",
+                    subTitle: '',
+                    heightCard: 400,
 
-
-                const SizedBox(height: 20,),
-                CategorySliderContainer(
-                  cardWidgetBuilder: (movie) {
-                    return CategoryCard(
-                      title: movie.name, imageUrl: movie.imageUrl, onTopTitle: "Top 100", onTop: true,itemNumber: 4,);
-                  },
-                  movieList: [
-                    [
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.fromLTRB(210, 100, 210, 50),
+                  child: CategorySliderContainer(
+                    cardWidgetBuilder: (movie) {
+                      return MoviesCard(
+                        title: movie.name,
+                        imageUrl: movie.imageUrl,
+                        width: 359.5,
+                        height: 500,
+                        hour: '1h 57min',
+                        textViewRight: '20K',
+                        isRating: true,
+                      );
+                    },
+                    movieList: [
+                      [
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                      ],
+                      [
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                      ],
+                      [
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                        MovieModel(
+                            name: 'fsaf', imageUrl: AppImages.categoryImage),
+                      ],
                     ],
-                    [
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
-                    ],
-                    [
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
-                      MovieModel(
-                          name: 'Adventure', imageUrl: AppImages.categoryImage),
-                    ],
-                  ],
-                  title: "Popular Top 10 in genres",
+                    title: "Must - Watch Movies",
+                    subTitle: '',
+                    heightCard: 500,
+                    
+                  ),
                 ),
                 
                 const SizedBox(height: 10,),

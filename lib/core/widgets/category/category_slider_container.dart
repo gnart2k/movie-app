@@ -7,16 +7,18 @@ import 'package:movie_app/core/widgets/title/common_title.dart';
 class CategorySliderContainer extends StatefulWidget {
   final String title;
   final String? subTitle;
+  final double heightCard;
   final List<List<MovieModel>> movieList;
   final Widget Function(MovieModel movie) cardWidgetBuilder; // Updated
 
-  const CategorySliderContainer({
-    super.key,
-    required this.movieList,
-    required this.title,
-    this.subTitle,
-    required this.cardWidgetBuilder, // Updated
-  });
+  const CategorySliderContainer(
+      {super.key,
+      required this.movieList,
+      required this.title,
+      this.subTitle,
+      required this.cardWidgetBuilder,
+      required this.heightCard // Updated
+      });
 
   @override
   State<StatefulWidget> createState() => _CategorySliderContainerState();
@@ -86,7 +88,8 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
           options: CarouselOptions(
               viewportFraction: 1,
               enableInfiniteScroll: false,
-              height: 330,
+              height: widget.heightCard,
+
               scrollDirection: Axis.horizontal,
               scrollPhysics: const NeverScrollableScrollPhysics(),
               onPageChanged: (index, reason) {
@@ -107,4 +110,3 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
     );
   }
 }
-
