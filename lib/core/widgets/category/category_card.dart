@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 
-import '../../constants/app_images.dart';
-
 class CategoryCard extends StatelessWidget {
   const CategoryCard({super.key, required this.title, required this.imageUrl});
   final String title;
