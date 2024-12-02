@@ -1,17 +1,22 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
-import 'package:movie_app/core/constants/app_images.dart';
-import 'package:movie_app/core/widgets/category/category_card.dart';
+import 'package:movie_app/core/domain/model/movie_model.dart';
 import 'package:movie_app/core/widgets/slider/slider_controller_container.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class CategorySliderContainer extends StatefulWidget {
   final String title;
   final String? subTitle;
+  final List<List<MovieModel>> movieList;
+  final Widget Function(MovieModel movie) cardWidgetBuilder; // Updated
 
-  const CategorySliderContainer(
-      {super.key, required this.title, this.subTitle});
+  const CategorySliderContainer({
+    super.key,
+    required this.movieList,
+    required this.title,
+    this.subTitle,
+    required this.cardWidgetBuilder, // Updated
+  });
 
   @override
   State<StatefulWidget> createState() => _CategorySliderContainerState();
@@ -20,12 +25,13 @@ class CategorySliderContainer extends StatefulWidget {
 class _CategorySliderContainerState extends State<CategorySliderContainer>
     with TickerProviderStateMixin {
   late CarouselSliderController? _buttonCarouselController;
-  final int pageNumber = 3;
+  late int pageNumber;
   int currentPage = 0;
 
   @override
   void initState() {
     _buttonCarouselController = CarouselSliderController();
+    pageNumber = widget.movieList.length;
     super.initState();
   }
 
@@ -37,12 +43,12 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
 
   void _toggleGoNextSlide() {
     _buttonCarouselController?.nextPage(
-        duration: Duration(milliseconds: 300), curve: Curves.linear);
+        duration: const Duration(milliseconds: 300), curve: Curves.linear);
   }
 
   void _toggleGoPreSlide() {
     _buttonCarouselController?.previousPage(
-        duration: Duration(milliseconds: 300), curve: Curves.linear);
+        duration: const Duration(milliseconds: 300), curve: Curves.linear);
   }
 
   @override
@@ -75,14 +81,14 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
           carouselController: _buttonCarouselController,
           itemCount: pageNumber,
           itemBuilder: (context, index, realIndex) {
-            return _CategoryContent(context);
+            return _categoryContent(context, widget.movieList[index]);
           },
           options: CarouselOptions(
               viewportFraction: 1,
               enableInfiniteScroll: false,
               height: 290,
               scrollDirection: Axis.horizontal,
-              scrollPhysics: NeverScrollableScrollPhysics(),
+              scrollPhysics: const NeverScrollableScrollPhysics(),
               onPageChanged: (index, reason) {
                 setState(() {
                   currentPage = index;
@@ -92,17 +98,14 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
       ],
     );
   }
+
+  Widget _categoryContent(BuildContext context, List<MovieModel> movieList) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: movieList
+          .map((movie) => widget.cardWidgetBuilder(movie)) // Updated
+          .toList(),
+    );
+  }
 }
 
-Widget _CategoryContent(BuildContext context) {
-  return const Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      CategoryCard(title: "Adventure", imageUrl: AppImages.categoryImage),
-      CategoryCard(title: "Adventure", imageUrl: AppImages.categoryImage),
-      CategoryCard(title: "Adventure", imageUrl: AppImages.categoryImage),
-      CategoryCard(title: "Adventure", imageUrl: AppImages.categoryImage),
-      CategoryCard(title: "Adventure", imageUrl: AppImages.categoryImage)
-    ],
-  );
-}

@@ -8,7 +8,7 @@ class SliderButton extends StatelessWidget {
   final Color iconColor;
   final Color backgroundColor;
 
-  SliderButton(
+  const SliderButton(
       {super.key,
       required this.iconData,
       required this.onTap,
