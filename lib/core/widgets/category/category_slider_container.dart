@@ -7,6 +7,7 @@ import 'package:movie_app/core/widgets/title/common_title.dart';
 class CategorySliderContainer extends StatefulWidget {
   final String title;
   final String? subTitle;
+  final double heightCard;
   final List<List<MovieModel>> movieList;
   final Widget Function(MovieModel movie) cardWidgetBuilder;
 
@@ -46,6 +47,7 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
         duration: const Duration(milliseconds: 300), curve: Curves.linear);
   }
 
+  
   void _toggleGoPreSlide() {
     _buttonCarouselController?.previousPage(
         duration: const Duration(milliseconds: 300), curve: Curves.linear);
@@ -86,7 +88,8 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
           options: CarouselOptions(
               viewportFraction: 1,
               enableInfiniteScroll: false,
-              height: 290,
+              height: widget.heightCard,
+
               scrollDirection: Axis.horizontal,
               scrollPhysics: const NeverScrollableScrollPhysics(),
               onPageChanged: (index, reason) {
@@ -101,9 +104,10 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
 
   Widget _categoryContent(BuildContext context, List<MovieModel> movieList) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children:
-          movieList.map((movie) => widget.cardWidgetBuilder(movie)).toList(),
+
+      children: movieList
+          .map((movie) => widget.cardWidgetBuilder(movie)) // Updated
+          .toList(),
     );
   }
 }
