@@ -11,7 +11,6 @@ import '../../../../core/widgets/category/category_slider_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,61 +20,88 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 const BannerWidget(),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 160),
-                  child: CategorySliderContainer(
-                    cardWidgetBuilder: (movie) {
-                      return CategoryCard(
-                          title: movie.name, imageUrl: movie.imageUrl);
-                    },
-                    movieList: [
-                      [
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                      ],
-                      [
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                      ],
-                      [
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'fsaf', imageUrl: AppImages.categoryImage),
-                      ],
+                CategorySliderContainer(
+                  cardWidgetBuilder: (movie) {
+                    return CategoryCard(
+                        title: movie.name, imageUrl: movie.imageUrl);
+                  },
+                  movieList: [
+                    [
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
                     ],
-                    title: "Explore our wide variety of categories",
-                    subTitle:
-                        "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
-                  ),
+                    [
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                    ],
+                    [
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                    ],
+                  ],
+                  title: "Explore our wide variety of categories",
+                  subTitle:
+                      "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
+                ),
+
+
+                const SizedBox(height: 20,),
+                CategorySliderContainer(
+                  cardWidgetBuilder: (movie) {
+                    return CategoryCard(
+                      title: movie.name, imageUrl: movie.imageUrl, onTopTitle: "Top 100", onTop: true,itemNumber: 4,);
+                  },
+                  movieList: [
+                    [
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                    ],
+                    [
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                    ],
+                    [
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                      MovieModel(
+                          name: 'Adventure', imageUrl: AppImages.categoryImage),
+                    ],
+                  ],
+                  title: "Popular Top 10 in genres",
                 ),
                 Column(
                   children: [
