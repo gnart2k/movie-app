@@ -1,17 +1,22 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
-import 'package:movie_app/core/widgets/category/category_card.dart';
 import 'package:movie_app/core/widgets/slider/slider_controller_container.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class CategorySliderContainer extends StatefulWidget {
   final String title;
   final String? subTitle;
   final List<List<MovieModel>> movieList;
+  final Widget Function(MovieModel movie) cardWidgetBuilder; // Updated
 
-  const CategorySliderContainer(
-      {super.key, required this.movieList, required this.title, this.subTitle});
+  const CategorySliderContainer({
+    super.key,
+    required this.movieList,
+    required this.title,
+    this.subTitle,
+    required this.cardWidgetBuilder, // Updated
+  });
 
   @override
   State<StatefulWidget> createState() => _CategorySliderContainerState();
@@ -93,20 +98,14 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
       ],
     );
   }
-}
 
-Widget _categoryContent(BuildContext context, List<MovieModel> movieList) {
-  return Row(
+  Widget _categoryContent(BuildContext context, List<MovieModel> movieList) {
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: movieList
-          .map((movie) =>
-              CategoryCard(title: movie.name, imageUrl: movie.imageUrl))
-          .toList()
-      // const CategoryCard(title: "Adventure", imageUrl: AppImages.categoryImage),
-      // const CategoryCard(title: "Adventure", imageUrl: AppImages.categoryImage),
-      // const CategoryCard(title: "Adventure", imageUrl: AppImages.categoryImage),
-      // const CategoryCard(title: "Adventure", imageUrl: AppImages.categoryImage),
-      // const CategoryCard(title: "Adventure", imageUrl: AppImages.categoryImage)
-      );
+          .map((movie) => widget.cardWidgetBuilder(movie)) // Updated
+          .toList(),
+    );
+  }
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
+import 'package:movie_app/core/widgets/category/category_card.dart';
 import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
@@ -23,6 +24,10 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 160),
                   child: CategorySliderContainer(
+                    cardWidgetBuilder: (movie) {
+                      return CategoryCard(
+                          title: movie.name, imageUrl: movie.imageUrl);
+                    },
                     movieList: [
                       [
                         MovieModel(
@@ -88,4 +93,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
