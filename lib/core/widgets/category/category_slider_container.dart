@@ -9,16 +9,15 @@ class CategorySliderContainer extends StatefulWidget {
   final String? subTitle;
   final double heightCard;
   final List<List<MovieModel>> movieList;
-  final Widget Function(MovieModel movie) cardWidgetBuilder; // Updated
+  final Widget Function(MovieModel movie) cardWidgetBuilder;
 
-  const CategorySliderContainer(
-      {super.key,
-      required this.movieList,
-      required this.title,
-      this.subTitle,
-      required this.cardWidgetBuilder,
-      required this.heightCard // Updated
-      });
+  const CategorySliderContainer({
+    super.key,
+    required this.movieList,
+    required this.title,
+    this.subTitle,
+    required this.cardWidgetBuilder,
+  });
 
   @override
   State<StatefulWidget> createState() => _CategorySliderContainerState();
@@ -48,6 +47,7 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
         duration: const Duration(milliseconds: 300), curve: Curves.linear);
   }
 
+  
   void _toggleGoPreSlide() {
     _buttonCarouselController?.previousPage(
         duration: const Duration(milliseconds: 300), curve: Curves.linear);
@@ -104,6 +104,7 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
 
   Widget _categoryContent(BuildContext context, List<MovieModel> movieList) {
     return Row(
+
       children: movieList
           .map((movie) => widget.cardWidgetBuilder(movie)) // Updated
           .toList(),
