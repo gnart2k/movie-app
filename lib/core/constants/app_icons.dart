@@ -13,4 +13,7 @@ class AppIcons {
   static const String gamingConsoleIcon =
       "${basePath}gamingconsole_icon$format";
   static const String vrHeadsetIcon = "${basePath}vrheadset_icon$format";
+  static const String plusIcon = "${basePath}plus_icon$format";
+  static const String likeIcon = "${basePath}like_icon$format";
+  static const String volumeIcon = "${basePath}volume_icon$format";
 }

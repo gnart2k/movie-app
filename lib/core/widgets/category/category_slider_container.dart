@@ -8,14 +8,14 @@ class CategorySliderContainer extends StatefulWidget {
   final String title;
   final String? subTitle;
   final List<List<MovieModel>> movieList;
-  final Widget Function(MovieModel movie) cardWidgetBuilder; // Updated
+  final Widget Function(MovieModel movie) cardWidgetBuilder;
 
   const CategorySliderContainer({
     super.key,
     required this.movieList,
     required this.title,
     this.subTitle,
-    required this.cardWidgetBuilder, // Updated
+    required this.cardWidgetBuilder,
   });
 
   @override
@@ -102,10 +102,8 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
   Widget _categoryContent(BuildContext context, List<MovieModel> movieList) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: movieList
-          .map((movie) => widget.cardWidgetBuilder(movie)) // Updated
-          .toList(),
+      children:
+          movieList.map((movie) => widget.cardWidgetBuilder(movie)).toList(),
     );
   }
 }
-

@@ -1,6 +1,7 @@
 class MovieModel {
   final String name;
   final String imageUrl;
+  final String? description;
 
-  MovieModel({required this.name, required this.imageUrl});
+  MovieModel({this.description, required this.name, required this.imageUrl});
 }
