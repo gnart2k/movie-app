@@ -126,6 +126,7 @@ class MoviesCard extends StatelessWidget {
           'assets/vectors/time_of_movie.svg',
           height: 24.0,
           width: 24.0,
+          // ignore: deprecated_member_use
           color: AppColors.lightGray,
         ),
         hour == null

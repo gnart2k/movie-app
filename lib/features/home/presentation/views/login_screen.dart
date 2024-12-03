@@ -19,7 +19,9 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 8,),
+            const SizedBox(
+              height: 8,
+            ),
             //logo section
             Center(
               child: Row(
