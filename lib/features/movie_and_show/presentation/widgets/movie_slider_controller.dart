@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/widgets/slider/slider_button.dart';
 import 'package:movie_app/core/widgets/slider/slider_indicator.dart';
 

@@ -129,7 +129,7 @@ class _MovieSliderContainerState extends State<MovieSliderContainer>
                     children: [_iconButton(icon), const SizedBox(width: 8)])),
               ],
             ),
-            SizedBox(height: 200)
+            const SizedBox(height: 200)
           ]),
     );
   }

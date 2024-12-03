@@ -4,7 +4,7 @@ import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_icons.dart';
 
 class MultiPlatformWidget extends StatelessWidget {
-  const MultiPlatformWidget({Key? key}) : super(key: key);
+  const MultiPlatformWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +22,22 @@ class MultiPlatformWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'We Provide you streaming experience across various devices.',
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 38,
                 fontWeight: FontWeight.w700,
               ),
             ),
-            SizedBox(height: 14),
-            Text(
+            const SizedBox(height: 14),
+            const Text(
               'With StreamVibe, you can enjoy your favorite movies and TV shows anytime, anywhere. Our platform is designed to be compatible with a wide range of devices, ensuring that you never miss a moment of entertainment.',
-              style: const TextStyle(
+              style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
                   color: AppColors.lightGray),
             ),
-            SizedBox(height: 80),
+            const SizedBox(height: 80),
             GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -51,7 +51,7 @@ class MultiPlatformWidget extends StatelessWidget {
               itemBuilder: (context, index) {
                 final platform = platforms[index];
                 return Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Card(
                     color: AppColors.darkGray,
                     shape: RoundedRectangleBorder(
@@ -59,7 +59,7 @@ class MultiPlatformWidget extends StatelessWidget {
                     ),
                     child: Container(
                       decoration: BoxDecoration(
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                             begin: Alignment.topRight,
                             end: Alignment.bottomCenter,
                             colors: [
@@ -85,7 +85,7 @@ class MultiPlatformWidget extends StatelessWidget {
                                             color: AppColors.topBarBorder,
                                             width: 1)),
                                     child: Padding(
-                                      padding: EdgeInsets.all(16),
+                                      padding: const EdgeInsets.all(16),
                                       child: SvgPicture.asset(
                                         platform['icon']!,
                                       ),

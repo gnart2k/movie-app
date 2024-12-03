@@ -39,7 +39,7 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      Container(
+      SizedBox(
           width: MediaQuery.sizeOf(context).width - 320,
           height: 734,
           child: Column(
