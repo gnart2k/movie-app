@@ -42,21 +42,16 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      SizedBox(
-          width: MediaQuery
-              .sizeOf(context)
-              .width - 320,
-          height: 734,
-          child: Column(
-            children: [_questionTitle(context), _questionBody(context)],
-          ))
-    ]);
+    return SizedBox(
+        width: double.infinity,
+        child: Column(
+          children: [_questionTitle(context), _questionBody(context)],
+        ));
   }
 
   Widget _questionBody(BuildContext context) {
     return Container(
-      width: MediaQuery.sizeOf(context).width - 320,
+      width: double.infinity,
       height: 556,
       margin: const EdgeInsets.only(top: 60),
       child: Row(

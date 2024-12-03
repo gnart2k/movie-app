@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
+import 'package:movie_app/core/domain/model/movie_model.dart';
 
 class MovieInformation extends StatelessWidget {
-  MovieInformation({super.key});
+  MovieInformation({super.key, this.movie});
 
+  final MovieModel? movie;
   final List<String> languageList = [
     'English',
     'Hindi',
@@ -20,9 +22,6 @@ class MovieInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(50),
-      margin: const EdgeInsets.only(left: 20, bottom: 164),
-      width: 519,
-      height: 937,
       decoration: BoxDecoration(
           color: AppColors.itemHovered,
           borderRadius: BorderRadius.circular(12),

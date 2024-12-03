@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
+import 'package:movie_app/features/movie_open_page/presentation/views/movies_open_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -17,7 +18,7 @@ class MainApp extends StatelessWidget {
             textTheme:
                 const TextTheme(bodyMedium: TextStyle(color: Colors.white))),
         debugShowCheckedModeBanner: false,
-        home: const HomeScreen());
+        home: MovieOpenPage());
     // home: MovieAndShowPage());
   }
 }

@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
           SingleChildScrollView(
               child: Column(children: [
             const BannerWidget(),
-            SizedBox(height: 200),
+            const SizedBox(height: 200),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 160),
               child: Column(
@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                         "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
                     heightCard: 290,
                   ),
-                  SizedBox(height: 120),
+                  const SizedBox(height: 120),
                   FrequentlyAskedQuestionsWidget(),
                   const FreeTrialWidget(),
                 ],
