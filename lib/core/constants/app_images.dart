@@ -6,4 +6,5 @@ class AppImages {
   static const String bannerBackground = "${basePath}banner_background$format";
   static const String categoryImage = "${basePath}category_image$format";
   static const String movieBanner = "${basePath}movie_banner$format";
+  static const String movieSeason = "${basePath}movie_season$format";
 }

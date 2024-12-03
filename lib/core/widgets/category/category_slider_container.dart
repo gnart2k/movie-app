@@ -16,7 +16,7 @@ class CategorySliderContainer extends StatefulWidget {
     required this.movieList,
     required this.title,
     this.subTitle,
-    required this.cardWidgetBuilder,
+    required this.cardWidgetBuilder, required this.heightCard,
   });
 
   @override

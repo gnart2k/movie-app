@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
+import 'package:movie_app/core/constants/app_images.dart';
+import 'package:movie_app/core/domain/model/movie_model.dart';
+
+import '../category/category_slider_container.dart';
 
 class MoviesCard extends StatelessWidget {
   const MoviesCard(
@@ -12,7 +17,8 @@ class MoviesCard extends StatelessWidget {
       required this.height,
       this.hour,
       this.textViewRight,
-      this.isRating});
+      this.isRating,
+      this.releasedDate});
   final String title;
   final String imageUrl;
 
@@ -20,6 +26,7 @@ class MoviesCard extends StatelessWidget {
 
   final String? hour;
   final String? textViewRight;
+  final String? releasedDate;
   final double width;
   final double height;
   @override
@@ -47,21 +54,30 @@ class MoviesCard extends StatelessWidget {
           ),
           Row(
             children: [
-              Expanded(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                      width: width / 2.830708661417323 + 4,
-                      height: height / 13.88888888888889,
-                      decoration: BoxDecoration(
-                          color: AppColors.appBackground,
-                          borderRadius: BorderRadius.circular(51),
-                          border: Border.all(width: 1)),
-                      child: _subContainerLeft())
-                ],
-              )),
+              releasedDate == null
+                  ? Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              width: width / 2.830708661417323 + 4,
+                              height: height / 13.88888888888889,
+                              decoration: BoxDecoration(
+                                  color: AppColors.appBackground,
+                                  borderRadius: BorderRadius.circular(51),
+                                  border: Border.all(width: 1)),
+                              child: _subContainerLeft())
+                        ],
+                      ),
+                    )
+                  : Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [_subContainerCenter()],
+                      ),
+                    ),
               textViewRight == null
                   ? const SizedBox()
                   : Expanded(
@@ -136,6 +152,82 @@ class MoviesCard extends StatelessWidget {
                     height: 1.5, fontSize: 18, color: AppColors.lightGray),
               )
       ],
+    );
+  }
+
+  Widget _subContainerCenter() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          'Released at 14 April 2023',
+          style: GoogleFonts.manrope(
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              color: AppColors.lightGray),
+        ),
+      ],
+    );
+  }
+}
+
+void main() {
+  runApp(const RealeasesApp());
+}
+
+class RealeasesApp extends StatelessWidget {
+  const RealeasesApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: Colors.black,
+      ),
+      home: Scaffold(
+        body: Container(
+          padding: const EdgeInsets.fromLTRB(210, 100, 210, 50),
+          child: CategorySliderContainer(
+            cardWidgetBuilder: (movie) {
+              return MoviesCard(
+                title: movie.name,
+                imageUrl: movie.imageUrl,
+                width: 290.6,
+                height: 300,
+                releasedDate: '14 April 2023',
+              );
+            },
+            movieList: [
+              [
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage)
+              ],
+              [
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage)
+              ],
+              [
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage),
+                MovieModel(name: 'fsaf', imageUrl: AppImages.categoryImage)
+              ],
+            ],
+            title: "New Realeases",
+            subTitle: '',
+            heightCard: 300,
+          ),
+        ),
+      ),
     );
   }
 }
