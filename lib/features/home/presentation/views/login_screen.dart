@@ -19,7 +19,9 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 8,),
+            const SizedBox(
+              height: 8,
+            ),
             //logo section
             Center(
               child: Row(
@@ -67,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                             Colors.transparent,
                             Colors.black.withOpacity(0.7),
                           ],
-                          stops: [0.0, 0.5, 1.0],
+                          stops: const [0.0, 0.5, 1.0],
                         ),
                       ),
                     ),

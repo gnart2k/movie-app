@@ -17,46 +17,53 @@ class _PlanContainerState extends State<PlanContainer> {
   late TimeOption option;
   @override
   void initState() {
-    option = TimeOption.Monthly;
+    option = TimeOption.monthly;
     super.initState();
   }
 
   void _toggleTimeOption(TimeOption optionClicked) {
     setState(() {
-      option = optionClicked != TimeOption.Monthly ? TimeOption.Yearly : TimeOption.Monthly;
+      option = optionClicked != TimeOption.monthly
+          ? TimeOption.yearly
+          : TimeOption.monthly;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-         Row(
-           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const CommonTitle(title: "Choose the plan that's right for you", subTitle: "Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!",),
-            _planControllerContainer(context,option, _toggleTimeOption)
+            const CommonTitle(
+              title: "Choose the plan that's right for you",
+              subTitle:
+                  "Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!",
+            ),
+            _planControllerContainer(context, option, _toggleTimeOption)
           ],
         ),
-        const SizedBox(height: 40,),
+        const SizedBox(
+          height: 40,
+        ),
         Row(
           children: [
             for (int i = 0; i < widget.plans.length; i++) ...[
               Expanded(child: PlanCard(plan: widget.plans[i])),
-              if (i < widget.plans.length - 1)
-                const SizedBox(width: 15),
+              if (i < widget.plans.length - 1) const SizedBox(width: 15),
             ],
           ],
         )
       ],
     );
   }
-  
 }
 
-Widget _planControllerContainer(BuildContext context , TimeOption option, void Function(TimeOption) onTap) {
+Widget _planControllerContainer(
+    BuildContext context, TimeOption option, void Function(TimeOption) onTap) {
   return Container(
     padding: const EdgeInsets.all(10),
-
     decoration: BoxDecoration(
       border: Border.all(
         color: AppColors.itemHovered,
@@ -67,12 +74,23 @@ Widget _planControllerContainer(BuildContext context , TimeOption option, void F
     ),
     child: Row(
       children: [
-        CommonButton(label: "Monthly", onTap: () {
-          onTap(TimeOption.Monthly);
-        }, backgroundColor: option == TimeOption.Monthly ? AppColors.appBackground : Colors.black,),
-        CommonButton(label: "Yearly", onTap: () {
-          onTap(TimeOption.Yearly);
-        }, backgroundColor: option == TimeOption.Yearly ? AppColors.appBackground : Colors.black)
+        CommonButton(
+          label: "Monthly",
+          onTap: () {
+            onTap(TimeOption.monthly);
+          },
+          backgroundColor: option == TimeOption.monthly
+              ? AppColors.appBackground
+              : Colors.black,
+        ),
+        CommonButton(
+            label: "Yearly",
+            onTap: () {
+              onTap(TimeOption.yearly);
+            },
+            backgroundColor: option == TimeOption.yearly
+                ? AppColors.appBackground
+                : Colors.black)
       ],
     ),
   );
