@@ -40,18 +40,17 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(children: [
       Container(
-          margin: const EdgeInsets.only(top: 150, left: 162, right: 162),
-          width: 1596,
+          width: MediaQuery.sizeOf(context).width - 320,
           height: 734,
           child: Column(
-            children: [_questionTitle(), _questionBody()],
+            children: [_questionTitle(context), _questionBody(context)],
           ))
     ]);
   }
 
-  Widget _questionBody() {
+  Widget _questionBody(BuildContext context) {
     return Container(
-      width: 1596,
+      width: MediaQuery.sizeOf(context).width - 320,
       height: 556,
       margin: const EdgeInsets.only(top: 60),
       child: Row(
@@ -92,9 +91,9 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
     );
   }
 
-  Widget _questionTitle() {
+  Widget _questionTitle(BuildContext context) {
     return SizedBox(
-        width: 1596,
+        width: MediaQuery.sizeOf(context).width - 320,
         height: 98,
         child: Row(
           children: [
@@ -191,7 +190,7 @@ class _QuestionItemState extends State<QuestionItem> {
     return Row(
       children: [
         Container(
-          padding: const EdgeInsets.all(24),
+          // padding: const EdgeInsets.all(24),
           decoration: const BoxDecoration(
             border: Border(
               bottom: BorderSide(
@@ -204,7 +203,9 @@ class _QuestionItemState extends State<QuestionItem> {
           height: currentText == '' ? 127 : 175,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: currentText == '' ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+            crossAxisAlignment: currentText == ''
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
               Container(
                 alignment: Alignment.center,

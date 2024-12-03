@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({
-    super.key,
-    required this.title,
-    required this.imageUrl,
-    this.onTopTitle,
-    this.onTop = false,
-    this.itemNumber = 5
-  });
+  const CategoryCard(
+      {super.key,
+      required this.title,
+      required this.imageUrl,
+      this.onTopTitle,
+      this.onTop = false,
+      this.itemNumber = 5});
 
   final String title;
   final String imageUrl;
@@ -19,9 +18,8 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context).width;
     return Container(
-      width: (size - itemNumber*5*2) / itemNumber,
+      width: 300,
       margin: const EdgeInsets.symmetric(horizontal: 5),
       padding: const EdgeInsets.all(20),
       decoration: const BoxDecoration(
@@ -55,13 +53,14 @@ class CategoryCard extends StatelessWidget {
                       title,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style:
-                      const TextStyle(fontSize: 18, color: Colors.white),
+                      style: const TextStyle(fontSize: 18, color: Colors.white),
                     )
                   ],
                 ),
               ),
-              const SizedBox(width: 2,),
+              const SizedBox(
+                width: 2,
+              ),
               const Icon(
                 Icons.arrow_forward,
                 color: Colors.white,

@@ -18,7 +18,7 @@ class MainApp extends StatelessWidget {
             textTheme:
                 const TextTheme(bodyMedium: TextStyle(color: Colors.white))),
         debugShowCheckedModeBanner: false,
-        // home: const HomeScreen());
-        home: MovieAndShowPage());
+        home: const HomeScreen());
+    // home: MovieAndShowPage());
   }
 }
