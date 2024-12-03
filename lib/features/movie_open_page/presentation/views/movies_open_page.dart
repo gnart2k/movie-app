@@ -9,6 +9,7 @@ import '../../../../core/constants/app_images.dart';
 import '../../../../core/domain/model/movie_model.dart';
 import '../../../../core/widgets/footer_widget.dart';
 import '../../../../core/widgets/header_widgets.dart';
+import '../../../../core/widgets/search/search_text_field.dart';
 import '../../../home/presentation/widgets/free_trial_widget.dart';
 import '../../../movie_and_show/presentation/widgets/movie_slider_container.dart';
 import '../widgets/movie_information_widget.dart';
