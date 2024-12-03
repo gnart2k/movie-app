@@ -63,7 +63,7 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
           children: [
             Expanded(
               child:
-                  CommonTitle(title: widget.title, subTitle: widget.subTitle),
+              CommonTitle(title: widget.title, subTitle: widget.subTitle),
             ),
             const SizedBox(
               width: 30,
@@ -105,7 +105,7 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
   Widget _categoryContent(
       BuildContext context, List<MovieModel> movieList, int itemNumber) {
     return SizedBox(
-      width: MediaQuery.sizeOf(context).width - 320,
+      width: double.infinity,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
