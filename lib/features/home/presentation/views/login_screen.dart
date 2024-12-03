@@ -67,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                             Colors.transparent,
                             Colors.black.withOpacity(0.7),
                           ],
-                          stops: [0.0, 0.5, 1.0],
+                          stops: const [0.0, 0.5, 1.0],
                         ),
                       ),
                     ),
