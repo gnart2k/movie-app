@@ -104,12 +104,15 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
 
   Widget _categoryContent(
       BuildContext context, List<MovieModel> movieList, int itemNumber) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: movieList
-          .map((movie) => widget.cardWidgetBuilder(movie, itemNumber))
-          .toList(),
+    return SizedBox(
+      width: MediaQuery.sizeOf(context).width - 320,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: movieList
+            .map((movie) => Expanded(child: widget.cardWidgetBuilder(movie, itemNumber)))
+            .toList(),
+      ),
     );
   }
 }

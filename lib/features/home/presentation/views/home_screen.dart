@@ -5,7 +5,6 @@ import 'package:movie_app/core/domain/model/plan_model.dart';
 import 'package:movie_app/core/widgets/category/category_card.dart';
 import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
-import 'package:movie_app/core/widgets/plan/plan_container.dart';
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/frequently_asked_question_widget.dart';
@@ -21,7 +20,7 @@ class HomeScreen extends StatelessWidget {
           SingleChildScrollView(
               child: Column(children: [
             const BannerWidget(),
-            const SizedBox(height: 200),
+            SizedBox(height: 200),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 160),
               child: Column(
@@ -82,25 +81,8 @@ class HomeScreen extends StatelessWidget {
                         "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
                     heightCard: 290,
                   ),
-                  const SizedBox(height: 120),
+                  SizedBox(height: 120),
                   FrequentlyAskedQuestionsWidget(),
-                  PlanContainer(plans: [
-                    PlanModel(
-                        title: 'Basic Plan',
-                        price: 9.9,
-                        description:
-                            'Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.'),
-                    PlanModel(
-                        title: 'Basic Plan',
-                        price: 9.9,
-                        description:
-                            'Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.'),
-                    PlanModel(
-                        title: 'Basic Plan',
-                        price: 9.9,
-                        description:
-                            'Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.'),
-                  ]),
                   const FreeTrialWidget(),
                 ],
               ),
