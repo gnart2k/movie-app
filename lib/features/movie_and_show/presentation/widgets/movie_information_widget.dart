@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 
 class MovieInformation extends StatelessWidget {
@@ -54,11 +55,13 @@ class MovieInformation extends StatelessWidget {
         ),
         Text(
           title,
-          style: const TextStyle(
-              color: AppColors.lightGray,
+          style: GoogleFonts.manrope(
+            color: AppColors.lightGray,
               fontSize: 18,
               height: 1.5,
-              fontWeight: FontWeight.w500),
+              fontWeight: FontWeight.w500
+          ),
+         
         )
       ],
     );
@@ -79,8 +82,8 @@ class MovieInformation extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(title,
-                style: const TextStyle(
-                    color: Color(0xFFFFFFFF),
+                style: GoogleFonts.manrope(
+                    color: const Color(0xFFFFFFFF),
                     fontWeight: FontWeight.w600,
                     fontSize: 20,
                     height: 1.5)),
@@ -206,14 +209,14 @@ class MovieInformation extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: const TextStyle(
-                      color: Color(0xFFFFFFFF),
+                  style: GoogleFonts.manrope(
+                      color: const Color(0xFFFFFFFF),
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
                       height: 1.5),
                 ),
                 Text(address,
-                    style: const TextStyle(
+                    style: GoogleFonts.manrope(
                         color: AppColors.lightGray,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -234,8 +237,8 @@ class MovieInformation extends StatelessWidget {
       ),
       child: Text(
         language,
-        style: const TextStyle(
-          color: Color(0xFFFFFFFF),
+        style: GoogleFonts.manrope(
+          color: const Color(0xFFFFFFFF),
           fontWeight: FontWeight.w500,
           fontSize: 16,
         ),
@@ -253,9 +256,9 @@ class MovieInformation extends StatelessWidget {
             const SizedBox(
               height: 14,
             ),
-            const Text('2020',
-                style: TextStyle(
-                    color: Color(0xFFFFFFFF),
+            Text('2020',
+                style: GoogleFonts.manrope(
+                    color: const Color(0xFFFFFFFF),
                     fontSize: 20,
                     height: 1.5,
                     fontWeight: FontWeight.w600))
