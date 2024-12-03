@@ -213,17 +213,22 @@ class _SeasonEpisodesContainerState extends State<SeasonEpisodesContainer> {
                                             Row(
                                               children: [
                                                 //episode title
-                                                Text(
-                                                  episode['title'],
-                                                  style: GoogleFonts.manrope(
-                                                    fontSize: 18,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white,
+                                                Expanded(
+                                                  child: Text(
+                                                    episode['title'],
+                                                    style: GoogleFonts.manrope(
+                                                      fontSize: 18,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.white,
+                                                    ),
+                                                    maxLines: 2,
+                                                    overflow: TextOverflow.ellipsis,
                                                   ),
                                                 ),
                                                 const Spacer(),
                                                 // Duration
                                                 Row(
+                                                  mainAxisSize: MainAxisSize.min,
                                                   children: [
                                                     SvgPicture.asset(
                                                       AppIcons.alarmIcon,
