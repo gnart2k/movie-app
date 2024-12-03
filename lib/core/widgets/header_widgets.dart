@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
+import 'package:movie_app/core/widgets/search/search_text_field.dart';
 
 class HeaderWidgets extends StatefulWidget {
   const HeaderWidgets({super.key});
@@ -13,6 +14,7 @@ class HeaderWidgets extends StatefulWidget {
 
 class _HeaderWidgetsState extends State<HeaderWidgets> {
   late List<NavBarProps> navbarLabel;
+
   @override
   void initState() {
     super.initState();
@@ -27,11 +29,15 @@ class _HeaderWidgetsState extends State<HeaderWidgets> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 24.0),
+      padding: const EdgeInsets.symmetric(vertical: 24.0,horizontal: 100),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-        SvgPicture.asset(AppVectors.logo),
+        Expanded(
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [SvgPicture.asset(AppVectors.logo)],
+        )),
         _navBarList(context, navbarLabel),
-        _iconContainer(context),
+        Expanded(child: _iconContainer(context)),
       ]),
     );
   }
@@ -62,8 +68,8 @@ Widget _navBarList(BuildContext context, List<NavBarProps> itemLists) {
 }
 
 Widget _iconContainer(BuildContext context) {
-  return Row(children: [
-    GestureDetector(child: SvgPicture.asset(AppIcons.searchIcon, width: 26)),
+  return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+    SearchTextField(),
     const SizedBox(width: 16),
     GestureDetector(child: SvgPicture.asset(AppIcons.bellIcon, width: 26))
   ]);
@@ -72,5 +78,6 @@ Widget _iconContainer(BuildContext context) {
 class NavBarProps {
   final String label;
   final bool isSelected;
+
   NavBarProps({required this.label, this.isSelected = false});
 }
