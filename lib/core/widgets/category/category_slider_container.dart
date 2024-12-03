@@ -7,16 +7,17 @@ import 'package:movie_app/core/widgets/title/common_title.dart';
 class CategorySliderContainer extends StatefulWidget {
   final String title;
   final String? subTitle;
-  final double heightCard;
+  final double? heightCard;
   final List<List<MovieModel>> movieList;
-  final Widget Function(MovieModel movie) cardWidgetBuilder;
+  final Widget Function(MovieModel movie, int itemNumber) cardWidgetBuilder;
 
   const CategorySliderContainer({
     super.key,
     required this.movieList,
     required this.title,
     this.subTitle,
-    required this.cardWidgetBuilder, required this.heightCard,
+    this.heightCard,
+    required this.cardWidgetBuilder,
   });
 
   @override
@@ -47,7 +48,6 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
         duration: const Duration(milliseconds: 300), curve: Curves.linear);
   }
 
-  
   void _toggleGoPreSlide() {
     _buttonCarouselController?.previousPage(
         duration: const Duration(milliseconds: 300), curve: Curves.linear);
@@ -83,13 +83,13 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
           carouselController: _buttonCarouselController,
           itemCount: pageNumber,
           itemBuilder: (context, index, realIndex) {
-            return _categoryContent(context, widget.movieList[index]);
+            return _categoryContent(context, widget.movieList[index],
+                widget.movieList[index].length);
           },
           options: CarouselOptions(
               viewportFraction: 1,
               enableInfiniteScroll: false,
-              height: widget.heightCard,
-
+              height: widget.heightCard ?? 290,
               scrollDirection: Axis.horizontal,
               scrollPhysics: const NeverScrollableScrollPhysics(),
               onPageChanged: (index, reason) {
@@ -102,12 +102,17 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
     );
   }
 
-  Widget _categoryContent(BuildContext context, List<MovieModel> movieList) {
-    return Row(
-
-      children: movieList
-          .map((movie) => widget.cardWidgetBuilder(movie)) // Updated
-          .toList(),
+  Widget _categoryContent(
+      BuildContext context, List<MovieModel> movieList, int itemNumber) {
+    return SizedBox(
+      width: MediaQuery.sizeOf(context).width - 320,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: movieList
+            .map((movie) => Expanded(child: widget.cardWidgetBuilder(movie, itemNumber)))
+            .toList(),
+      ),
     );
   }
 }
