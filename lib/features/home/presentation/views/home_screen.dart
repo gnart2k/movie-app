@@ -7,6 +7,8 @@ import 'package:movie_app/core/widgets/header_widgets.dart';
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/frequently_asked_question_widget.dart';
+import 'package:movie_app/features/home/presentation/widgets/multiplatform_widget.dart';
+import 'package:movie_app/features/home/presentation/widgets/support_form_widget.dart';
 import '../../../../core/widgets/category/category_slider_container.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -79,8 +81,9 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    const FreeTrialWidget(),
+                    const MultiPlatformWidget(),
                     FrequentlyAskedQuestionsWidget(),
+                    const FreeTrialWidget(),
                   ],
                 ),
                 const FooterWidget(),
