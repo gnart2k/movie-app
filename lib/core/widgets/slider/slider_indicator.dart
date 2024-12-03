@@ -11,10 +11,9 @@ class SliderIndicator extends StatelessWidget {
       width: isActive ? 23 : 17,
       height: 4,
       decoration: BoxDecoration(
-          color: isActive ? AppColors.primary : AppColors.itemHovered,
+          color: isActive ? AppColors.primary : AppColors.sliderIndicator,
           borderRadius: BorderRadius.circular(100)),
       duration: const Duration(milliseconds: 200),
     );
   }
 }
-
