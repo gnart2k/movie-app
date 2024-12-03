@@ -27,6 +27,7 @@ class MoviesCard extends StatelessWidget {
     return Container(
       width: width,
       height: height,
+      margin: const EdgeInsets.only(right: 10),
       padding: isRating == true
           ? const EdgeInsets.all(20)
           : const EdgeInsets.all(10),
@@ -124,7 +125,7 @@ class MoviesCard extends StatelessWidget {
       children: [
         SvgPicture.asset(
           'assets/vectors/time_of_movie.svg',
-          height: 24.0,
+          height:  24.0,
           width: 24.0,
           // ignore: deprecated_member_use
           color: AppColors.lightGray,
