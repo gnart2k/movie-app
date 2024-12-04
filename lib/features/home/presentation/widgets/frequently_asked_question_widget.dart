@@ -6,7 +6,7 @@ import 'package:movie_app/features/home/data/models/faq_section.dart';
 import 'package:movie_app/features/home/presentation/view_models/faq_section_viewmodel.dart';
 
 class FrequentlyAskedQuestionsWidget extends ConsumerStatefulWidget {
-   const FrequentlyAskedQuestionsWidget({super.key});
+  const FrequentlyAskedQuestionsWidget({super.key});
 
   @override
   FrequentlyAskedQuestionsWidgetState createState() =>
@@ -39,46 +39,37 @@ class FrequentlyAskedQuestionsWidgetState
 
   Widget _questionBody(BuildContext context, List<Question> questions) {
     final length = questions.length;
+    final firstHalf = questions.take(length - length ~/ 2).toList();
+    final secondHalf = questions.skip(length - length ~/ 2).toList();
 
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: length - length ~/ 2,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) {
-                      final item = questions[index];
-                      return QuestionItem(item: item, index: index + 1);
-                    },
-                  ),
-                ),
-              ],
-            ),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: firstHalf.length,
+            itemBuilder: (context, index) {
+              final item = firstHalf[index];
+              return QuestionItem(item: item, index: index + 1);
+            },
           ),
-          Expanded(
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: length ~/ 2,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) {
-                      final newIndex = index + (length - length ~/ 2);
-                      final item = questions[newIndex];
-                      return QuestionItem(item: item, index: newIndex + 1);
-                    },
-                  ),
-                )
-              ],
-            ),
+        ),
+        SizedBox(width: 40),
+        Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: secondHalf.length,
+            itemBuilder: (context, index) {
+              final item = secondHalf[index];
+              return QuestionItem(
+                item: item,
+                index: index + firstHalf.length + 1,
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -220,4 +211,3 @@ class _QuestionItemState extends ConsumerState<QuestionItem> {
     );
   }
 }
-
