@@ -16,7 +16,8 @@ class CommonTitle extends StatelessWidget {
           title,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+              color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold),
         ),
         if (subTitle != null) ...[
           const SizedBox(
@@ -24,13 +25,12 @@ class CommonTitle extends StatelessWidget {
           ),
           Text(
             subTitle!,
-            maxLines: 1,
+            maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(color: AppColors.lightGray, fontSize: 18),
-          )
+          ),
         ]
       ],
     );
   }
-
 }
