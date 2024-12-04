@@ -46,14 +46,14 @@ class MovieAndShowPage extends StatelessWidget {
                       childWidget: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CategorySliderContainer(
-                            cardWidgetBuilder: (movie, int itemNum) {
+                          CategorySliderContainer<MovieModel>(
+                            cardWidgetBuilder: (item, int itemNum) {
                               return CategoryCard(
-                                  title: movie.name,
-                                  imageUrl: movie.imageUrl,
+                                  title: item.name,
+                                  imageUrl: item.imageUrl,
                                   itemNumber: itemNum);
                             },
-                            movieList: [
+                            list: [
                               [
                                 MovieModel(
                                     name: 'Adventure',
@@ -103,7 +103,7 @@ class MovieAndShowPage extends StatelessWidget {
                           const SizedBox(
                             height: 100,
                           ),
-                          CategorySliderContainer(
+                          CategorySliderContainer<MovieModel>(
                             cardWidgetBuilder: (movie, int itemNum) {
                               return CategoryCard(
                                 title: movie.name,
@@ -113,7 +113,7 @@ class MovieAndShowPage extends StatelessWidget {
                                 onTopTitle: "Top 10 in",
                               );
                             },
-                            movieList: [
+                            list: [
                               [
                                 MovieModel(
                                     name: 'Adventure',
@@ -163,7 +163,7 @@ class MovieAndShowPage extends StatelessWidget {
                           const SizedBox(
                             height: 100,
                           ),
-                          CategorySliderContainer(
+                          CategorySliderContainer<MovieModel>(
                             cardWidgetBuilder: (movie, int itemNum) {
                               return MoviesCard(
                                 title: movie.name,
@@ -173,7 +173,7 @@ class MovieAndShowPage extends StatelessWidget {
                                 isRating: false,
                               );
                             },
-                            movieList: [
+                            list: [
                               [
                                 MovieModel(
                                     name: 'Adventure',
@@ -223,7 +223,7 @@ class MovieAndShowPage extends StatelessWidget {
                           const SizedBox(
                             height: 100,
                           ),
-                          CategorySliderContainer(
+                          CategorySliderContainer<MovieModel>(
                             cardWidgetBuilder: (movie, int itemNum) {
                               return MoviesCard(
                                 title: movie.name,
@@ -231,7 +231,7 @@ class MovieAndShowPage extends StatelessWidget {
                                 imageUrl: movie.imageUrl,
                               );
                             },
-                            movieList: [
+                            list: [
                               [
                                 MovieModel(
                                     name: 'Adventure',
@@ -281,7 +281,7 @@ class MovieAndShowPage extends StatelessWidget {
                           const SizedBox(
                             height: 100,
                           ),
-                          CategorySliderContainer(
+                          CategorySliderContainer<MovieModel>(
                             cardWidgetBuilder: (movie, int itemNum) {
                               return MoviesCard(
                                 title: movie.name,
@@ -291,7 +291,7 @@ class MovieAndShowPage extends StatelessWidget {
                                 isRating: true,
                               );
                             },
-                            movieList: [
+                            list: [
                               [
                                 MovieModel(
                                     name: 'Adventure',

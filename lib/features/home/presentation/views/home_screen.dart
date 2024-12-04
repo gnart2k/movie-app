@@ -26,14 +26,14 @@ class HomeScreen extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 160),
               child: Column(
                 children: [
-                  CategorySliderContainer(
+                  CategorySliderContainer<MovieModel>(
                     cardWidgetBuilder: (movie, int itemNum) {
                       return CategoryCard(
                           title: movie.name,
                           imageUrl: movie.imageUrl,
                           itemNumber: itemNum);
                     },
-                    movieList: [
+                    list: [
                       [
                         MovieModel(
                             name: 'Adventure',
