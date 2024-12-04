@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
-import 'package:movie_app/features/movie_open_page/presentation/views/movies_open_page.dart';
+
+
+import 'features/movie_and_show/presentation/views/movie_and_show_page.dart';
+import 'features/show_page_open/views/show_page_open.dart';
+import 'features/support_page/presentation/views/support_page.dart';
 
 
 void main() {
@@ -21,7 +25,7 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         // home: MovieOpenPage());
         // home: MovieAndShowPage());
-        home: MovieOpenPage());
+        home: const SupportPage());
 
     // home: const SupportPage());
   }
