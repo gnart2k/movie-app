@@ -51,7 +51,7 @@ class _MovieSliderContainerState extends State<MovieSliderContainer>
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 1100,
+      height: 1000,
       child: Stack(
         children: [
           Align(
@@ -78,6 +78,8 @@ class _MovieSliderContainerState extends State<MovieSliderContainer>
                 ],
               )),
           Positioned(
+              right: 0,
+              left: 0,
               bottom: 120,
               child: MovieSliderControllerContainer(
                 pageNumber: pageNumber,
@@ -92,7 +94,7 @@ class _MovieSliderContainerState extends State<MovieSliderContainer>
 
   Widget _categoryContent(BuildContext context, MovieModel movie) {
     return Container(
-      margin: const EdgeInsets.only(right: 100, top: 120, left: 100),
+       margin: const EdgeInsets.only(),
       height: 300,
       width: double.infinity,
       decoration: BoxDecoration(
