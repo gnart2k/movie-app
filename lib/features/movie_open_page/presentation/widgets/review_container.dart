@@ -187,6 +187,8 @@ Widget _reviewContent(BuildContext context, ReviewModel review) {
               const SizedBox(height: 20),
               Text(
                 review.reviewText,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 4,
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
               )

@@ -12,8 +12,8 @@ class SupportFormWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            flex: 3,
+          Flexible(
+            flex: 4,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -67,104 +67,105 @@ class SupportFormWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 80),
-          Container(
-            width: 976,
-            height: 739,
-            padding: const EdgeInsets.all(50),
-            decoration: BoxDecoration(
-                color: AppColors.darkGray,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppColors.cardBorder, width: 1)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+          Flexible(
+              flex: 6,
+              child: Container(
+                padding: const EdgeInsets.all(50),
+                decoration: BoxDecoration(
+                    color: AppColors.darkGray,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: AppColors.cardBorder, width: 1)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                        child: _buildLabelledTextField(
-                            label: 'First Name',
-                            inLineLabel: 'Enter First Name')),
-                    const SizedBox(width: 50),
-                    Expanded(
-                        child: _buildLabelledTextField(
-                            label: 'Last Name',
-                            inLineLabel: 'Enter Last Name')),
-                  ],
-                ),
-                const SizedBox(height: 50),
-                Row(
-                  children: [
-                    Expanded(
-                        child: _buildLabelledTextField(
-                            label: 'Email', inLineLabel: 'Enter your Email')),
-                    const SizedBox(width: 50),
-                    Expanded(
-                      child: _buildPhoneNumberField(),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 50),
-                _buildLabelledTextField(
-                    label: 'Message',
-                    maxLines: 6,
-                    inLineLabel: 'Enter Your Message'),
-                const SizedBox(height: 50),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      child: Transform.scale(
-                        scale: 1.7,
-                        child: Checkbox(
-                          value: false,
-                          onChanged: (value) {},
-                          activeColor: Colors.red,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 3,
-                    ),
-                    const Expanded(
-                      child: Text(
-                        'I agree with Terms of Use and Privacy Policy',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.lightGray),
-                      ),
-                    ),
-                    const SizedBox(height: 70),
-                    Expanded(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                    Row(
                       children: [
-                        Container(
-                          width: 176,
-                          height: 63,
-                          decoration: BoxDecoration(
-                              color: AppColors.primary,
-                              borderRadius: BorderRadius.circular(6)),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              'Send Message',
-                              style: TextStyle(
-                                color: Color(0xFFFFFFFF),
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18,
-                              ),
+                        Expanded(
+                            child: _buildLabelledTextField(
+                                label: 'First Name',
+                                inLineLabel: 'Enter First Name')),
+                        const SizedBox(width: 50),
+                        Expanded(
+                            child: _buildLabelledTextField(
+                                label: 'Last Name',
+                                inLineLabel: 'Enter Last Name')),
+                      ],
+                    ),
+                    const SizedBox(height: 50),
+                    Row(
+                      children: [
+                        Expanded(
+                            child: _buildLabelledTextField(
+                                label: 'Email',
+                                inLineLabel: 'Enter your Email')),
+                        const SizedBox(width: 50),
+                        Expanded(
+                          child: _buildPhoneNumberField(),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 50),
+                    _buildLabelledTextField(
+                        label: 'Message',
+                        maxLines: 6,
+                        inLineLabel: 'Enter Your Message'),
+                    const SizedBox(height: 50),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          child: Transform.scale(
+                            scale: 1.7,
+                            child: Checkbox(
+                              value: false,
+                              onChanged: (value) {},
+                              activeColor: Colors.red,
                             ),
                           ),
                         ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        const Expanded(
+                          child: Text(
+                            'I agree with Terms of Use and Privacy Policy',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.lightGray),
+                          ),
+                        ),
+                        const SizedBox(height: 70),
+                        Expanded(
+                            child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                              width: 176,
+                              height: 63,
+                              decoration: BoxDecoration(
+                                  color: AppColors.primary,
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: TextButton(
+                                onPressed: () {},
+                                child: const Text(
+                                  'Send Message',
+                                  style: TextStyle(
+                                    color: Color(0xFFFFFFFF),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ))
                       ],
-                    ))
+                    ),
                   ],
                 ),
-              ],
-            ),
-          ),
+              )),
         ],
       ),
     );
