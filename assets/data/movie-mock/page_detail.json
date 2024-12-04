@@ -1,0 +1,56 @@
+{
+  "header": {
+    "logo": "StreamVibe",
+    "menuIcon": true
+  },
+  "movieSection": {
+    "title": "Kantara",
+    "buttons": [
+      { "text": "Play Now", "action": "play" },
+      { "text": "Add to Favorites", "action": "add_to_favorites" },
+      { "text": "Share", "action": "share" },
+      { "text": "Download", "action": "download" }
+    ],
+    "description": "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands.",
+    "details": {
+      "releaseYear": 2022,
+      "availableLanguages": ["English", "Hindi", "Tamil", "Telugu", "Kannada"],
+      "ratings": {
+        "IMDb": 4.5,
+        "StreamVibe": 4.5
+      },
+      "genres": ["Action", "Adventure"],
+      "director": "Rishab Shetty (From India)",
+      "music": "B. Ajaneesh Loknath (From India)"
+    }
+  },
+  "castSection": {
+    "title": "Cast",
+    "castMembers": [
+      { "name": "Cast Member 1", "image": "cast1.png" },
+      { "name": "Cast Member 2", "image": "cast2.png" },
+      { "name": "Cast Member 3", "image": "cast3.png" },
+      { "name": "Cast Member 4", "image": "cast4.png" }
+    ]
+  },
+  "reviewsSection": {
+    "title": "Reviews",
+    "reviews": [
+      {
+        "author": "Aniket Roy (From India)",
+        "rating": 4.5,
+        "comment": "This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it."
+      }
+    ]
+  },
+  "callToAction": {
+    "text": "Start your free trial today!",
+    "button": "Start a Free Trial"
+  },
+  "footer": {
+    "navigationLinks": ["Home", "Movies", "Shows", "Subscription", "Support", "Connect With Us"],
+    "legalLinks": ["Terms of Use", "Privacy Policy", "Cookie Policy"],
+    "copyright": "©2023 StreamVibe, All Rights Reserved"
+  }
+}
+

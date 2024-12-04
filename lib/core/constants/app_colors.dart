@@ -13,4 +13,5 @@ class AppColors {
   static const signInText = Color(0xFFFFFFFF);
   static const signInDescriptionText = Color(0xFF31394D);
   static const signUpText = Color.fromRGBO(255, 117, 117, 1);
+  static const sliderIndicator = Color(0xff333333);
 }

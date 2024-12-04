@@ -1,19 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/domain/model/movie_model.dart';
 import 'package:movie_app/core/widgets/slider/slider_controller_container.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
 
-class CategorySliderContainer extends StatefulWidget {
+class CategorySliderContainer<T> extends StatefulWidget {
   final String title;
   final String? subTitle;
   final double? heightCard;
-  final List<List<MovieModel>> movieList;
-  final Widget Function(MovieModel movie, int itemNumber) cardWidgetBuilder;
+  final List<List<T>> list;
+  final Widget Function(T item, int itemNumber) cardWidgetBuilder;
 
   const CategorySliderContainer({
     super.key,
-    required this.movieList,
+    required this.list,
     required this.title,
     this.subTitle,
     this.heightCard,
@@ -21,10 +20,11 @@ class CategorySliderContainer extends StatefulWidget {
   });
 
   @override
-  State<StatefulWidget> createState() => _CategorySliderContainerState();
+  State<CategorySliderContainer<T>> createState() =>
+      _CategorySliderContainerState<T>();
 }
 
-class _CategorySliderContainerState extends State<CategorySliderContainer>
+class _CategorySliderContainerState<T> extends State<CategorySliderContainer<T>>
     with TickerProviderStateMixin {
   late CarouselSliderController? _buttonCarouselController;
   late int pageNumber;
@@ -33,7 +33,7 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
   @override
   void initState() {
     _buttonCarouselController = CarouselSliderController();
-    pageNumber = widget.movieList.length;
+    pageNumber = widget.list.length;
     super.initState();
   }
 
@@ -63,7 +63,7 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
           children: [
             Expanded(
               child:
-                  CommonTitle(title: widget.title, subTitle: widget.subTitle),
+              CommonTitle(title: widget.title, subTitle: widget.subTitle),
             ),
             const SizedBox(
               width: 30,
@@ -83,8 +83,8 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
           carouselController: _buttonCarouselController,
           itemCount: pageNumber,
           itemBuilder: (context, index, realIndex) {
-            return _categoryContent(context, widget.movieList[index],
-                widget.movieList[index].length);
+            return _categoryContent(context, widget.list[index],
+                widget.list[index].length);
           },
           options: CarouselOptions(
               viewportFraction: 1,
@@ -103,13 +103,16 @@ class _CategorySliderContainerState extends State<CategorySliderContainer>
   }
 
   Widget _categoryContent(
-      BuildContext context, List<MovieModel> movieList, int itemNumber) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: movieList
-          .map((movie) => widget.cardWidgetBuilder(movie, itemNumber))
-          .toList(),
+      BuildContext context, List<T> list, int itemNumber) {
+    return SizedBox(
+      width: double.infinity,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: list
+            .map((item) => Expanded(child: widget.cardWidgetBuilder(item, itemNumber)))
+            .toList(),
+      ),
     );
   }
 }
