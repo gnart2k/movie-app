@@ -4,9 +4,7 @@ import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
 import 'package:movie_app/core/widgets/plan/plan_container.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
-import 'package:movie_app/features/home/presentation/widgets/frequently_asked_question_widget.dart';
 import 'package:movie_app/features/support_page/presentation/widgets/compare_plans_widget.dart';
-import 'package:movie_app/features/support_page/presentation/widgets/support_form_widget.dart';
 
 class SubscriptionPage extends StatelessWidget {
   const SubscriptionPage({super.key});
@@ -42,7 +40,7 @@ class SubscriptionPage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 150),
-                  ComparePlans(),
+                  const ComparePlansWidget(),
                   const SizedBox(height: 150),
                   const FreeTrialWidget(),
                 ],

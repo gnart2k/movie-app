@@ -26,7 +26,7 @@ class MainApp extends StatelessWidget {
         // home: MovieOpenPage());
         // home: MovieAndShowPage());
         // home: const SupportPage());
-        home: HomeScreen());
+        // home: HomeScreen());
         home: const SubscriptionPage());
 
     // home: const SupportPage());
