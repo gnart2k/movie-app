@@ -83,7 +83,7 @@ class HomeScreen extends ConsumerWidget {
                     heightCard: 290,
                   ),
                   const SizedBox(height: 120),
-                  FrequentlyAskedQuestionsWidget(),
+                 const FrequentlyAskedQuestionsWidget(),
                   const FreeTrialWidget(),
                 ],
               ),
