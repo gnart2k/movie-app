@@ -6,7 +6,6 @@ import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/search/search_text_field.dart';
 import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';
-import 'package:movie_app/features/home/presentation/view_models/navigation_link_model.dart';
 
 class HeaderWidgets extends ConsumerStatefulWidget {
   const HeaderWidgets({super.key});
