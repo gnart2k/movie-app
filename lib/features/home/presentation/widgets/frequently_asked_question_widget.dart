@@ -31,6 +31,7 @@ class FrequentlyAskedQuestionsWidgetState
       child: Column(
         children: [
           _questionTitle(context, state.title),
+          const SizedBox(height: 20,),
           _questionBody(context, state.questions),
         ],
       ),
@@ -128,7 +129,7 @@ class _QuestionItemState extends ConsumerState<QuestionItem> {
       children: [
         Expanded(
             child: Container(
-          padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
             border: Border(
               bottom: BorderSide(
