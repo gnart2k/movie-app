@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
-<<<<<<< HEAD
 import 'package:movie_app/features/home/data/models/faq_section.dart';
 import 'package:movie_app/features/home/presentation/view_models/faq_section_viewmodel.dart';
 
@@ -30,62 +29,6 @@ class FrequentlyAskedQuestionsWidgetState
     return SizedBox(
       width: double.infinity,
       child: Column(
-=======
-
-class FrequentlyAskedQuestionsWidget extends StatelessWidget {
-  FrequentlyAskedQuestionsWidget({super.key});
-
-  final List<Map<String, String>> _bodyList = [
-    {
-      'What is StreamVibe?':
-          'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'
-    },
-    {
-      'How much does StreamVibe cost?':
-          'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'
-    },
-    {
-      'What content is available on StreamVibe?':
-          'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'
-    },
-    {
-      'How can I watch StreamVibe?':
-          'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'
-    },
-    {
-      'How do I sign up for StreamVibe?':
-          'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'
-    },
-    {
-      'What is the StreamVibe free trial?':
-          'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'
-    },
-    {
-      'How do I contact StreamVibe customer support?':
-          'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'
-    },
-    {
-      'What are the StreamVibe payment methods?':
-          'StreamVibe is a streaming service that allows you to watch movies and shows on demand.'
-    },
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-        width: double.infinity,
-        child: Column(
-          children: [_questionTitle(context), _questionBody(context)],
-        ));
-  }
-
-  Widget _questionBody(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 556,
-      margin: const EdgeInsets.only(top: 60),
-      child: Row(
->>>>>>> main
         children: [
           _questionTitle(context, state.title),
           _questionBody(context, state.questions),
@@ -98,7 +41,6 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
     final length = questions.length;
 
     return SizedBox(
-<<<<<<< HEAD
       width: double.infinity,
       child: Column(
         children: [
@@ -155,31 +97,13 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
         ],
       ),
     );
-=======
-        child: Row(
-      children: [
-        const Expanded(
-          child: CommonTitle(
-            title: "Frequently Asked Question",
-            subTitle:
-                "Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.",
-          ),
-        ),
-        CommonButton(label: "Ask a question", onTap: () {})
-      ],
-    ));
->>>>>>> main
   }
 }
 
 class QuestionItem extends ConsumerStatefulWidget {
   const QuestionItem({super.key, required this.item, required this.index});
 
-<<<<<<< HEAD
   final Question item;
-=======
-  final Map<String, String> item;
->>>>>>> main
 
   final int index;
 
