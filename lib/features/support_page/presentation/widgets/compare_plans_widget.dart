@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
+import 'package:movie_app/features/home/data/models/compare_plans.dart';
+import 'package:movie_app/features/home/presentation/view_models/compare_plans_model.dart';
 
-class ComparePlans extends StatelessWidget {
-  ComparePlans({super.key});
+class ComparePlansWidget extends ConsumerStatefulWidget {
+  const ComparePlansWidget({super.key});
 
-  final String title = 'Compare our plans and find the right one for you';
+  @override
+  ComparePlansState createState() => ComparePlansState();
+}
+
+class ComparePlansState extends ConsumerState<ComparePlansWidget> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(comparePlansViewModelProvider.notifier).getComparePlans();
+  }
+
   final String subTitle =
       'StreamVibe offers three different plans to fit your needs: Basic, Standard, and Premium. Compare the features of each plan and choose the one that\'s right for you.';
 
@@ -15,144 +29,92 @@ class ComparePlans extends StatelessWidget {
     "Standard Plan",
     "Premium Plan"
   ];
-  final List<Map<String, String>> rowContentList = [
-    {
-      "feature": "Price",
-      "basic": "\$9.99/month",
-      "standard": "\$12.99/month",
-      "premium": "\$14.99/month"
-    },
-    {
-      "feature": "Content Access",
-      "basic": "All content",
-      "standard": "All content",
-      "premium": "All content"
-    },
-    {
-      "feature": "Device Usage",
-      "basic": "1 device",
-      "standard": "2 devices",
-      "premium": "4 devices"
-    },
-    {
-      "feature": "Free Trial Duration",
-      "basic": "7 days",
-      "standard": "7 days",
-      "premium": "7 days"
-    },
-    {
-      "feature": "Cancellation Policy",
-      "basic": "Anytime",
-      "standard": "Anytime",
-      "premium": "Anytime"
-    },
-    {
-      "feature": "HDR Support",
-      "basic": "No",
-      "standard": "Yes",
-      "premium": "Yes"
-    },
-    {
-      "feature": "Dolby Atmos Support",
-      "basic": "No",
-      "standard": "Yes",
-      "premium": "Yes"
-    },
-    {
-      "feature": "Ad-Free Experience",
-      "basic": "No",
-      "standard": "Yes",
-      "premium": "Yes"
-    },
-    {
-      "feature": "Offline Viewing",
-      "basic": "No",
-      "standard": "Yes",
-      "premium": "Yes"
-    },
-    {
-      "feature": "Family Sharing",
-      "basic": "No",
-      "standard": "No",
-      "premium": "Yes"
-    }
-  ];
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(comparePlansViewModelProvider);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CommonTitle(title: title, subTitle: subTitle),
-        const SizedBox(
-          height: 80,
-        ),
+        CommonTitle(title: state.title, subTitle: subTitle),
+        const SizedBox(height: 80),
         Table(
           border: TableBorder.all(
               width: 0.1, color: AppColors.topBarText), // Viền của bảng
           children: [
-            _titleRow(),
-            for (var map in rowContentList) _contentRow(map)
+            _titleRow(state.columns),
+            for (var map in state.rows) _contentRow(map),
           ],
         )
       ],
     );
   }
 
-  TableRow _contentRow(Map<String, String> map) {
+  TableRow _contentRow(CompareRow item) {
     return TableRow(
-        decoration: const BoxDecoration(color: AppColors.appBackground),
-        children: [
-          _singleItemContentRow(map['feature'] ?? 'Null'),
-          _singleItemContentRow(map['basic'] ?? 'Null'),
-          _singleItemContentRow(map['standard'] ?? 'Null'),
-          _singleItemContentRow(map['premium'] ?? 'Null'),
-        ]);
+      decoration: const BoxDecoration(color: AppColors.appBackground),
+      children: [
+        _singleItemContentRow(item.feature),
+        _singleItemContentRow(item.basic),
+        _singleItemContentRow(item.standard),
+        _singleItemContentRow(item.premium),
+      ],
+    );
   }
 
   Widget _singleItemContentRow(String item) {
     return Padding(
-        padding: const EdgeInsets.all(30),
-        child: Text(
-          item,
-          style: const TextStyle(
-              color: AppColors.lightGray, fontWeight: FontWeight.w500),
-        ));
+      padding: const EdgeInsets.all(30),
+      child: Text(
+        item,
+        style: GoogleFonts.manrope(
+            color: AppColors.lightGray, fontWeight: FontWeight.w500),
+      ),
+    );
   }
 
-  TableRow _titleRow() {
+  TableRow _titleRow(List<String> state) {
     return TableRow(
-        decoration: const BoxDecoration(
-            border: Border(
+      decoration: const BoxDecoration(
+        border: Border(
           left: BorderSide(width: 1, color: AppColors.cardBorder),
-        )),
-        children: [
-          for (var item in columnTitleList) _singleItemTitleRow(item)
-        ]);
+        ),
+      ),
+      children: [
+        for (var item in state) _singleItemTitleRow(item),
+      ],
+    );
   }
 
   Widget _singleItemTitleRow(String item) {
     return Padding(
-        padding: const EdgeInsets.all(30),
-        child: Row(children: [
-          Text(item,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-                height: 1.5,
-              )),
+      padding: const EdgeInsets.all(30),
+      child: Row(
+        children: [
+          Text(
+            item,
+            style: GoogleFonts.manrope(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              height: 1.5,
+            ),
+          ),
           item == "Standard Plan"
               ? Container(
                   margin: const EdgeInsets.only(left: 10),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 6, vertical: 10),
                   decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(2)),
-                  child: const Text('Popular'),
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                  child: Text('Popular', style: GoogleFonts.manrope(),),
                 )
-              : const SizedBox()
-        ]));
+              : const SizedBox(),
+        ],
+      ),
+    );
   }
 }
