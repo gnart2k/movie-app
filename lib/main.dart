@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 import 'package:movie_app/features/movie_and_show/presentation/views/movie_and_show_page.dart';
@@ -6,7 +7,7 @@ import 'package:movie_app/features/movie_open_page/presentation/views/movies_ope
 import 'package:movie_app/features/support_page/presentation/views/support_page.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {

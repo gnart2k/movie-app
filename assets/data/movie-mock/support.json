@@ -1,0 +1,84 @@
+{
+  "page": "Support",
+  "header": {
+    "logo": "StreamVibe",
+    "navigationLinks": ["Home", "Movies & Shows", "Support", "Subscriptions"]
+  },
+  "mainSection": {
+    "welcomeMessage": "Welcome to our support page! We're here to help you with any problems you may be having with our product.",
+    "form": {
+      "fields": [
+        { "label": "First Name", "type": "text", "placeholder": "Enter First Name" },
+        { "label": "Last Name", "type": "text", "placeholder": "Enter Last Name" },
+        { "label": "Email", "type": "email", "placeholder": "Enter your Email" },
+        { "label": "Phone Number", "type": "tel", "placeholder": "Enter Phone Number", "countryCode": "IN" },
+        { "label": "Message", "type": "textarea", "placeholder": "Enter your Message" }
+      ],
+      "checkbox": {
+        "label": "I agree with Terms of Use and Privacy Policy",
+        "name": "terms"
+      },
+      "submitButton": {
+        "text": "Send Message",
+        "action": "submit_form"
+      }
+    }
+  },
+  "faqSection": {
+    "title": "Frequently Asked Questions",
+    "description": "Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.",
+    "questions": [
+      { "id": 1, "question": "What is StreamVibe?", "answer": "StreamVibe is a streaming service that allows you to watch movies and shows on demand." },
+      { "id": 2, "question": "How much does StreamVibe cost?", "answer": "StreamVibe offers a range of subscription plans to suit different needs and budgets." },
+      { "id": 3, "question": "What content is available on StreamVibe?", "answer": "StreamVibe offers a wide variety of movies, TV shows, documentaries, and more." },
+      { "id": 4, "question": "How can I watch StreamVibe?", "answer": "You can watch StreamVibe on various devices, including smartphones, tablets, smart TVs, and computers." },
+      { "id": 5, "question": "How do I sign up for StreamVibe?", "answer": "Visit our website and click on 'Sign Up' to create an account and choose a subscription plan." },
+      { "id": 6, "question": "What is the StreamVibe free trial?", "answer": "StreamVibe offers a free trial period for new users to explore our content and services." },
+      { "id": 7, "question": "How do I contact StreamVibe customer support?", "answer": "You can contact our customer support team via email, phone, or the contact form on our support page." },
+      { "id": 8, "question": "What are the StreamVibe payment methods?", "answer": "We accept various payment methods, including credit cards, debit cards, and online payment services." }
+    ],
+    "askQuestionButton": {
+      "text": "Ask a Question",
+      "action": "open_question_form"
+    }
+  },
+  "callToAction": {
+    "text": "Start your free trial today! This is a clear and concise call to action that encourages users to sign up for a free trial of StreamVibe.",
+    "button": {
+      "text": "Start a Free Trial",
+      "action": "start_free_trial"
+    }
+  },
+  "footer": {
+    "links": {
+      "home": [
+        { "name": "Categories", "url": "/categories" },
+        { "name": "Devices", "url": "/devices" },
+        { "name": "Pricing", "url": "/pricing" },
+        { "name": "FAQ", "url": "/faq" }
+      ],
+      "movies": [
+        { "name": "Trending", "url": "/trending" },
+        { "name": "New Releases", "url": "/new-releases" },
+        { "name": "Most Watched", "url": "/most-watched" }
+      ],
+      "shows": [
+        { "name": "Popular Shows", "url": "/popular-shows" },
+        { "name": "New Series", "url": "/new-series" },
+        { "name": "Top Rated", "url": "/top-rated" }
+      ],
+      "support": [
+        { "name": "Help Center", "url": "/help-center" },
+        { "name": "Contact Us", "url": "/contact-us" },
+        { "name": "Privacy Policy", "url": "/privacy-policy" }
+      ],
+      "subscriptions": [
+        { "name": "Pricing Plans", "url": "/pricing-plans" },
+        { "name": "Free Trial", "url": "/free-trial" },
+        { "name": "Billing Information", "url": "/billing-info" }
+      ]
+    },
+    "socialMedia": ["Facebook", "Twitter", "Instagram"]
+  }
+}
+
