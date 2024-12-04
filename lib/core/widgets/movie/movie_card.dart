@@ -23,73 +23,76 @@ class MoviesCard extends StatelessWidget {
   final String? textViewRight;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      padding: isRating == true
-          ? const EdgeInsets.all(20)
-          : const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          color: AppColors.itemHovered,
-          border: Border.all(
-            color: AppColors.cardBorder,
-          ),
-          borderRadius: const BorderRadius.all(Radius.circular(10))),
-      child: Column(
-        children: [
-          Expanded(
-            child: SizedBox(
-              child: Image.asset(
-                imageUrl,
-                fit: BoxFit.fill,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 5),
+        padding: isRating == true
+            ? const EdgeInsets.all(20)
+            : const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            color: AppColors.itemHovered,
+            border: Border.all(
+              color: AppColors.cardBorder,
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(10))),
+        child: Column(
+          children: [
+            Expanded(
+              child: SizedBox(
+                child: Image.asset(
+                  imageUrl,
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          releasedTitle == null ?
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  decoration: BoxDecoration(
-                      color: AppColors.itemHovered,
-                      border: Border.all(
-                        color: AppColors.cardBorder,
-                      ),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
-                  child: _subContainerLeft()),
-              if (textViewRight == null)
-                const SizedBox()
-              else
+            const SizedBox(
+              height: 20,
+            ),
+            releasedTitle == null ?
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
                 Container(
                     padding:
-                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    alignment: Alignment.center,
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                     decoration: BoxDecoration(
                         color: AppColors.itemHovered,
                         border: Border.all(
                           color: AppColors.cardBorder,
                         ),
                         borderRadius:
-                            const BorderRadius.all(Radius.circular(20))),
-                    child: _subContainerRight()),
-            ],
-          ) : Container(
-              padding:
-              const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-              decoration: BoxDecoration(
-                  color: AppColors.itemHovered,
-                  border: Border.all(
-                    color: AppColors.cardBorder,
-                  ),
-                  borderRadius:
-                  const BorderRadius.all(Radius.circular(20))),
-              child: Text(releasedTitle!, textAlign: TextAlign.center,)),
-        ],
+                        const BorderRadius.all(Radius.circular(20))),
+                    child: _subContainerLeft()),
+                if (textViewRight == null)
+                  const SizedBox()
+                else
+                  Container(
+                      padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: AppColors.itemHovered,
+                          border: Border.all(
+                            color: AppColors.cardBorder,
+                          ),
+                          borderRadius:
+                          const BorderRadius.all(Radius.circular(20))),
+                      child: _subContainerRight()),
+              ],
+            ) : Container(
+                padding:
+                const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                decoration: BoxDecoration(
+                    color: AppColors.itemHovered,
+                    border: Border.all(
+                      color: AppColors.cardBorder,
+                    ),
+                    borderRadius:
+                    const BorderRadius.all(Radius.circular(20))),
+                child: Text(releasedTitle!, textAlign: TextAlign.center,)),
+          ],
+        ),
       ),
     );
   }
