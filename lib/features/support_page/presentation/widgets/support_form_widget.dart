@@ -144,17 +144,17 @@ class SupportFormWidget extends StatelessWidget {
                           width: 176,
                           height: 63,
                           decoration: BoxDecoration(
-                              color: const Color(0xFFE50000),
+                              color: AppColors.primary,
                               borderRadius: BorderRadius.circular(6)),
                           child: TextButton(
                             onPressed: () {},
                             child: const Text(
                               'Send Message',
                               style: TextStyle(
-                                  color: Color(0xFFFFFFFF),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                  height: 1.5),
+                                color: Color(0xFFFFFFFF),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              ),
                             ),
                           ),
                         ),

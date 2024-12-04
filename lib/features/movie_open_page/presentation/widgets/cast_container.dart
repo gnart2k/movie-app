@@ -51,10 +51,10 @@ class _CastContainerState extends State<CastContainer>
       decoration: BoxDecoration(
         color: AppColors.itemHovered,
         border: Border.all(
-          color: AppColors.itemHovered,
-          width: 2.0,
+          color: AppColors.cardBorder,
+          width: 1.0,
         ),
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         children: [
@@ -128,30 +128,24 @@ Widget _castContent(
       width: double.infinity,
       child: Row(
         mainAxisSize: MainAxisSize.max,
-        children: castList
-            .asMap()
-            .entries
-            .map(
-              (entry) {
-                int index = entry.key;
-                var cast = entry.value;
-                return Container(
-                  margin: EdgeInsets.only(
-                    left: index == 0 ? 0 : 6,
-                    right: index == castList.length - 1 ? 0 : 8,
-                  ),
-                  width: constraints.maxWidth / 8,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      cast.imageUrl,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                );
-              }
-            )
-            .toList(),
+        children: castList.asMap().entries.map((entry) {
+          int index = entry.key;
+          var cast = entry.value;
+          return Container(
+            margin: EdgeInsets.only(
+              left: index == 0 ? 0 : 6,
+              right: index == castList.length - 1 ? 0 : 8,
+            ),
+            width: constraints.maxWidth / 8,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                cast.imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+          );
+        }).toList(),
       ),
     );
   });
