@@ -2,6 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
+<<<<<<< HEAD
+import 'package:movie_app/features/home/data/models/faq_section.dart';
+import 'package:movie_app/features/home/presentation/view_models/faq_section_viewmodel.dart';
+
+class FrequentlyAskedQuestionsWidget extends ConsumerStatefulWidget {
+   const FrequentlyAskedQuestionsWidget({super.key});
+
+  @override
+  FrequentlyAskedQuestionsWidgetState createState() =>
+      FrequentlyAskedQuestionsWidgetState();
+}
+
+class FrequentlyAskedQuestionsWidgetState
+    extends ConsumerState<FrequentlyAskedQuestionsWidget> {
+  @override
+  void initState() {
+    super.initState();
+
+    ref.read(faqSectionViewModelProvider.notifier).getFaqSection();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = ref.watch(faqSectionViewModelProvider);
+
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+=======
 
 class FrequentlyAskedQuestionsWidget extends StatelessWidget {
   FrequentlyAskedQuestionsWidget({super.key});
@@ -56,45 +85,77 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
       height: 556,
       margin: const EdgeInsets.only(top: 60),
       child: Row(
+>>>>>>> main
         children: [
-          Expanded(
-              child: Column(
-            children: [
-              Expanded(
-                  child: ListView.builder(
-                itemCount: _bodyList.length ~/ 2,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) {
-                  final item = _bodyList[index];
-                  return QuestionItem(item: item, index: index + 1);
-                },
-              ))
-            ],
-          )),
-          Expanded(
-              child: Column(
-            children: [
-              Expanded(
-                  child: ListView.builder(
-                itemCount: _bodyList.length ~/ 2,
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) {
-                  final item = _bodyList[index + 4];
-                  return QuestionItem(
-                    item: item,
-                    index: index + 5,
-                  );
-                },
-              ))
-            ],
-          ))
+          _questionTitle(context, state.title),
+          _questionBody(context, state.questions),
         ],
       ),
     );
   }
 
-  Widget _questionTitle(BuildContext context) {
+  Widget _questionBody(BuildContext context, List<Question> questions) {
+    final length = questions.length;
+
     return SizedBox(
+<<<<<<< HEAD
+      width: double.infinity,
+      child: Column(
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: length - length ~/ 2,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      final item = questions[index];
+                      return QuestionItem(item: item, index: index + 1);
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: length ~/ 2,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      final newIndex = index + (length - length ~/ 2);
+                      final item = questions[newIndex];
+                      return QuestionItem(item: item, index: newIndex + 1);
+                    },
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _questionTitle(BuildContext context, String title) {
+    return SizedBox(
+      child: Row(
+        children: [
+          Expanded(
+            child: CommonTitle(
+              title: title,
+              subTitle:
+                  "Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.",
+            ),
+          ),
+          CommonButton(label: "Ask a question", onTap: () {}),
+        ],
+      ),
+    );
+=======
         child: Row(
       children: [
         const Expanded(
@@ -107,13 +168,18 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
         CommonButton(label: "Ask a question", onTap: () {})
       ],
     ));
+>>>>>>> main
   }
 }
 
 class QuestionItem extends ConsumerStatefulWidget {
   const QuestionItem({super.key, required this.item, required this.index});
 
+<<<<<<< HEAD
+  final Question item;
+=======
   final Map<String, String> item;
+>>>>>>> main
 
   final int index;
 
@@ -136,8 +202,8 @@ class _QuestionItemState extends ConsumerState<QuestionItem> {
   @override
   void initState() {
     super.initState();
-    question = widget.item.keys.first;
-    answer = widget.item[question] ?? 'No answer was found';
+    question = widget.item.question;
+    answer = widget.item.answer;
   }
 
   @override
