@@ -6,6 +6,8 @@ import 'package:movie_app/core/widgets/plan/plan_container.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
 import 'package:movie_app/features/support_page/presentation/widgets/compare_plans_widget.dart';
 
+import '../../../../app/presentation/widgets/locale_switcher_widget.dart';
+
 class SubscriptionPage extends StatelessWidget {
   const SubscriptionPage({super.key});
   @override

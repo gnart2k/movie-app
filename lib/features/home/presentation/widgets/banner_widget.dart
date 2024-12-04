@@ -6,6 +6,7 @@ import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/button/icon_button.dart';
 import 'package:movie_app/features/home/presentation/view_models/home_view_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BannerWidget extends ConsumerWidget {
   const BannerWidget({super.key});
@@ -32,11 +33,11 @@ class BannerWidget extends ConsumerWidget {
               Text(homeProps.deviceCompatibilitiy.title),
               SizedBox(
                 width: MediaQuery.sizeOf(context).width * 0.6,
-                child: const Text(
+                child: Text(
                   textAlign: TextAlign.center,
                   // homeProps.banner.title,
 
-                  'The Best Streaming Experience',
+                  AppLocalizations.of(context)!.the_best_stream_experience,
                   style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -52,7 +53,7 @@ class BannerWidget extends ConsumerWidget {
         const SizedBox(height: 40),
         CustomIconButton(
             iconData: Icons.play_arrow,
-            label: "Start Watching Now",
+            label: AppLocalizations.of(context)!.start_watching_now,
             onTap: () {})
       ],
     );

@@ -158,8 +158,13 @@ class _SearchTextFieldState extends State<SearchTextField> {
                 child: Column(
                   children: filteredMovies
                       .map(
-                        (movie) => ListTile(
-                          title: Text(movie),
+                        (movie) => GestureDetector(
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: ListTile(
+                              title: Text(movie),
+                            ),
+                          ),
                         ),
                       )
                       .toList(),

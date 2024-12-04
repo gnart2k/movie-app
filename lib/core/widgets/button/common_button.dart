@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 
-class CommonButton extends StatelessWidget {
+class CommonButton extends StatefulWidget {
   final String label;
   final VoidCallback onTap;
   final Color backgroundColor;
@@ -13,14 +13,36 @@ class CommonButton extends StatelessWidget {
       this.backgroundColor = AppColors.primary});
 
   @override
+  State<CommonButton> createState() => _CommonButtonState();
+}
+
+class _CommonButtonState extends State<CommonButton> {
+  bool isPressed = false;
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6), color: backgroundColor),
-        padding: const EdgeInsets.all(16.0),
-        child: Text(label, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white)),
+      onTap: widget.onTap,
+      onTapDown: (_) {
+        setState(() {
+          isPressed = true;
+        });
+      },
+      onTapUp: (_) {
+        setState(() {
+          isPressed = false;
+        });
+      },
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 1000),
+          curve: Curves.linear,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(6), color: widget.backgroundColor.withOpacity(isPressed ? 0.5 : 1)),
+          padding: const EdgeInsets.all(16.0),
+          child: Text(widget.label, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white)),
+        ),
       ),
     );
   }
