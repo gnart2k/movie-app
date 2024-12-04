@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
 import 'package:movie_app/core/domain/model/plan_model.dart';
 import 'package:movie_app/core/widgets/category/category_card.dart';
 import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
-import 'package:movie_app/core/widgets/plan/plan_container.dart';
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/frequently_asked_question_widget.dart';
 import '../../../../core/widgets/category/category_slider_container.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: Stack(
         children: [
@@ -83,24 +83,7 @@ class HomeScreen extends StatelessWidget {
                     heightCard: 290,
                   ),
                   const SizedBox(height: 120),
-                  FrequentlyAskedQuestionsWidget(),
-                  PlanContainer(plans: [
-                    PlanModel(
-                        title: 'Basic Plan',
-                        price: 9.9,
-                        description:
-                            'Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.'),
-                    PlanModel(
-                        title: 'Basic Plan',
-                        price: 9.9,
-                        description:
-                            'Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.'),
-                    PlanModel(
-                        title: 'Basic Plan',
-                        price: 9.9,
-                        description:
-                            'Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.'),
-                  ]),
+                 const FrequentlyAskedQuestionsWidget(),
                   const FreeTrialWidget(),
                 ],
               ),
