@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
 import 'package:movie_app/core/domain/model/plan_model.dart';
@@ -10,10 +11,10 @@ import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.d
 import 'package:movie_app/features/home/presentation/widgets/frequently_asked_question_widget.dart';
 import '../../../../core/widgets/category/category_slider_container.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: Stack(
         children: [

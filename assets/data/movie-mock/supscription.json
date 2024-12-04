@@ -1,0 +1,137 @@
+{
+  "header": {
+    "logo": "StreamVibe",
+    "navigationLinks": ["Home", "Movies", "Shows", "Support", "Subscriptions"]
+  },
+  "subscriptionPlans": {
+    "title": "Choose Your Plan",
+    "plans": [
+      {
+        "name": "Basic Plan",
+        "price": "9.99",
+        "currency": "$",
+        "period": "month",
+        "features": [
+          "Access to all content",
+          "Watch on 1 device at a time",
+          "Standard Definition",
+          "No HDR support",
+          "No Dolby Atmos support",
+          "Ad-supported",
+          "No offline viewing",
+          "No family sharing"
+        ],
+        "buttons": ["Start Free Trial", "Choose Plan"]
+      },
+      {
+        "name": "Standard Plan",
+        "price": "12.99",
+        "currency": "$",
+        "period": "month",
+        "features": [
+          "Access to all content",
+          "Watch on 2 devices at a time",
+          "High Definition",
+          "HDR support",
+          "Dolby Atmos support",
+          "Ad-free experience",
+          "Offline viewing",
+          "No family sharing"
+        ],
+        "buttons": ["Start Free Trial", "Choose Plan"]
+      },
+      {
+        "name": "Premium Plan",
+        "price": "14.99",
+        "currency": "$",
+        "period": "month",
+        "features": [
+          "Access to all content",
+          "Watch on 4 devices at a time",
+          "Ultra High Definition",
+          "HDR support",
+          "Dolby Atmos support",
+          "Ad-free experience",
+          "Offline viewing",
+          "Family sharing"
+        ],
+        "buttons": ["Start Free Trial", "Choose Plan"]
+      }
+    ]
+  },
+  "comparisonTable": {
+    "title": "Compare Plans",
+    "columns": ["Feature", "Basic Plan", "Standard Plan", "Premium Plan"],
+    "rows": [
+      {
+        "feature": "Price",
+        "basic": "$9.99/month",
+        "standard": "$12.99/month",
+        "premium": "$14.99/month"
+      },
+      {
+        "feature": "Content Access",
+        "basic": "All content",
+        "standard": "All content",
+        "premium": "All content"
+      },
+      {
+        "feature": "Device Usage",
+        "basic": "1 device",
+        "standard": "2 devices",
+        "premium": "4 devices"
+      },
+      {
+        "feature": "Free Trial Duration",
+        "basic": "7 days",
+        "standard": "7 days",
+        "premium": "7 days"
+      },
+      {
+        "feature": "Cancellation Policy",
+        "basic": "Anytime",
+        "standard": "Anytime",
+        "premium": "Anytime"
+      },
+      {
+        "feature": "HDR Support",
+        "basic": "No",
+        "standard": "Yes",
+        "premium": "Yes"
+      },
+      {
+        "feature": "Dolby Atmos Support",
+        "basic": "No",
+        "standard": "Yes",
+        "premium": "Yes"
+      },
+      {
+        "feature": "Ad-Free Experience",
+        "basic": "No",
+        "standard": "Yes",
+        "premium": "Yes"
+      },
+      {
+        "feature": "Offline Viewing",
+        "basic": "No",
+        "standard": "Yes",
+        "premium": "Yes"
+      },
+      {
+        "feature": "Family Sharing",
+        "basic": "No",
+        "standard": "No",
+        "premium": "Yes"
+      }
+    ]
+  },
+  "callToAction": {
+    "text": "Start your free trial today!",
+    "button": "Start Free Trial"
+  },
+  "footer": {
+    "navigationLinks": ["Home", "Movies", "Shows", "Support", "Subscriptions"],
+    "socialMedia": ["Facebook", "Twitter", "Instagram"]
+  }
+}
+

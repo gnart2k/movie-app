@@ -1,0 +1,72 @@
+{
+  "header": {
+    "logo": "Streamflix",
+    "navigationLinks": ["Home", "Movies", "Shows", "Support"]
+  },
+  "banner": {
+    "title": "The Best Streaming Experience",
+    "button": "Start Watching Now"
+  },
+  "contentCategories": [
+    { "name": "Action" },
+    { "name": "Drama" },
+    { "name": "Comedy" },
+    { "name": "Horror" }
+  ],
+  "deviceCompatibility": {
+    "title": "Watch on Any Device",
+    "devices": [
+      "Smartphones",
+      "Tablets",
+      "Smart TVs",
+      "Laptops",
+      "Gaming Consoles",
+      "VR Headsets"
+    ]
+  },
+  "subscriptionPlans": {
+    "title": "Subscription Plans",
+    "plans": [
+      {
+        "name": "Basic Plan",
+        "price": "9.99",
+        "currency": "$",
+        "period": "month"
+      },
+      {
+        "name": "Standard Plan",
+        "price": "12.99",
+        "currency": "$",
+        "period": "month"
+      },
+      {
+        "name": "Premium Plan",
+        "price": "14.99",
+        "currency": "$",
+        "period": "month"
+      }
+    ]
+  },
+  "faqSection": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "question": "What is Streamflix?",
+        "answer": "Streamflix is a streaming service that offers a wide variety of movies, TV shows, and more."
+      },
+      {
+        "question": "How much does it cost?",
+        "answer": "Streamflix offers three subscription plans: Basic ($9.99/month), Standard ($12.99/month), and Premium ($14.99/month)."
+      },
+      {
+        "question": "What devices can I use to watch Streamflix?",
+        "answer": "You can watch Streamflix on smartphones, tablets, smart TVs, laptops, gaming consoles, and VR headsets."
+      }
+    ]
+  },
+  "footer": {
+    "links": ["Home", "Movies", "Shows", "Support"],
+    "socialMedia": ["Facebook", "Twitter", "Instagram"]
+  }
+}
+
