@@ -36,32 +36,7 @@ class SupportFormWidget extends StatelessWidget {
                 Container(
                   width: 533,
                   height: 477,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                      color: AppColors.darkGray,
-                      borderRadius: BorderRadius.circular(6),
-                      border:
-                          Border.all(width: 6, color: AppColors.cardBorder)),
-                  child: GridView.builder(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      mainAxisSpacing: 20,
-                    ),
-                    itemCount: 16,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          image: const DecorationImage(
-                            image: AssetImage(AppImages.moonlightMovieImage),
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                  child: Image.asset(AppImages.supportPageMovieImage),
                 ),
               ],
             ),
