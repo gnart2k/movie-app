@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         // home: MovieOpenPage());
         // home: MovieAndShowPage());
-        home: const HomeScreen());
+        home: const MovieAndShowPage());
     // home: const SupportPage());
   }
 }
