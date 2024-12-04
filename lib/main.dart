@@ -5,6 +5,7 @@ import 'package:movie_app/features/app/presentation/view_models/locale_viewmodel
 import 'package:movie_app/features/home/subscription_page/presentation/views/subscription_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
+import 'package:movie_app/features/movie_open_page/presentation/views/movies_open_page.dart';
 
 import 'features/movie_and_show/presentation/views/movie_and_show_page.dart';
 import 'features/movie_open_page/presentation/views/movies_open_page.dart';
