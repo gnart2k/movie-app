@@ -6,6 +6,7 @@ import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/search/search_text_field.dart';
 import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';
+import 'package:movie_app/features/home/presentation/view_models/navigation_link_model.dart';
 
 class HeaderWidgets extends ConsumerStatefulWidget {
   const HeaderWidgets({super.key});
@@ -17,13 +18,24 @@ class HeaderWidgets extends ConsumerStatefulWidget {
 class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
   late List<NavBarProps> navbarItems;
 
+  List<NavBarProps> getNavbarItems(List<NavigationLinkModel> navBarData) {
+    return navBarData
+        .asMap()
+        .map((index, e) => MapEntry(
+              index,
+              NavBarProps(label: e.url, isSelected: index == 0),
+            ))
+        .values
+        .toList();
+  }
+
   @override
   void initState() {
     ref.read(headerViewModelProvider.notifier).getHeaderInfo();
     super.initState();
-    List<String> navBarData = ref.read(headerViewModelProvider).navigationLinks;
-    print(navBarData);
-    navbarItems = navBarData.map((e) => NavBarProps(label: e)).toList();
+    List<NavigationLinkModel> navBarData =
+        ref.read(headerViewModelProvider).navigationLinks;
+    navbarItems = getNavbarItems(navBarData);
     // [
     //   NavBarProps(label: 'Home', isSelected: true),
     //   NavBarProps(label: 'Movie & Show'),
@@ -32,12 +44,13 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
     // ];
   }
 
-  void _onNavBarItemTap(int index) {
-    setState(() {
-      for (var i = 0; i < navbarItems.length; i++) {
-        navbarItems[i] = navbarItems[i].copyWith(isSelected: i == index);
-      }
-    });
+  void _onNavBarItemTap(int index, WidgetRef ref) {
+    ref.read(headerViewModelProvider.notifier).toggleNavbar(index);
+    // setState(() {
+    //   for (var i = 0; i < navbarItems.length; i++) {
+    //     navbarItems[i] = navbarItems[i].copyWith(isSelected: i == index);
+    //   }
+    // });
   }
 
   @override
@@ -51,43 +64,51 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
           children: [SvgPicture.asset(AppVectors.logo)],
         )),
         _navBarList(context, navbarItems),
+        _buildNavBar(context),
         Expanded(child: _iconContainer(context)),
       ]),
     );
   }
 
   Widget _buildNavBar(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.topBarBorder, width: 2),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Row(
-        children: navbarItems.map((item) {
-          final isSelected = item.isSelected;
-          return GestureDetector(
-            onTap: () => _onNavBarItemTap(navbarItems.indexOf(item)),
-            child: Container(
-              decoration: isSelected
-                  ? BoxDecoration(
-                      color: AppColors.itemHovered,
-                      borderRadius: BorderRadius.circular(8),
-                    )
-                  : null,
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-              child: Text(
-                item.label,
-                style: TextStyle(
-                  color: isSelected ? Colors.white : AppColors.topBarText,
-                  fontWeight: FontWeight.bold,
+    return Consumer(builder: (context, viewModel, child) {
+      final navbarItemList =
+          viewModel.watch(headerViewModelProvider).navigationLinks;
+      final items = getNavbarItems(navbarItemList);
+
+      return Container(
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.topBarBorder, width: 2),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          children: items.map((item) {
+            final isSelected = item.isSelected;
+            return GestureDetector(
+              onTap: () => _onNavBarItemTap(items.indexOf(item), viewModel),
+              child: Container(
+                decoration: isSelected
+                    ? BoxDecoration(
+                        color: AppColors.itemHovered,
+                        borderRadius: BorderRadius.circular(8),
+                      )
+                    : null,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                child: Text(
+                  item.label,
+                  style: TextStyle(
+                    color: isSelected ? Colors.white : AppColors.topBarText,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-          );
-        }).toList(),
-      ),
-    );
+            );
+          }).toList(),
+        ),
+      );
+    });
   }
 
   Widget _iconContainer(BuildContext context) {
@@ -122,26 +143,26 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
     );
   }
 
-  Widget _buildIconContainer() {
-    return Row(
-      children: [
-        GestureDetector(
-          onTap: () {
-            // Add your search action here
-          },
-          child: SvgPicture.asset(AppIcons.searchIcon, width: 26),
-        ),
-        const SizedBox(width: 16),
-        GestureDetector(
-          onTap: () {
-            print(ref.read(headerViewModelProvider).navigationLinks.toString());
-            // Add your notifications action here
-          },
-          child: SvgPicture.asset(AppIcons.bellIcon, width: 26),
-        ),
-      ],
-    );
-  }
+  // Widget _buildIconContainer() {
+  //   return Row(
+  //     children: [
+  //       GestureDetector(
+  //         onTap: () {
+  //           // Add your search action here
+  //         },
+  //         child: SvgPicture.asset(AppIcons.searchIcon, width: 26),
+  //       ),
+  //       const SizedBox(width: 16),
+  //       GestureDetector(
+  //         onTap: () {
+  //           print(ref.read(headerViewModelProvider).navigationLinks.toString());
+  //           // Add your notifications action here
+  //         },
+  //         child: SvgPicture.asset(AppIcons.bellIcon, width: 26),
+  //       ),
+  //     ],
+  //   );
+  // }
 }
 
 class NavBarProps {

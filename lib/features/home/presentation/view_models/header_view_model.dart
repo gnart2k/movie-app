@@ -15,9 +15,15 @@ class HeaderViewModel extends StateNotifier<HeaderProps> {
       state = headerInfo;
     } catch (e) {
       state = HeaderProps(navigationLinks: [], logo: '');
-      print(e);
       // Handle errors
     }
+  }
+
+  void toggleNavbar(
+    int index,
+  ) {
+    state = state.toggleItem(requiredIndex: index);
+    print(state.navigationLinks.map((e) => print(e)));
   }
 }
 
