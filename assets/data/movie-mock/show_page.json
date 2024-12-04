@@ -1,0 +1,67 @@
+{
+  "header": {
+    "logo": "Streamable",
+    "navigationLinks": ["Home", "Movies", "Shows", "Support", "Subscriptions", "Contact Us"]
+  },
+  "banner": {
+    "title": "Avengers: Endgame",
+    "buttons": ["Play Trailer", "Watch Movie"]
+  },
+  "sections": [
+    {
+      "type": "ourGenres",
+      "title": "Our Genres",
+      "genres": ["Action", "Comedy", "Drama", "Horror", "Sci-Fi"]
+    },
+    {
+      "type": "popularTop10InGenres",
+      "title": "Popular Top 10 in Genres",
+      "genres": [
+        {"name": "Action", "movies": ["Movie 1", "Movie 2", "Movie 3"]},
+        {"name": "Comedy", "movies": ["Movie 4", "Movie 5", "Movie 6"]},
+        {"name": "Drama", "movies": ["Movie 7", "Movie 8", "Movie 9"]},
+        {"name": "Horror", "movies": ["Movie 10", "Movie 11", "Movie 12"]},
+        {"name": "Sci-Fi", "movies": ["Movie 13", "Movie 14", "Movie 15"]}
+      ]
+    },
+    {
+      "type": "trendingNow",
+      "title": "Trending Now",
+      "movies": ["Trending Movie 1", "Trending Movie 2", "Trending Movie 3"]
+    },
+    {
+      "type": "newReleases",
+      "title": "New Releases",
+      "movies": ["New Release 1", "New Release 2", "New Release 3"]
+    },
+    {
+      "type": "mustWatchMovies",
+      "title": "Must-Watch Movies",
+      "movies": ["Must-Watch Movie 1", "Must-Watch Movie 2", "Must-Watch Movie 3"]
+    },
+    {
+      "type": "trendingShowsNow",
+      "title": "Trending Shows Now",
+      "shows": ["Trending Show 1", "Trending Show 2", "Trending Show 3"]
+    },
+    {
+      "type": "newReleasedShows",
+      "title": "New Released Shows",
+      "shows": ["New Released Show 1", "New Released Show 2", "New Released Show 3"]
+    },
+    {
+      "type": "mustWatchShows",
+      "title": "Must-Watch Shows",
+      "shows": ["Must-Watch Show 1", "Must-Watch Show 2", "Must-Watch Show 3"]
+    }
+  ],
+  "callToAction": {
+    "text": "WE CAN'T WAIT TO MEET YOU Let's Talk",
+    "button": "Try it free now"
+  },
+  "footer": {
+    "navigationLinks": ["Home", "Movies", "Shows", "Support", "Subscriptions", "Contact Us"],
+    "socialMedia": ["Facebook", "Twitter", "Instagram"]
+  }
+}
+

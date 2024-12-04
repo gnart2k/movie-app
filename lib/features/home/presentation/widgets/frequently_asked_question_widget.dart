@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
 
@@ -43,19 +43,16 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      SizedBox(
-          width: MediaQuery.sizeOf(context).width - 320,
-          height: 734,
-          child: Column(
-            children: [_questionTitle(context), _questionBody(context)],
-          ))
-    ]);
+    return SizedBox(
+        width: double.infinity,
+        child: Column(
+          children: [_questionTitle(context), _questionBody(context)],
+        ));
   }
 
   Widget _questionBody(BuildContext context) {
     return Container(
-      width: MediaQuery.sizeOf(context).width - 320,
+      width: double.infinity,
       height: 556,
       margin: const EdgeInsets.only(top: 60),
       child: Row(
@@ -74,9 +71,6 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
               ))
             ],
           )),
-          const SizedBox(
-            width: 10,
-          ),
           Expanded(
               child: Column(
             children: [
@@ -116,7 +110,7 @@ class FrequentlyAskedQuestionsWidget extends StatelessWidget {
   }
 }
 
-class QuestionItem extends StatefulWidget {
+class QuestionItem extends ConsumerStatefulWidget {
   const QuestionItem({super.key, required this.item, required this.index});
 
   final Map<String, String> item;
@@ -124,10 +118,10 @@ class QuestionItem extends StatefulWidget {
   final int index;
 
   @override
-  State<QuestionItem> createState() => _QuestionItemState();
+  ConsumerState<QuestionItem> createState() => _QuestionItemState();
 }
 
-class _QuestionItemState extends State<QuestionItem> {
+class _QuestionItemState extends ConsumerState<QuestionItem> {
   late final String question;
   late final String answer;
 
@@ -195,8 +189,8 @@ class _QuestionItemState extends State<QuestionItem> {
                 children: [
                   Text(
                     question,
-                    style: GoogleFonts.manrope(
-                        color: const Color(0xFFFFFFFF),
+                    style: const TextStyle(
+                        color: Color(0xFFFFFFFF),
                         fontWeight: FontWeight.w500,
                         height: 1.5,
                         fontSize: 22),
@@ -210,8 +204,8 @@ class _QuestionItemState extends State<QuestionItem> {
                       ? const SizedBox()
                       : Text(
                           currentText,
-                          style: GoogleFonts.manrope(
-                              color: const Color(0xFF999999),
+                          style: const TextStyle(
+                              color: Color(0xFF999999),
                               fontSize: 18,
                               height: 1.5),
                         )
