@@ -3,7 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 
-class MoviesCard extends StatelessWidget {
+class MoviesCard extends StatefulWidget {
   const MoviesCard(
       {super.key,
       required this.title,
@@ -21,13 +21,29 @@ class MoviesCard extends StatelessWidget {
 
   final String? hour;
   final String? textViewRight;
+
+  @override
+  State<MoviesCard> createState() => _MoviesCardState();
+}
+
+class _MoviesCardState extends State<MoviesCard> {
+  bool isHovering = false;
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      onEnter: (_) => setState(() {
+        isHovering = true;
+      }),
+      onExit: (_) => setState(() {
+        isHovering = false;
+      }),
       cursor: SystemMouseCursors.click,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 5),
-        padding: isRating == true
+      child: AnimatedContainer(
+        margin: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.linear,
+        padding: widget.isRating == true
             ? const EdgeInsets.all(20)
             : const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -35,13 +51,24 @@ class MoviesCard extends StatelessWidget {
             border: Border.all(
               color: AppColors.cardBorder,
             ),
-            borderRadius: const BorderRadius.all(Radius.circular(10))),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            boxShadow: isHovering
+                ? [
+              BoxShadow(
+                color: AppColors.lightGray.withOpacity(0.2),
+                spreadRadius: 3,
+                blurRadius: 7,
+                offset: const Offset(0, 3),
+              ),
+            ]
+              : [],
+        ),
         child: Column(
           children: [
             Expanded(
               child: SizedBox(
                 child: Image.asset(
-                  imageUrl,
+                  widget.imageUrl,
                   fit: BoxFit.fill,
                 ),
               ),
@@ -49,7 +76,7 @@ class MoviesCard extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            releasedTitle == null ?
+            widget.releasedTitle == null ?
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -64,7 +91,7 @@ class MoviesCard extends StatelessWidget {
                         borderRadius:
                         const BorderRadius.all(Radius.circular(20))),
                     child: _subContainerLeft()),
-                if (textViewRight == null)
+                if (widget.textViewRight == null)
                   const SizedBox()
                 else
                   Container(
@@ -90,7 +117,7 @@ class MoviesCard extends StatelessWidget {
                     ),
                     borderRadius:
                     const BorderRadius.all(Radius.circular(20))),
-                child: Text(releasedTitle!, textAlign: TextAlign.center,)),
+                child: Text(widget.releasedTitle!, textAlign: TextAlign.center,)),
           ],
         ),
       ),
@@ -102,7 +129,7 @@ class MoviesCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        isRating == true
+        widget.isRating == true
             ? RatingBarIndicator(
                 rating: 4.5,
                 itemBuilder: (context, index) => const Icon(
@@ -121,7 +148,7 @@ class MoviesCard extends StatelessWidget {
           width: 5,
         ),
         Text(
-          textViewRight!,
+          widget.textViewRight!,
           style: const TextStyle(
               height: 1.5, fontSize: 14, color: AppColors.lightGray),
         )
@@ -143,10 +170,10 @@ class MoviesCard extends StatelessWidget {
         const SizedBox(
           width: 5,
         ),
-        hour == null
+        widget.hour == null
             ? const SizedBox()
             : Text(
-                hour!,
+                widget.hour!,
                 style: const TextStyle(
                     height: 1.5, fontSize: 14, color: AppColors.lightGray),
               )

@@ -5,6 +5,7 @@ import 'package:movie_app/features/home/subscription_page/presentation/views/sub
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 
 import 'features/movie_and_show/presentation/views/movie_and_show_page.dart';
+import 'features/movie_open_page/presentation/views/movies_open_page.dart';
 import 'features/show_page_open/views/show_page_open.dart';
 import 'features/support_page/presentation/views/support_page.dart';
 

@@ -20,6 +20,7 @@ class _ReviewContainerState extends State<ReviewContainer>
   late CarouselSliderController? _buttonCarouselController;
   late int pageNumber;
   int currentPage = 0;
+  bool isPressed = false;
 
   @override
   void initState() {
@@ -66,24 +67,40 @@ class _ReviewContainerState extends State<ReviewContainer>
                 "Review",
                 style: TextStyle(color: AppColors.lightGray, fontSize: 18),
               ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: AppColors.cardBorder, width: 1),
-                    color: AppColors.appBackground),
-                padding:
+              GestureDetector(
+                onTapDown: (_) {
+                  setState(() {
+                    isPressed = true;
+                  });
+                },
+                onTapUp: (_) {
+                  setState(() {
+                    isPressed = false;
+                  });
+                },
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: AppColors.cardBorder, width: 1),
+                        color: AppColors.appBackground.withOpacity(isPressed ? 0.5 : 1)),
+                    padding:
                     const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20),
-                child: const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.add,
-                      color: Colors.white,
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 4),
+                        Text("Add Your Review",
+                            style: TextStyle(color: Colors.white)),
+                      ],
                     ),
-                    SizedBox(width: 4),
-                    Text("Add Your Review",
-                        style: TextStyle(color: Colors.white)),
-                  ],
+                  ),
                 ),
               ),
             ],
