@@ -5,7 +5,8 @@
     "navigationLinks": ["Home", "Movies & Shows", "Support", "Subscriptions"]
   },
   "mainSection": {
-    "welcomeMessage": "Welcome to our support page! We're here to help you with any problems you may be having with our product.",
+    "welcomeMessage": "Welcome to our\nsupport page!",
+    "welcomeMessage1": "We're here to help you with any problems you may be having with our product.",
     "form": {
       "fields": [
         { "label": "First Name", "type": "text", "placeholder": "Enter First Name" },

@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/domain/model/review_model.dart';
 import 'package:movie_app/core/widgets/slider/slider_button.dart';
@@ -62,9 +63,12 @@ class _ReviewContainerState extends State<ReviewContainer>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 "Review",
-                style: TextStyle(color: AppColors.lightGray, fontSize: 18),
+                style: GoogleFonts.manrope(
+                  color: AppColors.lightGray,
+                  fontSize: 18,
+                ),
               ),
               Container(
                 decoration: BoxDecoration(
@@ -125,7 +129,7 @@ class _ReviewContainerState extends State<ReviewContainer>
               ),
               Row(
                 children: List.generate(
-                  (widget.reviewList.length - 1).ceil(), 
+                  (widget.reviewList.length - 1).ceil(),
                   (index) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: SliderIndicator(isActive: currentPage == index),
@@ -148,66 +152,74 @@ class _ReviewContainerState extends State<ReviewContainer>
 
 Widget _reviewContent(BuildContext context, ReviewModel review) {
   return Card(
-      color: AppColors.darkGray,
-      shape: RoundedRectangleBorder(
+    color: AppColors.darkGray,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: Container(
+      width: 468.5,
+      decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppColors.cardBorder, width: 1),
       ),
-      child: Container(
-        width: 468.5,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: AppColors.cardBorder, width: 1)),
-        child: Padding(
-          padding: const EdgeInsets.all(40),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        review.name,
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500),
+      child: Padding(
+        padding: const EdgeInsets.all(40),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      review.name,
+                      style: GoogleFonts.manrope(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
                       ),
-                      Text(
-                        review.location,
-                        style: const TextStyle(
-                            fontSize: 18,
-                            color: AppColors.lightGray,
-                            fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      review.location,
+                      style: GoogleFonts.manrope(
+                        fontSize: 18,
+                        color: AppColors.lightGray,
+                        fontWeight: FontWeight.w500,
                       ),
-                    ],
-                  ),
-                  const Spacer(),
-                  _ratingItem(context, review)
-                ],
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                _ratingItem(context, review),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Text(
+              review.reviewText,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 4,
+              style: GoogleFonts.manrope(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
               ),
-              const SizedBox(height: 20),
-              Text(
-                review.reviewText,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 4,
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-              )
-            ],
-          ),
+            ),
+          ],
         ),
-      ));
+      ),
+    ),
+  );
 }
 
 Widget _ratingItem(BuildContext context, ReviewModel review) {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
     decoration: BoxDecoration(
-        color: AppColors.itemHovered,
-        borderRadius: BorderRadius.circular(51),
-        border: Border.all(
-          width: 1,
-          color: AppColors.cardBorder,
-        )),
+      color: AppColors.itemHovered,
+      borderRadius: BorderRadius.circular(51),
+      border: Border.all(
+        width: 1,
+        color: AppColors.cardBorder,
+      ),
+    ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -224,7 +236,10 @@ Widget _ratingItem(BuildContext context, ReviewModel review) {
         ),
         Text(
           review.rating.toStringAsFixed(1),
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+          style: GoogleFonts.manrope(
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ],
     ),
