@@ -27,7 +27,7 @@ class SupportPage extends StatelessWidget {
                   SizedBox(height: 180),
                   SupportFormWidget(),
                   SizedBox(height: 150),
-                  FrequentlyAskedQuestionsWidget(),
+                  // FrequentlyAskedQuestionsWidget(),
                   FreeTrialWidget(),
                 ],
               ),
