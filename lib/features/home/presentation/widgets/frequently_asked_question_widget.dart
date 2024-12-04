@@ -6,7 +6,7 @@ import 'package:movie_app/features/home/data/models/faq_section.dart';
 import 'package:movie_app/features/home/presentation/view_models/faq_section_viewmodel.dart';
 
 class FrequentlyAskedQuestionsWidget extends ConsumerStatefulWidget {
-  const FrequentlyAskedQuestionsWidget({super.key});
+   const FrequentlyAskedQuestionsWidget({super.key});
 
   @override
   FrequentlyAskedQuestionsWidgetState createState() =>
@@ -40,7 +40,7 @@ class FrequentlyAskedQuestionsWidgetState
   Widget _questionBody(BuildContext context, List<Question> questions) {
     final length = questions.length;
 
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         children: [
