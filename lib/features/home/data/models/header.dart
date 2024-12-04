@@ -1,4 +1,4 @@
-import 'package:movie_app/features/home/presentation/view_models/navigation_link_model.dart';
+import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';
 
 class HeaderProps {
   final String logo;

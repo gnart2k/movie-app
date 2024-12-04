@@ -15,7 +15,6 @@ class FaqSectionViewModel extends StateNotifier<FaqSection> {
       state = fagSection;
     } catch (e) {
       state = FaqSection(title: '', questions: []);
-      print(e);
     }
   }
 }
@@ -28,3 +27,4 @@ final faqSectionViewModelProvider =
     StateNotifierProvider<FaqSectionViewModel, FaqSection>(
   (ref) => FaqSectionViewModel(ref.read(faqSectionRepositoryProvider)),
 );
+

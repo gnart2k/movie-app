@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/button/icon_button.dart';
+import 'package:movie_app/features/home/presentation/view_models/home_view_model.dart';
 
-class BannerWidget extends StatelessWidget {
+class BannerWidget extends ConsumerWidget {
   const BannerWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final homeProps = ref.watch(homeViewModelProvider);
+
     return Column(
       children: [
         const SizedBox(height: 48),
@@ -25,10 +29,13 @@ class BannerWidget extends StatelessWidget {
                 child: SvgPicture.asset(AppVectors.playButton),
               ),
               const SizedBox(height: 32),
+              Text(homeProps.deviceCompatibilitiy.title),
               SizedBox(
                 width: MediaQuery.sizeOf(context).width * 0.6,
                 child: const Text(
                   textAlign: TextAlign.center,
+                  // homeProps.banner.title,
+
                   'The Best Streaming Experience',
                   style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
                 ),

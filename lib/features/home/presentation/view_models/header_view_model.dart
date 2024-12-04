@@ -15,7 +15,6 @@ class HeaderViewModel extends StateNotifier<HeaderProps> {
       state = headerInfo;
     } catch (e) {
       state = HeaderProps(navigationLinks: [], logo: '');
-      // Handle errors
     }
   }
 
@@ -23,7 +22,6 @@ class HeaderViewModel extends StateNotifier<HeaderProps> {
     int index,
   ) {
     state = state.toggleItem(requiredIndex: index);
-    print(state.navigationLinks.map((e) => print(e)));
   }
 }
 
@@ -35,3 +33,10 @@ final headerViewModelProvider =
     StateNotifierProvider<HeaderViewModel, HeaderProps>(
   (ref) => HeaderViewModel(ref.read(headerRepositoryProvider)),
 );
+
+class NavigationLinkModel {
+  String url;
+  bool isSelected;
+
+  NavigationLinkModel({required this.url, this.isSelected = false});
+}
