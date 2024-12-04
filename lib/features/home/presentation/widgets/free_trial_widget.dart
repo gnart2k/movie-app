@@ -10,7 +10,7 @@ class FreeTrialWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 80),
+        // const SizedBox(height: 80),
         Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),

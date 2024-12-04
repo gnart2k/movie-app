@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
+import 'package:movie_app/features/home/subscription_page/presentation/views/subscription_page.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 
 import 'features/movie_and_show/presentation/views/movie_and_show_page.dart';
@@ -25,7 +26,8 @@ class MainApp extends StatelessWidget {
         // home: MovieOpenPage());
         // home: MovieAndShowPage());
         // home: const SupportPage());
-        home: HomeScreen());
+        // home: HomeScreen());
+        home: const SubscriptionPage());
 
     // home: const SupportPage());
   }
