@@ -16,4 +16,6 @@ class AppIcons {
   static const String plusIcon = "${basePath}plus_icon$format";
   static const String likeIcon = "${basePath}like_icon$format";
   static const String volumeIcon = "${basePath}volume_icon$format";
+  static const String alarmIcon = "${basePath}alarm_icon$format";
+
 }
