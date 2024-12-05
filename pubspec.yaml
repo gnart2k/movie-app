@@ -10,11 +10,15 @@ dependencies:
   carousel_slider: ^5.0.0
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_rating_bar: ^4.0.1
   flutter_riverpod: ^2.6.1
   flutter_svg: ^2.0.16
   google_fonts: ^6.2.1
+  intl: any
   shared_preferences: ^2.3.3
+  shared_preferences_web: ^2.4.2
   url_launcher: ^6.3.1
 
 dev_dependencies:
@@ -25,6 +29,7 @@ dev_dependencies:
   custom_lint: ^0.7.0
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - assets/images/

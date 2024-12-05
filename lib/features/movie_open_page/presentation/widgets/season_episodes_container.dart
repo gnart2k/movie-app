@@ -91,6 +91,7 @@ class _SeasonEpisodesContainerState extends State<SeasonEpisodesContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 700,
       padding: const EdgeInsets.all(32),
       color: AppColors.itemHovered, // Background color
       child: Column(
@@ -282,10 +283,3 @@ class _SeasonEpisodesContainerState extends State<SeasonEpisodesContainer> {
   }
 }
 
-void main() {
-  runApp(const MaterialApp(
-    home: Scaffold(
-      body: SeasonEpisodesContainer(),
-    ),
-  ));
-}

@@ -6,7 +6,8 @@ import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/search/search_text_field.dart';
 import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';
-import 'package:movie_app/features/home/presentation/view_models/navigation_link_model.dart';
+
+import '../../features/app/presentation/widgets/locale_switcher_widget.dart';
 
 class HeaderWidgets extends ConsumerStatefulWidget {
   const HeaderWidgets({super.key});
@@ -66,6 +67,7 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
         _navBarList(context, navbarItems),
         _buildNavBar(context),
         Expanded(child: _iconContainer(context)),
+
       ]),
     );
   }
@@ -113,9 +115,11 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
 
   Widget _iconContainer(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-      SearchTextField(),
+      const SearchTextField(),
       const SizedBox(width: 16),
-      GestureDetector(child: SvgPicture.asset(AppIcons.bellIcon, width: 26))
+      GestureDetector(child: SvgPicture.asset(AppIcons.bellIcon, width: 26)),
+      const SizedBox(width: 16),
+      const LocaleSwitcherWidget(),
     ]);
   }
 

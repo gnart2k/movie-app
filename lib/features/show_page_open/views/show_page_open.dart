@@ -10,6 +10,7 @@ import '../../movie_open_page/presentation/widgets/cast_container.dart';
 import '../../movie_open_page/presentation/widgets/description_container.dart';
 import '../../movie_open_page/presentation/widgets/movie_information_widget.dart';
 import '../../movie_open_page/presentation/widgets/review_container.dart';
+import '../../movie_open_page/presentation/widgets/season_episodes_container.dart';
 
 class ShowPageOpenPage extends StatelessWidget {
   ShowPageOpenPage({super.key});
@@ -57,6 +58,7 @@ class ShowPageOpenPage extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  const SeasonEpisodesContainer(),
                                   const DescriptionContainer(
                                       description:
                                       "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands."),

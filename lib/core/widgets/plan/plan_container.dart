@@ -36,11 +36,12 @@ class _PlanContainerState extends State<PlanContainer> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const CommonTitle(
+            const Expanded(child: CommonTitle(
               title: "Choose the plan that's right for you",
               subTitle:
-                  "Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!",
-            ),
+              "Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!",
+            )),
+            const SizedBox(width: 20,),
             _planControllerContainer(context, option, _toggleTimeOption)
           ],
         ),

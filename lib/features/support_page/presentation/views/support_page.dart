@@ -22,13 +22,13 @@ class SupportPage extends StatelessWidget {
               child: Column(children: [
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 160),
-              child: Column(
+              child: const Column(
                 children: [
-                  const SizedBox(height: 120),
-                  const SupportFormWidget(),
-                  const SizedBox(height: 150),
-                  FrequentlyAskedQuestionsWidget(),
-                  const FreeTrialWidget(),
+                  SizedBox(height: 180),
+                  SupportFormWidget(),
+                  SizedBox(height: 150),
+                  // FrequentlyAskedQuestionsWidget(),
+                  FreeTrialWidget(),
                 ],
               ),
             ),
