@@ -4,11 +4,14 @@ import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/constants/route_manager.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
 import 'package:movie_app/core/widgets/movie/movie_card.dart';
+import 'package:movie_app/features/home/presentation/view_models/show_page/section_genres_viewmodel.dart';
+import 'package:movie_app/features/home/presentation/view_models/show_page/section_movies_viewmodel.dart';
+import 'package:movie_app/features/movie_and_show/presentation/widgets/movie_category_container.dart';
+
 import '../../../../core/widgets/banner/movie_detail_banner.dart';
 import '../../../../core/widgets/category/category_card.dart';
 import '../../../../core/widgets/category/category_slider_container.dart';
 import '../../../home/presentation/widgets/free_trial_widget.dart';
-import '../widgets/movie_category_container.dart';
 
 class MovieAndShowPage extends StatelessWidget {
   const MovieAndShowPage({super.key});

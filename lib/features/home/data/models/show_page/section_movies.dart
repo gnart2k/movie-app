@@ -1,19 +1,27 @@
-class SectionMovies {
+import 'package:movie_app/core/domain/model/movie_model.dart';
+
+class Section {
   final String type;
   final String title;
-  final List<String> movies;
+  final List<String>? genres;
+  final List<MovieModel>? movies;
+  final List<MovieModel>? shows;
 
-  SectionMovies({
+  Section({
     required this.type,
     required this.title,
-    required this.movies,
+    this.genres,
+    this.movies,
+    this.shows,
   });
 
-  factory SectionMovies.fromJson(Map<String, dynamic> json) {
-    return SectionMovies(
-      type: json['type'] as String,
-      title: json['title'] as String,
-      movies: List<String>.from(json['movies'] as List),
+  factory Section.fromJson(Map<String, dynamic> json) {
+    return Section(
+      type: json['type'],
+      title: json['title'],
+      genres: json['genres']?.cast<String>(),
+      movies: (json['movies'] as List?)?.map((e) => MovieModel(name: e, imageUrl: "")).toList(),
+      shows: (json['shows'] as List?)?.map((e) => MovieModel(name: e, imageUrl: "")).toList(),
     );
   }
 }
