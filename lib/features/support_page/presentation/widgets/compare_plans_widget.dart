@@ -34,6 +34,8 @@ class ComparePlansState extends ConsumerState<ComparePlansWidget> {
   Widget build(BuildContext context) {
     final state = ref.watch(comparePlansViewModelProvider);
 
+    if (state.rows.isEmpty) return const SizedBox.shrink();
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +112,10 @@ class ComparePlansState extends ConsumerState<ComparePlansWidget> {
                     color: AppColors.primary,
                     borderRadius: BorderRadius.circular(2),
                   ),
-                  child: Text('Popular', style: GoogleFonts.manrope(),),
+                  child: Text(
+                    'Popular',
+                    style: GoogleFonts.manrope(),
+                  ),
                 )
               : const SizedBox(),
         ],

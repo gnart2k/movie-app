@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
-import 'package:movie_app/core/constants/route_manager.dart';
 import 'package:movie_app/core/widgets/search/search_text_field.dart';
 import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';
 
@@ -52,26 +51,10 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
     List<NavigationLinkModel> navBarData =
         ref.read(headerViewModelProvider).navigationLinks;
     navbarItems = getNavbarItems(navBarData);
-
-    // [
-    //   NavBarProps(label: 'Home', isSelected: true),
-    //   NavBarProps(label: 'Movie & Show'),
-    //   NavBarProps(label: 'Support'),
-    //   NavBarProps(label: 'Subscriptions'),
-    // ];
   }
 
   void _onNavBarItemTap(int index, WidgetRef ref) {
     ref.read(headerViewModelProvider.notifier).toggleNavbar(index);
-    // print(ref
-    //     .read(headerViewModelProvider)
-    //     .navigationLinks
-    //     .map((e) => print(e.isSelected)));
-    // setState(() {
-    //   for (var i = 0; i < navbarItems.length; i++) {
-    //     navbarItems[i] = navbarItems[i].copyWith(isSelected: i == index);
-    //   }
-    // });
   }
 
   @override
@@ -84,7 +67,6 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [SvgPicture.asset(AppVectors.logo)],
         )),
-        // _navBarList(context, navbarItems),
         _buildNavBar(context),
         Expanded(child: _iconContainer(context)),
       ]),
@@ -96,11 +78,7 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
       final navbarItemList =
           viewModel.watch(headerViewModelProvider).navigationLinks;
       final items = getNavbarItems(navbarItemList);
-      for(int i = 0; i < items.length; i++){
-        if(items[i].isSelected){
-          print(items[i].label);
-        }
-      }
+      if (items.isEmpty) return SizedBox();
       return Container(
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
@@ -120,12 +98,12 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
                 child: Container(
                   decoration: isSelected
                       ? BoxDecoration(
-                    color: AppColors.itemHovered,
-                    borderRadius: BorderRadius.circular(8),
-                  )
+                          color: AppColors.itemHovered,
+                          borderRadius: BorderRadius.circular(8),
+                        )
                       : null,
                   padding:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                   child: Text(
                     item.label,
                     style: TextStyle(
@@ -161,20 +139,20 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
       child: Row(
           children: itemLists
               .map((item) => MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: Container(
-                decoration: item.isSelected
-                    ? BoxDecoration(
-                    color: AppColors.itemHovered,
-                    borderRadius: BorderRadius.circular(8))
-                    : null,
-                padding: const EdgeInsets.all(10),
-                child: Text(item.label,
-                    style: TextStyle(
-                        color: item.isSelected
-                            ? Colors.white
-                            : AppColors.topBarText))),
-          ))
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                        decoration: item.isSelected
+                            ? BoxDecoration(
+                                color: AppColors.itemHovered,
+                                borderRadius: BorderRadius.circular(8))
+                            : null,
+                        padding: const EdgeInsets.all(10),
+                        child: Text(item.label,
+                            style: TextStyle(
+                                color: item.isSelected
+                                    ? Colors.white
+                                    : AppColors.topBarText))),
+                  ))
               .toList()),
     );
   }
