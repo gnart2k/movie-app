@@ -20,7 +20,7 @@ class AppLayout extends StatelessWidget {
               ],
             ),
           ),
-          HeaderWidgets(),
+          const HeaderWidgets(),
         ],
       ),
     );

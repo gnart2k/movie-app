@@ -71,6 +71,7 @@ class HomeScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 120),
               const MultiPlatformWidget(),
+              const SizedBox(height: 120),
               const FrequentlyAskedQuestionsWidget(),
               const SizedBox(height: 120),
               PlanContainer(plans: plans),

@@ -13,48 +13,38 @@ import '../../../../core/widgets/category/category_slider_container.dart';
 import '../../../../core/widgets/footer_widget.dart';
 import '../../../home/presentation/widgets/free_trial_widget.dart';
 
-class MovieAndShowPage extends StatelessWidget {
-  const MovieAndShowPage({super.key});
-
+class MoviesOpenPage extends StatelessWidget {
+  const MoviesOpenPage({super.key, required this.id});
+  final String id;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 100),
-                  child: Column(children: [
-                    MovieBigBanner(),
-                    SizedBox(
-                      height: 100,
-                    ),
-                    MovieCategoryContainer(
-                      title: "Movies",
-                      childWidget: MovieCategory(isMovies: true,),
-                    ),
-                    SizedBox(
-                      height: 100,
-                    ),
-                    MovieCategoryContainer(
-                      title: "Shows",
-                      childWidget: MovieCategory(isMovies: false,),
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    FreeTrialWidget(),
-                  ]),
-                ),
-                FooterWidget(),
-              ],
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 100),
+          child: Column(children: [
+            MovieBigBanner(),
+            const SizedBox(
+              height: 100,
             ),
-          ),
-          HeaderWidgets(),
-        ],
-      ),
+            const MovieCategoryContainer(
+              title: "Movies",
+              childWidget: MovieCategory(isMovies: true,),
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            const MovieCategoryContainer(
+              title: "Shows",
+              childWidget: MovieCategory(isMovies: false,),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            const FreeTrialWidget(),
+          ]),
+        ),
+      ],
     );
   }
 }

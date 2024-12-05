@@ -18,43 +18,33 @@ class MovieAndShowPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 100),
-                  child: Column(children: [
-                    MovieBigBanner(),
-                    SizedBox(
-                      height: 100,
-                    ),
-                    MovieCategoryContainer(
-                      title: "Movies",
-                      childWidget: MovieCategory(isMovies: true,),
-                    ),
-                    SizedBox(
-                      height: 100,
-                    ),
-                    MovieCategoryContainer(
-                      title: "Shows",
-                      childWidget: MovieCategory(isMovies: false,),
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    FreeTrialWidget(),
-                  ]),
-                ),
-                FooterWidget(),
-              ],
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 100),
+          child: Column(children: [
+            MovieBigBanner(),
+            const SizedBox(
+              height: 100,
             ),
-          ),
-          HeaderWidgets(),
-        ],
-      ),
+            const MovieCategoryContainer(
+              title: "Movies",
+              childWidget: MovieCategory(isMovies: true,),
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            const MovieCategoryContainer(
+              title: "Shows",
+              childWidget: MovieCategory(isMovies: false,),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            const FreeTrialWidget(),
+          ]),
+        ),
+      ],
     );
   }
 }
