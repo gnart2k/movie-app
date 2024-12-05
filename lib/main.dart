@@ -31,11 +31,11 @@ class MainApp extends ConsumerWidget {
             textTheme:
                 const TextTheme(bodyMedium: TextStyle(color: Colors.white))),
         debugShowCheckedModeBanner: false,
-        // home: MovieOpenPage());
-        // home: MovieAndShowPage());
-        // home: const SupportPage());
-        // home: HomeScreen());
-        home: const HomeScreen());
+        home: MovieOpenPage());
+    // home: MovieAndShowPage());
+    // home: const SupportPage());
+    // home: HomeScreen());
+    // home: const HomeScreen());
 
     // home: const SupportPage());
   }
