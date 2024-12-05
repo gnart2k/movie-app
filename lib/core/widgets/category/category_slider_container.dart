@@ -66,7 +66,7 @@ class _CategorySliderContainerState<T> extends State<CategorySliderContainer<T>>
               CommonTitle(title: widget.title, subTitle: widget.subTitle),
             ),
             const SizedBox(
-              width: 30,
+              height: 100,
             ),
             SliderControllerContainer(
               pageNumber: pageNumber,
@@ -77,7 +77,7 @@ class _CategorySliderContainerState<T> extends State<CategorySliderContainer<T>>
           ],
         ),
         const SizedBox(
-          height: 20,
+          height: 30,
         ),
         CarouselSlider.builder(
           carouselController: _buttonCarouselController,

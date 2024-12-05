@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/constants/app_images.dart';
-import 'package:movie_app/core/constants/route_manager.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
 import 'package:movie_app/core/widgets/movie/movie_card.dart';
 import '../../../../core/widgets/banner/movie_detail_banner.dart';
@@ -18,6 +17,7 @@ class MovieAndShowPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 100),
       child: Column(
+        mainAxisSize: MainAxisSize.max,
             children: [
         MovieBigBanner(),
         const SizedBox(

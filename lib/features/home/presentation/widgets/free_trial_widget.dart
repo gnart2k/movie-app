@@ -24,17 +24,17 @@ class FreeTrialWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                   Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(AppLocalizations.of(context)!.start_your_free_trial_today,
-                            style: const TextStyle(fontSize: 48)),
-                        const SizedBox(height: 16),
-                        const Text(
-                            "This is a clear and concise call to action that encourages users to sign up for a free trial of StreamVibe.",
-                            style: TextStyle(
-                                fontSize: 18, color: AppColors.lightGray))
-                      ]),
+                   Expanded(child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: [
+                         Text(AppLocalizations.of(context)!.start_your_free_trial_today,
+                             style: const TextStyle(fontSize: 35, overflow: TextOverflow.ellipsis),maxLines: 1),
+                         const SizedBox(height: 16),
+                         const Text(
+                             "This is a clear and concise call to action that encourages users to sign up for a free trial of StreamVibe.",
+                             style: TextStyle(
+                                 fontSize: 18, color: AppColors.lightGray), maxLines: 2, overflow: TextOverflow.ellipsis,)
+                       ])),
                   CommonButton(label: AppLocalizations.of(context)!.start_a_free_trial, onTap: () {})
                 ])),
         const SizedBox(height: 80),

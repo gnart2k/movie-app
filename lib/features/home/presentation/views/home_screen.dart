@@ -48,7 +48,7 @@ class HomeScreen extends ConsumerWidget {
     return  Column(
       children: [
         const BannerWidget(),
-        const SizedBox(height: 200),
+        const SizedBox(height: 100),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 160),
           child: Column(
@@ -68,12 +68,13 @@ class HomeScreen extends ConsumerWidget {
                 "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
                 heightCard: 290,
               ),
-              const SizedBox(height: 120),
+              const SizedBox(height: 150),
               const MultiPlatformWidget(),
+              const SizedBox(height: 150),
               const FrequentlyAskedQuestionsWidget(),
-              const SizedBox(height: 120),
+              const SizedBox(height: 150),
               PlanContainer(plans: plans),
-              const SizedBox(height: 120),
+              const SizedBox(height: 150),
               const FreeTrialWidget(),
             ],
           ),

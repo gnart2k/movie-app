@@ -129,13 +129,12 @@ class ShowPageOpenPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 100,
               ),
               const FreeTrialWidget(),
             ],
           ),
-          const SizedBox(height: 120),
-          const FooterWidget(),
+          const SizedBox(height: 100),
         ],
       ),
     );
