@@ -11,11 +11,12 @@ import '../../constants/app_images.dart';
 import '../button/icon_button.dart';
 
 class MovieBigBanner extends ConsumerWidget {
-  MovieBigBanner({super.key});
+  const MovieBigBanner({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final MovieProps movieProps = ref.watch(movieViewModelProvider);
+    if (movieProps.movieSection.buttons.isEmpty) return const SizedBox();
     MovieModel movie = MovieModel(
         name: movieProps.movieSection.title,
         imageUrl: AppImages.movieBanner,

@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
-import 'package:movie_app/core/widgets/header_widgets.dart';
 import 'package:movie_app/core/widgets/movie/movie_card.dart';
 import 'package:movie_app/features/home/presentation/view_models/show_page/section_movies_viewmodel.dart';
 import 'package:movie_app/features/movie_and_show/presentation/widgets/movie_category_container.dart';
@@ -11,7 +10,6 @@ import 'package:movie_app/features/movie_and_show/presentation/widgets/movie_cat
 import '../../../../core/widgets/banner/movie_detail_banner.dart';
 import '../../../../core/widgets/category/category_card.dart';
 import '../../../../core/widgets/category/category_slider_container.dart';
-import '../../../../core/widgets/footer_widget.dart';
 import '../../../home/presentation/widgets/free_trial_widget.dart';
 
 class MovieAndShowPage extends StatelessWidget {
@@ -30,14 +28,18 @@ class MovieAndShowPage extends StatelessWidget {
             ),
             const MovieCategoryContainer(
               title: "Movies",
-              childWidget: MovieCategory(isMovies: true,),
+              childWidget: MovieCategory(
+                isMovies: true,
+              ),
             ),
             const SizedBox(
               height: 100,
             ),
             const MovieCategoryContainer(
               title: "Shows",
-              childWidget: MovieCategory(isMovies: false,),
+              childWidget: MovieCategory(
+                isMovies: false,
+              ),
             ),
             const SizedBox(
               height: 50,
@@ -77,12 +79,10 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
     if (moviesState.sectionMoviesList.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     }
-
     return _widget(moviesState);
   }
 
   Widget _widget(SectionMovies moviesState) {
-
     List<MovieModel> genresList = [
       MovieModel(
           name: moviesState.sectionMoviesList[0].genres?[0] ?? '',
@@ -157,7 +157,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               hour: "1h30min",
               textViewRight: "1.4k",
               isRating: false,
-              onTap: (){
+              onTap: () {
                 context.goNamed("showOpen", pathParameters: {'id': "1"});
               },
             );
@@ -173,8 +173,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               title: movie.name,
               releasedTitle: "Released at 22 April 2023",
               imageUrl: movie.imageUrl,
-              onTap: (){
-
+              onTap: () {
                 context.goNamed("movieOpen", pathParameters: {'id': "1"});
               },
             );
@@ -192,7 +191,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               hour: "1h30min",
               textViewRight: "20k",
               isRating: true,
-              onTap: (){
+              onTap: () {
                 context.goNamed("movieOpen", pathParameters: {'id': "1"});
               },
             );
@@ -205,3 +204,4 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
     );
   }
 }
+

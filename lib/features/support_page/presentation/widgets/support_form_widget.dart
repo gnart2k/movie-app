@@ -22,6 +22,7 @@ class _SupportFormWidgetState extends ConsumerState<SupportFormWidget> {
   @override
   Widget build(BuildContext context) {
     final supportForm = ref.watch(supportFormViewModelProvider);
+    if (supportForm.welcomeMessage.isEmpty) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.all(0),
       child: Row(
