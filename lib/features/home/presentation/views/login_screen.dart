@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
+import 'package:movie_app/features/home/presentation/view_models/auth_viewmodel.dart';
+import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  String? _errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +138,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 5),
                               TextField(
+                                controller: _usernameController,
                                 decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.black,
@@ -151,6 +164,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 5),
                               TextField(
+                                controller: _passwordController,
                                 obscureText: true,
                                 decoration: InputDecoration(
                                   filled: true,
@@ -173,30 +187,58 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              if (_errorMessage != null)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: Text(_errorMessage!,
+                                      style: GoogleFonts.manrope(
+                                          color: Colors.red)),
+                                ),
                               const SizedBox(height: 20),
                               // Login Button
                               SizedBox(
                                 width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppColors.primary,
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 15,
-                                      horizontal: 14,
+                                child: Consumer(builder: (context, ref, child) {
+                                  final authViewModel =
+                                      ref.read(authViewModelProvider);
+
+                                  return ElevatedButton(
+                                    onPressed: () async {
+                                      final success = await authViewModel.login(
+                                        _usernameController.text,
+                                        _passwordController.text,
+                                      );
+                                      if (success) {
+                                        Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (_) => const HomeScreen()),
+                                        );
+                                      } else {
+                                        setState(() {
+                                          _errorMessage =
+                                              'Invalid username or password';
+                                        });
+                                      }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColors.primary,
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 15,
+                                        horizontal: 14,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(6),
+                                      ),
                                     ),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(6),
+                                    child: Text(
+                                      'Login',
+                                      style: GoogleFonts.poppins(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: AppColors.signInText),
                                     ),
-                                  ),
-                                  child: Text(
-                                    'Login',
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColors.signInText),
-                                  ),
-                                ),
+                                  );
+                                }),
                               ),
                               const SizedBox(height: 10),
                               Row(
