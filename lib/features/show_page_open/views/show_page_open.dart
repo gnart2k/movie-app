@@ -42,7 +42,9 @@ class ShowPageOpenPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MovieBigBanner(),
-          const SizedBox(height: 100,),
+          const SizedBox(
+            height: 100,
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -57,7 +59,7 @@ class ShowPageOpenPage extends StatelessWidget {
                         const SeasonEpisodesContainer(),
                         const DescriptionContainer(
                             description:
-                            "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands."),
+                                "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands."),
                         const SizedBox(
                           height: 20,
                         ),
@@ -65,67 +67,14 @@ class ShowPageOpenPage extends StatelessWidget {
                         const SizedBox(
                           height: 20,
                         ),
-                        ReviewContainer(
-                          reviewList: [
-                            ReviewModel(
-                                name: 'Aniket Roy',
-                                location: 'From India',
-                                reviewText:
-                                'This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it.',
-                                rating: 4.5),
-                            ReviewModel(
-                                name: 'Swaraj',
-                                location: 'From India',
-                                reviewText:
-                                'A restless king promises his lands to the local tribals in exchange of a stone (Panjurli, a deity of Keradi Village) wherein he finds solace and peace of mind.',
-                                rating: 5),
-                            ReviewModel(
-                                name: 'Aniket Roy',
-                                location: 'From India',
-                                reviewText:
-                                'This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it.',
-                                rating: 4.5),
-                            ReviewModel(
-                                name: 'Swaraj',
-                                location: 'From India',
-                                reviewText:
-                                'A restless king promises his lands to the local tribals in exchange of a stone (Panjurli, a deity of Keradi Village) wherein he finds solace and peace of mind.',
-                                rating: 5),
-                            ReviewModel(
-                                name: 'Aniket Roy',
-                                location: 'From India',
-                                reviewText:
-                                'This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it.',
-                                rating: 4.5),
-                            ReviewModel(
-                                name: 'Swaraj',
-                                location: 'From India',
-                                reviewText:
-                                'A restless king promises his lands to the local tribals in exchange of a stone (Panjurli, a deity of Keradi Village) wherein he finds solace and peace of mind.',
-                                rating: 5),
-                            ReviewModel(
-                                name: 'Aniket Roy',
-                                location: 'From India',
-                                reviewText:
-                                'This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it.',
-                                rating: 4.5),
-                            ReviewModel(
-                                name: 'Swaraj',
-                                location: 'From India',
-                                reviewText:
-                                'A restless king promises his lands to the local tribals in exchange of a stone (Panjurli, a deity of Keradi Village) wherein he finds solace and peace of mind.',
-                                rating: 5),
-                          ],
-                        )
+                        const ReviewContainer(),
                       ],
                     ),
                   ),
                   const SizedBox(
                     width: 20,
                   ),
-                  Flexible(
-                      flex: 4,
-                      child: MovieInformation())
+                  Flexible(flex: 4, child: MovieInformation())
                 ],
               ),
               const SizedBox(
@@ -140,5 +89,4 @@ class ShowPageOpenPage extends StatelessWidget {
       ),
     );
   }
-  
 }
