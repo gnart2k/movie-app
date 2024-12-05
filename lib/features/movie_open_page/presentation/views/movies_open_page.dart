@@ -1,41 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/cast_model.dart';
 import 'package:movie_app/core/domain/model/review_model.dart';
+import 'package:movie_app/core/helpers/converter.dart';
 import 'package:movie_app/core/widgets/banner/movie_detail_banner.dart';
+import 'package:movie_app/core/widgets/footer_widget.dart';
+import 'package:movie_app/core/widgets/header_widgets.dart';
+import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
+import 'package:movie_app/features/movie_and_show/presentation/widgets/movie_information_widget.dart';
+import 'package:movie_app/features/movie_open_page/presentation/view_models/movie_view_model.dart';
 import 'package:movie_app/features/movie_open_page/presentation/widgets/cast_container.dart';
 import 'package:movie_app/features/movie_open_page/presentation/widgets/description_container.dart';
 import 'package:movie_app/features/movie_open_page/presentation/widgets/review_container.dart';
 
-import '../../../../core/constants/app_images.dart';
-import '../../../../core/widgets/footer_widget.dart';
-import '../../../../core/widgets/header_widgets.dart';
-import '../../../home/presentation/widgets/free_trial_widget.dart';
-import '../widgets/movie_information_widget.dart';
-
-class MovieOpenPage extends StatelessWidget {
+class MovieOpenPage extends ConsumerWidget {
   MovieOpenPage({super.key});
 
-  List<List<CastModel>> casts = [
-    [
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-    ],
-    [
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-    ],
-  ];
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final movieProps = ref.watch(movieViewModelProvider);
+
+    if (movieProps.movieSection.buttons.isEmpty) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -46,7 +37,9 @@ class MovieOpenPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 MovieBigBanner(),
-                const SizedBox(height: 100,),
+                const SizedBox(
+                  height: 100,
+                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -58,67 +51,35 @@ class MovieOpenPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const DescriptionContainer(
-                                  description:
-                                      "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands."),
+                              DescriptionContainer(
+                                description:
+                                    movieProps.movieSection.description,
+                              ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              CastContainer(casts: casts),
+                              if (movieProps.castSection.castMembers.isNotEmpty)
+                                CastContainer(
+                                    casts: convertTo2DArray(
+                                        movieProps.castSection.castMembers
+                                            .map((e) => CastModel(
+                                                name: e.name,
+                                                imageUrl:
+                                                    AppImages.characterImage))
+                                            .toList(),
+                                        5),
+                                    heightCard: 220),
                               const SizedBox(
                                 height: 20,
                               ),
                               ReviewContainer(
-                                reviewList: [
-                                  ReviewModel(
-                                      name: 'Aniket Roy',
-                                      location: 'From India',
-                                      reviewText:
-                                          'This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it.',
-                                      rating: 4.5),
-                                  ReviewModel(
-                                      name: 'Swaraj',
-                                      location: 'From India',
-                                      reviewText:
-                                          'A restless king promises his lands to the local tribals in exchange of a stone (Panjurli, a deity of Keradi Village) wherein he finds solace and peace of mind.',
-                                      rating: 5),
-                                  ReviewModel(
-                                      name: 'Aniket Roy',
-                                      location: 'From India',
-                                      reviewText:
-                                          'This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it.',
-                                      rating: 4.5),
-                                  ReviewModel(
-                                      name: 'Swaraj',
-                                      location: 'From India',
-                                      reviewText:
-                                          'A restless king promises his lands to the local tribals in exchange of a stone (Panjurli, a deity of Keradi Village) wherein he finds solace and peace of mind.',
-                                      rating: 5),
-                                  ReviewModel(
-                                      name: 'Aniket Roy',
-                                      location: 'From India',
-                                      reviewText:
-                                          'This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it.',
-                                      rating: 4.5),
-                                  ReviewModel(
-                                      name: 'Swaraj',
-                                      location: 'From India',
-                                      reviewText:
-                                          'A restless king promises his lands to the local tribals in exchange of a stone (Panjurli, a deity of Keradi Village) wherein he finds solace and peace of mind.',
-                                      rating: 5),
-                                  ReviewModel(
-                                      name: 'Aniket Roy',
-                                      location: 'From India',
-                                      reviewText:
-                                          'This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it.',
-                                      rating: 4.5),
-                                  ReviewModel(
-                                      name: 'Swaraj',
-                                      location: 'From India',
-                                      reviewText:
-                                          'A restless king promises his lands to the local tribals in exchange of a stone (Panjurli, a deity of Keradi Village) wherein he finds solace and peace of mind.',
-                                      rating: 5),
-                                ],
+                                reviewList: movieProps.reviewsSection.reviews
+                                    .map((e) => ReviewModel(
+                                        name: e.author,
+                                        location: e.location,
+                                        rating: e.rating,
+                                        reviewText: e.comment))
+                                    .toList(),
                               )
                             ],
                           ),
@@ -126,9 +87,7 @@ class MovieOpenPage extends StatelessWidget {
                         const SizedBox(
                           width: 20,
                         ),
-                        Flexible(
-                            flex: 4,
-                            child: MovieInformation())
+                        Flexible(flex: 4, child: MovieInformation())
                       ],
                     ),
                     const SizedBox(
