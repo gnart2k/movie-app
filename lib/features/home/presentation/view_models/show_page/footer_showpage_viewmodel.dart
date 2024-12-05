@@ -9,7 +9,7 @@ class FooterShowpageViewmodel extends StateNotifier<FooterShowPage> {
   FooterShowpageViewmodel(this._repository)
       : super(FooterShowPage(navigationLinks: [], socialMedia: []));
 
-  Future<void> getComparePlans() async {
+  Future<void> getFooterShowPage() async {
     try {
       final source = await _repository.getSource();
       state = source;
@@ -23,7 +23,7 @@ final sourceProvider = Provider((ref) => FooterShowpageSource());
 final repositoryProvider = Provider(
   (ref) => FooterShowpageRepository(ref.read(sourceProvider)),
 );
-final callToActionViewModelProvider =
+final footerShowPageViewModelProvider =
     StateNotifierProvider<FooterShowpageViewmodel, FooterShowPage>(
   (ref) => FooterShowpageViewmodel(ref.read(repositoryProvider)),
 );
