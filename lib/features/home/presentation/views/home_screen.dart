@@ -6,6 +6,7 @@ import 'package:movie_app/core/helpers/converter.dart';
 import 'package:movie_app/core/widgets/category/category_card.dart';
 import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
+import 'package:movie_app/core/widgets/plan/plan_container.dart';
 import 'package:movie_app/features/home/presentation/view_models/home_view_model.dart';
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
@@ -63,8 +64,10 @@ class HomeScreen extends ConsumerWidget {
                         heightCard: 290,
                       ),
                       const SizedBox(height: 120),
-                      const FrequentlyAskedQuestionsWidget(),
                       const MultiPlatformWidget(),
+                      const FrequentlyAskedQuestionsWidget(),
+                      const SizedBox(height: 120),
+                      PlanContainer(plans: []),
                       const FreeTrialWidget(),
                     ],
                   ),
