@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
+import 'package:movie_app/core/helpers/converter.dart';
 import 'package:movie_app/core/widgets/category/category_card.dart';
 import 'package:movie_app/core/widgets/footer_widget.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
@@ -9,89 +10,67 @@ import 'package:movie_app/features/home/presentation/view_models/home_view_model
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/frequently_asked_question_widget.dart';
+import 'package:movie_app/features/home/presentation/widgets/multiplatform_widget.dart';
 import '../../../../core/widgets/category/category_slider_container.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final homeProps = ref.watch(homeViewModelProvider);
+    final homeProps = ref.watch(homeViewModelProvider);
+
+    if (homeProps.contentCategories.isEmpty) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    final movies = convertTo2DArray(
+      homeProps.contentCategories
+          .map((e) =>
+              MovieModel(name: e.name, imageUrl: AppImages.categoryImage))
+          .toList(),
+      5,
+    );
 
     return Scaffold(
       body: Stack(
         children: [
           SingleChildScrollView(
-              child: Column(children: [
-            const BannerWidget(),
-            const SizedBox(height: 200),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 160),
-              child: Column(
-                children: [
-                  CategorySliderContainer<MovieModel>(
-                    cardWidgetBuilder: (movie, int itemNum) {
-                      return CategoryCard(
-                          title: movie.name,
-                          imageUrl: movie.imageUrl,
-                          itemNumber: itemNum);
-                    },
-                    list: [
-                      [
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                      ],
-                      [
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                      ],
-                      [
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                        MovieModel(
-                            name: 'Adventure',
-                            imageUrl: AppImages.categoryImage),
-                      ]
+            child: Column(
+              children: [
+                const BannerWidget(),
+                const SizedBox(height: 200),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 160),
+                  child: Column(
+                    children: [
+                      CategorySliderContainer<MovieModel>(
+                        cardWidgetBuilder: (movie, int itemNum) {
+                          return CategoryCard(
+                            title: movie.name,
+                            imageUrl: movie.imageUrl,
+                            itemNumber: itemNum,
+                          );
+                        },
+                        list: movies,
+                        title: "Explore our wide variety of categories",
+                        subTitle:
+                            "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
+                        heightCard: 290,
+                      ),
+                      const SizedBox(height: 120),
+                      const FrequentlyAskedQuestionsWidget(),
+                      const MultiPlatformWidget(),
+                      const FreeTrialWidget(),
                     ],
-                    title: "Explore our wide variety of categories",
-                    subTitle:
-                        "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
-                    heightCard: 290,
                   ),
-                  const SizedBox(height: 120),
-                  const FrequentlyAskedQuestionsWidget(),
-                  const FreeTrialWidget(),
-                ],
-              ),
+                ),
+                const FooterWidget(),
+              ],
             ),
-            const FooterWidget(),
-          ])),
+          ),
           const HeaderWidgets(),
         ],
       ),
