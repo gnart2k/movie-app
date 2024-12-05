@@ -7,7 +7,11 @@ import 'package:movie_app/features/home/presentation/view_models/auth_viewmodel.
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 import 'package:movie_app/features/home/presentation/views/login_screen.dart';
 
-
+import 'core/constants/route_manager.dart';
+import 'features/movie_and_show/presentation/views/movie_and_show_page.dart';
+import 'features/movie_open_page/presentation/views/movies_open_page.dart';
+import 'features/show_page_open/views/show_page_open.dart';
+import 'features/support_page/presentation/views/support_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MainApp()));
@@ -20,21 +24,23 @@ class MainApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localeViewModel = ref.watch(localeProvider);
     final authViewModel = ref.watch(authViewModelProvider);
-    return MaterialApp(
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        locale: ref.read(localeProvider),
-        theme: ThemeData(
-            scaffoldBackgroundColor: AppColors.appBackground,
-            textTheme:
-                const TextTheme(bodyMedium: TextStyle(color: Colors.white))),
-        debugShowCheckedModeBanner: false,
-        // home: MovieOpenPage());
-        // home: MovieAndShowPage());
-        // home: const SupportPage());
-        // home: HomeScreen());
-        home: authViewModel.isAuthenticated ? const HomeScreen() : const LoginScreen(),
-        );
+
+    return MaterialApp.router(
+      routerConfig: RouteGenerator.instance.router,
+
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: ref.read(localeProvider),
+      theme: ThemeData(
+          scaffoldBackgroundColor: AppColors.appBackground,
+          textTheme:
+              const TextTheme(bodyMedium: TextStyle(color: Colors.white))),
+      debugShowCheckedModeBanner: false,
+      // home: MovieOpenPage());
+      // home: MovieAndShowPage());
+      // home: const SupportPage());
+      // home: HomeScreen());
+    );
 
     // home: const SupportPage());
   }

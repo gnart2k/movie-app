@@ -10,4 +10,3 @@ class HomeSource {
     return HomeProps.fromJson(data);
   }
 }
-

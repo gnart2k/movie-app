@@ -3,26 +3,40 @@ import 'package:movie_app/features/home/data/models/show_page/section_movies.dar
 import 'package:movie_app/features/home/data/repositories/show_page/section_movies_repository.dart';
 import 'package:movie_app/features/home/data/sources/show_page/section_movies_source.dart';
 
+class SectionMovies {
+  final List<Section> sectionMoviesList;
+
+  SectionMovies({required this.sectionMoviesList});
+}
+
 class SectionMoviesViewmodel extends StateNotifier<SectionMovies> {
   final SectionMoviesRepository _repository;
 
   SectionMoviesViewmodel(this._repository)
-      : super(SectionMovies(type: '', title: '', movies: []));
+      : super(SectionMovies(sectionMoviesList: []));
 
-  Future<void> getComparePlans() async {
+  Future<void> getSectionMovies() async {
     try {
-      final sectionMovies = await _repository.getSectionMovies();
-      state = sectionMovies;
+      final sections = await _repository.getSectionMovies();
+      state = SectionMovies(sectionMoviesList: sections);
+      print('sdhs ${state.sectionMoviesList[0].genres}');
+      print('sdds ${state.sectionMoviesList[2].movies?[0].name}');
+
     } catch (e) {
-      state = SectionMovies(type: '', title: '', movies: []);
+      state = SectionMovies(sectionMoviesList: []);
     }
   }
 }
 
-final sectionMoviesSourceProvider = Provider((ref) => SectionMoviesSource());
-final sectionMoviesRepositoryProvider = Provider(
+// === Move Providers to global scope ===
+final sectionMoviesSourceProvider = Provider<SectionMoviesSource>(
+  (ref) => SectionMoviesSource(),
+);
+
+final sectionMoviesRepositoryProvider = Provider<SectionMoviesRepository>(
   (ref) => SectionMoviesRepository(ref.read(sectionMoviesSourceProvider)),
 );
+
 final sectionMoviesViewModelProvider =
     StateNotifierProvider<SectionMoviesViewmodel, SectionMovies>(
   (ref) => SectionMoviesViewmodel(ref.read(sectionMoviesRepositoryProvider)),
