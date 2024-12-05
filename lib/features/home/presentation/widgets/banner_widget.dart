@@ -42,10 +42,10 @@ class BannerWidget extends ConsumerWidget {
         const SizedBox(height: 16),
         SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.5,
-          child: const Text(
+          child: Text(
               textAlign: TextAlign.center,
-              'StreamVibe is the best streaming experience for watching your favorite movies and shows on demand, anytime, anywhere. With StreamVibe, you can enjoy a wide variety of content, including the latest blockbusters, classic movies, popular TV shows, and more. You can also create your own watchlists, so you can easily find the content you want to watch.',
-              style: TextStyle(color: AppColors.lightGray)),
+              AppLocalizations.of(context)!.streamVibe_is_the_best_streaming,
+              style: const TextStyle(color: AppColors.lightGray)),
         ),
         const SizedBox(height: 40),
         CustomIconButton(

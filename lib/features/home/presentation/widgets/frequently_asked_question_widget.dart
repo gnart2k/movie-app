@@ -83,7 +83,7 @@ class FrequentlyAskedQuestionsWidgetState
             child: CommonTitle(
               title: title,
               subTitle:
-                  "Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.",
+                  AppLocalizations.of(context)!.got_questions,
             ),
           ),
           CommonButton(label: AppLocalizations.of(context)!.ask_a_question, onTap: () {}),

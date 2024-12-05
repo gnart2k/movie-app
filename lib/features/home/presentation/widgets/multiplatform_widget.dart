@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/features/home/presentation/view_models/home_view_model.dart';
@@ -46,7 +48,7 @@ class MultiPlatformWidget extends ConsumerWidget {
           ),
           const SizedBox(height: 14),
           Text(
-            'With StreamVibe, you can enjoy your favorite movies and TV shows anytime, anywhere. Our platform is designed to be compatible with a wide range of devices, ensuring that you never miss a moment of entertainment.',
+            AppLocalizations.of(context)!.description_streamvibe,
             style: GoogleFonts.manrope(
               fontSize: 18,
               fontWeight: FontWeight.w400,
@@ -121,7 +123,7 @@ class MultiPlatformWidget extends ConsumerWidget {
                           ),
                           const SizedBox(height: 30),
                           Text(
-                            'StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store',
+                            AppLocalizations.of(context)!.app_description,
                             style: GoogleFonts.manrope(
                               fontSize: 18,
                               fontWeight: FontWeight.w400,

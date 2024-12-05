@@ -37,5 +37,10 @@
   "subscriptions": "구독",
   "plans": "요금제",
   "features": "기능",
-  "connect_with_use": "연결하기"
+  "connect_with_use": "연결하기",
+
+  "streamVibe_is_the_best_streaming": "StreamVibe는 언제 어디서나 좋아하는 영화와 쇼를 주문형으로 시청할 수 있는 최고의 스트리밍 경험입니다. StreamVibe를 사용하면 최신 블록버스터, 고전 영화, 인기 TV 쇼 등 다양한 콘텐츠를 즐길 수 있습니다. 또한 나만의 시청 목록을 만들어서 시청하고 싶은 콘텐츠를 쉽게 찾을 수 있습니다.",
+  "got_questions": "질문이 있으신가요? 저희가 답변을 드립니다! StreamVibe에 대한 가장 일반적인 질문에 대한 답변을 FAQ 섹션에서 확인해보세요.",
+  "description_streamvibe": "StreamVibe를 사용하면 언제 어디서나 좋아하는 영화와 TV 프로그램을 즐길 수 있습니다. 우리의 플랫폼은 다양한 장치와 호환되도록 설계되어 있어 엔터테인먼트를 놓치지 않도록 보장합니다.",
+  "app_description": "StreamVibe는 Android 및 iOS 스마트폰 모두에 최적화되어 있습니다. Google Play 스토어 또는 Apple App 스토어에서 앱을 다운로드하세요."
 }
