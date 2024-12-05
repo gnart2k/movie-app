@@ -1,30 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_icons.dart';
+import 'package:movie_app/features/home/presentation/view_models/home_view_model.dart';
 
-class MultiPlatformWidget extends StatelessWidget {
+class MultiPlatformWidget extends ConsumerWidget {
   const MultiPlatformWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final List<Map<String, String>> platforms = [
-      {'icon': AppIcons.smartPhoneIcon, 'title': 'Smartphones'},
-      {'icon': AppIcons.tabletIcon, 'title': 'Laptops'},
-      {'icon': AppIcons.smartTvIcon, 'title': 'Smart TV'},
-      {'icon': AppIcons.laptopIcon, 'title': 'Tablet'},
-      {'icon': AppIcons.gamingConsoleIcon, 'title': 'Gaming Consoles'},
-      {'icon': AppIcons.vrHeadsetIcon, 'title': 'VR Headsets'},
+  Widget build(BuildContext context, WidgetRef ref) {
+    final homeProps = ref.watch(homeViewModelProvider);
+    final devices = homeProps.deviceCompatibilitiy.devices;
+    if (homeProps.deviceCompatibilitiy.devices.isEmpty) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    final List<String> deviceIcons = [
+      AppIcons.smartPhoneIcon,
+      AppIcons.tabletIcon,
+      AppIcons.smartTvIcon,
+      AppIcons.laptopIcon,
+      AppIcons.gamingConsoleIcon,
+      AppIcons.vrHeadsetIcon,
     ];
 
+    final List<Map<String, String>> platforms = List.generate(
+      devices.length,
+      (index) => {'icon': deviceIcons[index], 'title': devices[index]},
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 150),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'We Provide you streaming experience across various devices.',
+            homeProps.deviceCompatibilitiy.title,
             style: GoogleFonts.manrope(
               fontSize: 38,
               fontWeight: FontWeight.w700,
