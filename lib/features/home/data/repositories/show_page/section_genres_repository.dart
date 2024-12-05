@@ -1,5 +1,5 @@
-import 'package:movie_app/features/home/data/models/section_genres.dart';
-import 'package:movie_app/features/home/data/sources/section_genres_source.dart';
+import 'package:movie_app/features/home/data/models/show_page/section_genres.dart';
+import 'package:movie_app/features/home/data/sources/show_page/section_genres_source.dart';
 
 class SectionGenresRepository {
   final SectionGenresSource _sectionGenresSource;

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_app/features/home/data/models/section_top10_genres.dart';
-import 'package:movie_app/features/home/data/repositories/section_top10_genres_repository.dart';
-import 'package:movie_app/features/home/data/sources/section_top10_genres_source.dart';
+import 'package:movie_app/features/home/data/models/show_page/section_top10_genres.dart';
+import 'package:movie_app/features/home/data/repositories/show_page/section_top10_genres_repository.dart';
+import 'package:movie_app/features/home/data/sources/show_page/section_top10_genres_source.dart';
 
 class SectionTop10GenresViewmodel extends StateNotifier<SectionTop10Genres> {
   final SectionTop10GenresRepository _repository;

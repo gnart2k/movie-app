@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_app/features/home/data/models/section_genres.dart';
-import 'package:movie_app/features/home/data/repositories/section_genres_repository.dart';
-import 'package:movie_app/features/home/data/sources/section_genres_source.dart';
+import 'package:movie_app/features/home/data/models/show_page/section_genres.dart';
+import 'package:movie_app/features/home/data/repositories/show_page/section_genres_repository.dart';
+import 'package:movie_app/features/home/data/sources/show_page/section_genres_source.dart';
 
 class SectionGenresViewmodel extends StateNotifier<SectionGenres> {
   final SectionGenresRepository _repository;

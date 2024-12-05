@@ -17,9 +17,11 @@ class HomeViewModel extends StateNotifier<HomeProps> {
             faqSection: FaqSectionProps(title: '', questions: []),
             footer: FooterProps(links: [], socialMedial: []),
           ),
-        );
+        ) {
+    _initialize();
+  }
 
-  Future<void> getHomeInfo() async {
+  Future<void> _initialize() async {
     try {
       final homeInfo = await _repository.getHomeInfo();
       state = homeInfo;
@@ -43,3 +45,4 @@ final homeRepositoryProvider = Provider(
 final homeViewModelProvider = StateNotifierProvider<HomeViewModel, HomeProps>(
   (ref) => HomeViewModel(ref.read(homeRepositoryProvider)),
 );
+

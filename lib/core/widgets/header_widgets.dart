@@ -20,14 +20,27 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
   late List<NavBarProps> navbarItems;
 
   List<NavBarProps> getNavbarItems(List<NavigationLinkModel> navBarData) {
-    return navBarData
-        .asMap()
-        .map((index, e) => MapEntry(
-              index,
-              NavBarProps(label: e.url, isSelected: index == 0),
-            ))
-        .values
-        .toList();
+    if (navBarData.where((item) => item.isSelected).toList().isEmpty) {
+      return navBarData
+          .asMap()
+          .map((index, e) => MapEntry(
+                index,
+                index == 0
+                    ? NavBarProps(label: e.url, isSelected: true)
+                    : NavBarProps(label: e.url, isSelected: e.isSelected),
+              ))
+          .values
+          .toList();
+    } else {
+      return navBarData
+          .asMap()
+          .map((index, e) => MapEntry(
+                index,
+                NavBarProps(label: e.url, isSelected: e.isSelected),
+              ))
+          .values
+          .toList();
+    }
   }
 
   @override
@@ -37,6 +50,7 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
     List<NavigationLinkModel> navBarData =
         ref.read(headerViewModelProvider).navigationLinks;
     navbarItems = getNavbarItems(navBarData);
+
     // [
     //   NavBarProps(label: 'Home', isSelected: true),
     //   NavBarProps(label: 'Movie & Show'),
@@ -47,6 +61,10 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
 
   void _onNavBarItemTap(int index, WidgetRef ref) {
     ref.read(headerViewModelProvider.notifier).toggleNavbar(index);
+    // print(ref
+    //     .read(headerViewModelProvider)
+    //     .navigationLinks
+    //     .map((e) => print(e.isSelected)));
     // setState(() {
     //   for (var i = 0; i < navbarItems.length; i++) {
     //     navbarItems[i] = navbarItems[i].copyWith(isSelected: i == index);
@@ -67,7 +85,6 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
         // _navBarList(context, navbarItems),
         _buildNavBar(context),
         Expanded(child: _iconContainer(context)),
-
       ]),
     );
   }
@@ -156,27 +173,6 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
               .toList()),
     );
   }
-
-  // Widget _buildIconContainer() {
-  //   return Row(
-  //     children: [
-  //       GestureDetector(
-  //         onTap: () {
-  //           // Add your search action here
-  //         },
-  //         child: SvgPicture.asset(AppIcons.searchIcon, width: 26),
-  //       ),
-  //       const SizedBox(width: 16),
-  //       GestureDetector(
-  //         onTap: () {
-  //           print(ref.read(headerViewModelProvider).navigationLinks.toString());
-  //           // Add your notifications action here
-  //         },
-  //         child: SvgPicture.asset(AppIcons.bellIcon, width: 26),
-  //       ),
-  //     ],
-  //   );
-  // }
 }
 
 class NavBarProps {

@@ -1,12 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
+import 'package:movie_app/features/support_page/presentation/view_models/support_form_view_model.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class SupportFormWidget extends StatelessWidget {
+class SupportFormWidget extends ConsumerStatefulWidget {
   const SupportFormWidget({super.key});
 
   @override
+  ConsumerState<SupportFormWidget> createState() => _SupportFormWidgetState();
+}
+
+class _SupportFormWidgetState extends ConsumerState<SupportFormWidget> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(supportFormViewModelProvider.notifier).fetchSupportForm();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final supportForm = ref.watch(supportFormViewModelProvider);
     return Padding(
       padding: const EdgeInsets.all(0),
       child: Row(
@@ -17,23 +32,23 @@ class SupportFormWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Welcome to our\nsupport page!',
-                  style: TextStyle(
+                Text(
+                  supportForm.welcomeMessage,
+                  style: GoogleFonts.manrope(
                     fontSize: 48,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 const SizedBox(height: 14),
-                const Text(
-                  "We're here to help you with any problems you may be having with our product.",
-                  style: TextStyle(
+                Text(
+                  supportForm.welcomeMessage1,
+                  style: GoogleFonts.manrope(
                       fontSize: 18,
                       color: AppColors.lightGray,
                       fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(height: 50),
-                Container(
+                SizedBox(
                   width: 533,
                   height: 477,
                   child: Image.asset(AppImages.supportPageMovieImage),
@@ -57,13 +72,15 @@ class SupportFormWidget extends StatelessWidget {
                       children: [
                         Expanded(
                             child: _buildLabelledTextField(
-                                label: 'First Name',
-                                inLineLabel: 'Enter First Name')),
+                                label: supportForm.form.fields[0].label,
+                                placeHolder:
+                                    supportForm.form.fields[0].placeholder)),
                         const SizedBox(width: 50),
                         Expanded(
                             child: _buildLabelledTextField(
-                                label: 'Last Name',
-                                inLineLabel: 'Enter Last Name')),
+                                label: supportForm.form.fields[1].label,
+                                placeHolder:
+                                    supportForm.form.fields[1].placeholder)),
                       ],
                     ),
                     const SizedBox(height: 50),
@@ -71,19 +88,25 @@ class SupportFormWidget extends StatelessWidget {
                       children: [
                         Expanded(
                             child: _buildLabelledTextField(
-                                label: 'Email',
-                                inLineLabel: 'Enter your Email')),
+                                label: supportForm.form.fields[2].label,
+                                placeHolder:
+                                    supportForm.form.fields[2].placeholder)),
                         const SizedBox(width: 50),
                         Expanded(
-                          child: _buildPhoneNumberField(),
+                          child: _buildPhoneNumberField(
+                              label: supportForm.form.fields[3].label,
+                              placeHolder:
+                                  supportForm.form.fields[3].placeholder,
+                              countryCode:
+                                  supportForm.form.fields[3].countryCode),
                         ),
                       ],
                     ),
                     const SizedBox(height: 50),
                     _buildLabelledTextField(
-                        label: 'Message',
+                        label: supportForm.form.fields[4].label,
                         maxLines: 6,
-                        inLineLabel: 'Enter Your Message'),
+                        placeHolder: supportForm.form.fields[4].placeholder),
                     const SizedBox(height: 50),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -101,10 +124,10 @@ class SupportFormWidget extends StatelessWidget {
                         const SizedBox(
                           width: 3,
                         ),
-                        const Expanded(
+                        Expanded(
                           child: Text(
-                            'I agree with Terms of Use and Privacy Policy',
-                            style: TextStyle(
+                            supportForm.form.checkbox.label,
+                            style: GoogleFonts.manrope(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.lightGray),
@@ -124,9 +147,9 @@ class SupportFormWidget extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(6)),
                               child: TextButton(
                                 onPressed: () {},
-                                child: const Text(
-                                  'Send Message',
-                                  style: TextStyle(
+                                child: Text(
+                                  supportForm.form.submitButton.text,
+                                  style: GoogleFonts.manrope(
                                     color: Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.w600,
                                     fontSize: 18,
@@ -147,21 +170,21 @@ class SupportFormWidget extends StatelessWidget {
   }
 
   Widget _buildLabelledTextField(
-      {required String label, required String inLineLabel, int maxLines = 1}) {
+      {required String label, required String placeHolder, int maxLines = 1}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          style: GoogleFonts.manrope(fontSize: 18, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 16),
         TextField(
           maxLines: maxLines,
           decoration: InputDecoration(
             alignLabelWithHint: true,
-            labelText: inLineLabel,
-            labelStyle: const TextStyle(
+            labelText: placeHolder,
+            labelStyle: GoogleFonts.manrope(
               color: AppColors.lightGray,
               fontSize: 18,
               fontWeight: FontWeight.w400,
@@ -180,14 +203,17 @@ class SupportFormWidget extends StatelessWidget {
   }
 }
 
-Widget _buildPhoneNumberField() {
-  String selectedValue = '+1';
+Widget _buildPhoneNumberField(
+    {required String label,
+    required String placeHolder,
+    required countryCode}) {
+  String selectedValue = countryCode;
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      const Text(
-        'Phone Number',
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+      Text(
+        label,
+        style: GoogleFonts.manrope(fontSize: 18, fontWeight: FontWeight.w600),
       ),
       const SizedBox(height: 16),
       Row(
@@ -203,7 +229,7 @@ Widget _buildPhoneNumberField() {
               value: selectedValue,
               items: [
                 DropdownMenuItem(
-                    value: '+1',
+                    value: countryCode,
                     child: Container(
                       padding: const EdgeInsets.all(5),
                       child: Image.asset(
@@ -221,8 +247,8 @@ Widget _buildPhoneNumberField() {
             child: TextField(
               decoration: InputDecoration(
                 alignLabelWithHint: true,
-                labelText: 'Enter Phone Number',
-                labelStyle: const TextStyle(
+                labelText: placeHolder,
+                labelStyle: GoogleFonts.manrope(
                   color: AppColors.lightGray,
                   fontSize: 18,
                   fontWeight: FontWeight.w400,

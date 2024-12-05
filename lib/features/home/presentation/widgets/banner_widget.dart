@@ -30,13 +30,10 @@ class BannerWidget extends ConsumerWidget {
                 child: SvgPicture.asset(AppVectors.playButton),
               ),
               const SizedBox(height: 32),
-              Text(homeProps.deviceCompatibilitiy.title),
               SizedBox(
                 width: MediaQuery.sizeOf(context).width * 0.6,
                 child: Text(
                   textAlign: TextAlign.center,
-                  // homeProps.banner.title,
-
                   AppLocalizations.of(context)!.the_best_stream_experience,
                   style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
                 ),
@@ -53,7 +50,7 @@ class BannerWidget extends ConsumerWidget {
         const SizedBox(height: 40),
         CustomIconButton(
             iconData: Icons.play_arrow,
-            label: AppLocalizations.of(context)!.start_watching_now,
+            label: homeProps.banner.button,
             onTap: () {})
       ],
     );
