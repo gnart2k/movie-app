@@ -60,10 +60,13 @@ class MovieBigBanner extends StatelessWidget {
 
 Widget _iconButton(String iconUrl) {
   return GestureDetector(
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-            color: Colors.black, borderRadius: BorderRadius.circular(8)),
-        child: SvgPicture.asset(iconUrl),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+              color: Colors.black, borderRadius: BorderRadius.circular(8)),
+          child: SvgPicture.asset(iconUrl),
+        ),
       ));
 }

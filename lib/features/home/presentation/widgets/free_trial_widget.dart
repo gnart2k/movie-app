@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FreeTrialWidget extends StatelessWidget {
   const FreeTrialWidget({super.key});
@@ -10,7 +11,7 @@ class FreeTrialWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 80),
+        // const SizedBox(height: 80),
         Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
@@ -23,18 +24,18 @@ class FreeTrialWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  const Column(
+                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Start your free trial today!",
-                            style: TextStyle(fontSize: 48)),
-                        SizedBox(height: 16),
-                        Text(
+                        Text(AppLocalizations.of(context)!.start_your_free_trial_today,
+                            style: const TextStyle(fontSize: 48)),
+                        const SizedBox(height: 16),
+                        const Text(
                             "This is a clear and concise call to action that encourages users to sign up for a free trial of StreamVibe.",
                             style: TextStyle(
                                 fontSize: 18, color: AppColors.lightGray))
                       ]),
-                  CommonButton(label: "Start a Free Trial", onTap: () {})
+                  CommonButton(label: AppLocalizations.of(context)!.start_a_free_trial, onTap: () {})
                 ])),
         const SizedBox(height: 80),
       ],

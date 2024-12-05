@@ -4,6 +4,7 @@ import 'package:movie_app/core/widgets/button/common_button.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
 import 'package:movie_app/features/home/data/models/faq_section.dart';
 import 'package:movie_app/features/home/presentation/view_models/faq_section_viewmodel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FrequentlyAskedQuestionsWidget extends ConsumerStatefulWidget {
   const FrequentlyAskedQuestionsWidget({super.key});
@@ -31,6 +32,7 @@ class FrequentlyAskedQuestionsWidgetState
       child: Column(
         children: [
           _questionTitle(context, state.title),
+          const SizedBox(height: 20,),
           _questionBody(context, state.questions),
         ],
       ),
@@ -55,7 +57,7 @@ class FrequentlyAskedQuestionsWidgetState
             },
           ),
         ),
-        SizedBox(width: 40),
+        const SizedBox(width: 40),
         Expanded(
           child: ListView.builder(
             shrinkWrap: true,
@@ -84,7 +86,7 @@ class FrequentlyAskedQuestionsWidgetState
                   "Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.",
             ),
           ),
-          CommonButton(label: "Ask a question", onTap: () {}),
+          CommonButton(label: AppLocalizations.of(context)!.ask_a_question, onTap: () {}),
         ],
       ),
     );
@@ -128,7 +130,7 @@ class _QuestionItemState extends ConsumerState<QuestionItem> {
       children: [
         Expanded(
             child: Container(
-          padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
             border: Border(
               bottom: BorderSide(

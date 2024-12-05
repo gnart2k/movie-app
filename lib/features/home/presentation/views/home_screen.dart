@@ -12,6 +12,7 @@ import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.d
 import 'package:movie_app/features/home/presentation/widgets/frequently_asked_question_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/multiplatform_widget.dart';
 import '../../../../core/widgets/category/category_slider_container.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -65,6 +66,11 @@ class HomeScreen extends ConsumerWidget {
                       const MultiPlatformWidget(),
                       const FreeTrialWidget(),
                     ],
+
+                    title: AppLocalizations.of(context)!.explore_our_wide_variety_of_categories,
+                    subTitle:
+                        "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
+                    heightCard: 290,
                   ),
                 ),
                 const FooterWidget(),
