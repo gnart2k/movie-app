@@ -45,7 +45,7 @@ class HomeScreen extends ConsumerWidget {
                 'Access to a wider selection of movies and shows, including most new releases and exclusive content'))
         .toList();
 
-    return  Column(
+    return Column(
       children: [
         const BannerWidget(),
         const SizedBox(height: 200),
@@ -65,7 +65,7 @@ class HomeScreen extends ConsumerWidget {
                 title: AppLocalizations.of(context)!
                     .explore_our_wide_variety_of_categories,
                 subTitle:
-                "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
+                    "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
                 heightCard: 290,
               ),
               const SizedBox(height: 120),

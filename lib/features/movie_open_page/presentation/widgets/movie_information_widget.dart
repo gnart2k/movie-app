@@ -3,23 +3,31 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
+import 'package:movie_app/features/home/data/models/movie_section.dart';
 
-class MovieInformation extends StatelessWidget {
-  MovieInformation({super.key, this.movie});
+class MovieInformation extends StatefulWidget {
+  const MovieInformation({super.key, this.movie, this.movieSection});
+
+  final MovieSection? movieSection;
 
   final MovieModel? movie;
-  final List<String> languageList = [
-    'English',
-    'Hindi',
-    'Tamil',
-    'Telegu',
-    'Kannada'
-  ];
 
-  final List<String> genresList = ['Action', 'Adventure', 'Romantic'];
+  @override
+  State<MovieInformation> createState() => _MovieInformationState();
+}
+
+class _MovieInformationState extends State<MovieInformation> {
+  late List<String> languageList;
+
+  late List<String> genresList;
 
   @override
   Widget build(BuildContext context) {
+    languageList =
+        List<String>.from(widget.movieSection!.details!['availableLanguages']);
+
+    genresList = List<String>.from(widget.movieSection!.details!['genres']);
+
     return Container(
       padding: const EdgeInsets.all(50),
       decoration: BoxDecoration(
@@ -55,12 +63,10 @@ class MovieInformation extends StatelessWidget {
         Text(
           title,
           style: GoogleFonts.manrope(
-            color: AppColors.lightGray,
+              color: AppColors.lightGray,
               fontSize: 18,
               height: 1.5,
-              fontWeight: FontWeight.w500
-          ),
-         
+              fontWeight: FontWeight.w500),
         )
       ],
     );
@@ -68,7 +74,7 @@ class MovieInformation extends StatelessWidget {
 
   Widget _ratingItem(String title, double rate) {
     return Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
             color: AppColors.itemHovered,
             borderRadius: BorderRadius.circular(8),
@@ -112,11 +118,19 @@ class MovieInformation extends StatelessWidget {
         ),
         Row(
           children: [
-            Expanded(child: _ratingItem('IMDb', 4.5)),
+            Expanded(
+                child: _ratingItem(
+                    'IMDb',
+                    widget.movieSection!.details!['ratings']?['IMDb']
+                        as double)),
             const SizedBox(
-              width: 20,
+              width: 5,
             ),
-            Expanded(child: _ratingItem('Streamvibe', 4))
+            Expanded(
+                child: _ratingItem(
+                    'Streamvibe',
+                    widget.movieSection!.details!['ratings']?['StreamVibe']
+                        as double))
           ],
         )
       ],
@@ -161,6 +175,12 @@ class MovieInformation extends StatelessWidget {
   }
 
   Widget _music() {
+    List<String> parts = widget.movieSection!.details!['music'].split('(');
+
+    String name = parts[0].trim();
+
+    String fromCountry =
+        parts.length > 1 ? parts[1].replaceAll(')', '').trim() : '';
     return Container(
         margin: const EdgeInsets.only(top: 30),
         child: Column(
@@ -169,12 +189,19 @@ class MovieInformation extends StatelessWidget {
             const SizedBox(
               height: 14,
             ),
-            _character('B. Ajaneesh Loknath', 'From India')
+            _character(name, fromCountry)
           ],
         ));
   }
 
   Widget _director() {
+    List<String> parts = widget.movieSection!.details!['director'].split('(');
+
+    String name = parts[0].trim();
+
+    String fromCountry =
+        parts.length > 1 ? parts[1].replaceAll(')', '').trim() : '';
+
     return Container(
         margin: const EdgeInsets.only(top: 30),
         child: Column(
@@ -183,7 +210,7 @@ class MovieInformation extends StatelessWidget {
             const SizedBox(
               height: 14,
             ),
-            _character('Rishab Shetty', 'From India')
+            _character(name, fromCountry)
           ],
         ));
   }
@@ -255,7 +282,9 @@ class MovieInformation extends StatelessWidget {
             const SizedBox(
               height: 14,
             ),
-            Text('2020',
+            Text(
+                (widget.movieSection!.details!['releaseYear'] as int)
+                    .toString(),
                 style: GoogleFonts.manrope(
                     color: const Color(0xFFFFFFFF),
                     fontSize: 20,
