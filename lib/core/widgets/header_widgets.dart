@@ -9,6 +9,7 @@ import 'package:movie_app/core/widgets/search/search_text_field.dart';
 import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';
 
 import '../../features/app/presentation/widgets/locale_switcher_widget.dart';
+import '../../features/app/presentation/widgets/show_history_widget.dart';
 
 class HeaderWidgets extends ConsumerStatefulWidget {
   const HeaderWidgets({super.key});
@@ -124,7 +125,7 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
     return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
       const SearchTextField(),
       const SizedBox(width: 16),
-      GestureDetector(child: SvgPicture.asset(AppIcons.bellIcon, width: 26)),
+      ShowHistory(),
       const SizedBox(width: 16),
       const LocaleSwitcherWidget(),
     ]);

@@ -3,12 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/features/app/presentation/app_layout.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 import 'package:movie_app/features/home/presentation/views/login_screen.dart';
-import 'package:movie_app/features/home/subscription_page/presentation/views/subscription_page.dart';
 import 'package:movie_app/features/movie_and_show/presentation/views/movie_and_show_page.dart';
 import 'package:movie_app/features/show_page_open/views/show_page_open.dart';
 import 'package:movie_app/features/support_page/presentation/views/support_page.dart';
 
 import '../../features/movie_open_page/presentation/views/movies_open_page.dart';
+import '../../features/subscription_page/presentation/views/subscription_page.dart';
 
 class Routes {
   static const String loginRoute = "/login";
@@ -26,10 +26,7 @@ class RouteGenerator {
   RouteGenerator._internal();
 
   static final RouteGenerator instance = RouteGenerator._internal();
-
   factory RouteGenerator() => instance;
-
-
   final router = GoRouter(
       initialLocation: Routes.homeRoute,
       navigatorKey: _rootNavigatorKey,
@@ -63,7 +60,7 @@ class RouteGenerator {
                   path: Routes.movieOpen,
                   builder: (context, state) {
                     final id = state.pathParameters['id']!;
-                    return MoviesOpenPage(id: id);
+                    return MovieOpenPage(id: id);
                   }),
               GoRoute(
                   name: 'showOpen',

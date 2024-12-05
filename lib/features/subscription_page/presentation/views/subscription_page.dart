@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/domain/model/plan_model.dart';
 import 'package:movie_app/core/widgets/plan/plan_container.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
+import 'package:movie_app/features/subscription_page/presentation/view_models/plan_viewmodel.dart';
 import 'package:movie_app/features/support_page/presentation/widgets/compare_plans_widget.dart';
 
-class SubscriptionPage extends StatelessWidget {
+class SubscriptionPage extends ConsumerWidget {
   const SubscriptionPage({super.key});
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
     return Column(children: [
       Container(
         padding: const EdgeInsets.symmetric(horizontal: 160),

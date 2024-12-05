@@ -11,8 +11,9 @@ import '../../constants/app_images.dart';
 import '../button/icon_button.dart';
 
 class MovieBigBanner extends ConsumerWidget {
-  const MovieBigBanner({super.key});
+  const MovieBigBanner({super.key, required this.onTap});
 
+  final Function() onTap;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final MovieProps movieProps = ref.watch(movieViewModelProvider);
@@ -48,7 +49,7 @@ class MovieBigBanner extends ConsumerWidget {
               children: [
                 CustomIconButton(
                     label: movieProps.movieSection.buttons[0].text,
-                    onTap: () {},
+                    onTap: onTap,
                     iconData: Icons.play_arrow),
                 const SizedBox(width: 12),
                 ...[
