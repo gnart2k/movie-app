@@ -12,8 +12,8 @@ import '../../features/app/presentation/widgets/locale_switcher_widget.dart';
 import '../../features/app/presentation/widgets/show_history_widget.dart';
 
 class HeaderWidgets extends ConsumerStatefulWidget {
-  const HeaderWidgets({super.key});
-
+  const HeaderWidgets({super.key, required this.isChangeColor});
+  final bool isChangeColor;
   @override
   ConsumerState<HeaderWidgets> createState() => _HeaderWidgetsState();
 }
@@ -60,7 +60,9 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500, ),
+      color: widget.isChangeColor ? Colors.black :  Colors.transparent,
       padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 100),
       child: Row(children: [
         Expanded(
