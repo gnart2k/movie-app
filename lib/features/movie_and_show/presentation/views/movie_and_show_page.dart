@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
 import 'package:movie_app/core/widgets/header_widgets.dart';
@@ -156,7 +157,9 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               hour: "1h30min",
               textViewRight: "1.4k",
               isRating: false,
-              onTap: (){},
+              onTap: (){
+                context.goNamed("showOpen", pathParameters: {'id': "1"});
+              },
             );
           },
           list: moviesLists, //moviesLists, // trending now
@@ -170,7 +173,10 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               title: movie.name,
               releasedTitle: "Released at 22 April 2023",
               imageUrl: movie.imageUrl,
-              onTap: (){},
+              onTap: (){
+
+                context.goNamed("movieOpen", pathParameters: {'id': "1"});
+              },
             );
           },
           list: moviesLists, //moviesLists, //new release
@@ -186,7 +192,9 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               hour: "1h30min",
               textViewRight: "20k",
               isRating: true,
-              onTap: (){},
+              onTap: (){
+                context.goNamed("movieOpen", pathParameters: {'id': "1"});
+              },
             );
           },
           list: mustWatchLists, // mustWatchLists, //must watch movie
