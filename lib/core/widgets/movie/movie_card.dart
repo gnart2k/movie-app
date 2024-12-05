@@ -21,7 +21,7 @@ class MoviesCard extends StatefulWidget {
 
   final String? hour;
   final String? textViewRight;
-  final VoidCallback onTap;
+  final Function() onTap;
 
   @override
   State<MoviesCard> createState() => _MoviesCardState();
