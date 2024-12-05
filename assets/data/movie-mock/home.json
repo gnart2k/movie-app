@@ -1,7 +1,7 @@
 {
   "header": {
     "logo": "Streamflix",
-    "navigationLinks": ["Home", "Movies", "Shows", "Support"]
+    "navigationLinks": ["Home", "Movies & Shows", "Support", "Subscriptions"]
   },
   "banner": {
     "title": "The Best Streaming Experience",

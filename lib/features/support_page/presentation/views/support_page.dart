@@ -15,28 +15,19 @@ class SupportPage extends StatelessWidget {
   const SupportPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          SingleChildScrollView(
-              child: Column(children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 160),
-              child: const Column(
-                children: [
-                  SizedBox(height: 180),
-                  SupportFormWidget(),
-                  SizedBox(height: 150),
-                  // FrequentlyAskedQuestionsWidget(),
-                  FreeTrialWidget(),
-                ],
-              ),
-            ),
-            const FooterWidget(),
-          ])),
-          const HeaderWidgets(),
-        ],
+    return Column(children: [
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 100),
+        child: const Column(
+          children: [
+            SizedBox(height: 180),
+            SupportFormWidget(),
+            SizedBox(height: 150),
+            // FrequentlyAskedQuestionsWidget(),
+            FreeTrialWidget(),
+          ],
+        ),
       ),
-    );
+    ]);
   }
 }

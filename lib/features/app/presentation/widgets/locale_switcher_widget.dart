@@ -22,7 +22,6 @@ class LocaleSwitcherWidget extends ConsumerWidget {
         ),
         items: AppLocalizations.supportedLocales.map(
               (nextLocale) {
-                print(nextLocale);
             return DropdownMenuItem(
               value: nextLocale,
               onTap: () {

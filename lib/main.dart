@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 import 'package:movie_app/features/movie_open_page/presentation/views/movies_open_page.dart';
 
+import 'core/constants/route_manager.dart';
 import 'features/movie_and_show/presentation/views/movie_and_show_page.dart';
 import 'features/movie_open_page/presentation/views/movies_open_page.dart';
 import 'features/show_page_open/views/show_page_open.dart';
@@ -22,7 +23,8 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localeViewModel = ref.watch(localeProvider);
-    return MaterialApp(
+    return MaterialApp.router(
+        routerConfig: RouteGenerator.instance.router,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         locale: ref.read(localeProvider),
@@ -35,7 +37,7 @@ class MainApp extends ConsumerWidget {
         // home: MovieAndShowPage());
         // home: const SupportPage());
         // home: HomeScreen());
-        home: const HomeScreen());
+      );
 
     // home: const SupportPage());
   }
