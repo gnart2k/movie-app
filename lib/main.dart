@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
+import 'package:movie_app/core/constants/route_manager.dart';
 import 'package:movie_app/features/app/presentation/view_models/locale_viewmodel.dart';
 import 'package:movie_app/features/home/subscription_page/presentation/views/subscription_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,7 +22,8 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localeViewModel = ref.watch(localeProvider);
-    return MaterialApp(
+    return MaterialApp.router(
+        routerConfig: RouteGenerator.instance.router,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         locale: ref.read(localeProvider),
@@ -34,7 +36,7 @@ class MainApp extends ConsumerWidget {
         // home: MovieAndShowPage());
         // home: const SupportPage());
         // home: HomeScreen());
-        home: const HomeScreen());
+      );
 
     // home: const SupportPage());
   }

@@ -64,7 +64,7 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [SvgPicture.asset(AppVectors.logo)],
         )),
-        _navBarList(context, navbarItems),
+        // _navBarList(context, navbarItems),
         _buildNavBar(context),
         Expanded(child: _iconContainer(context)),
 
@@ -77,7 +77,11 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
       final navbarItemList =
           viewModel.watch(headerViewModelProvider).navigationLinks;
       final items = getNavbarItems(navbarItemList);
-
+      for(int i = 0; i < items.length; i++){
+        if(items[i].isSelected){
+          print(items[i].label);
+        }
+      }
       return Container(
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
@@ -89,20 +93,23 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
             final isSelected = item.isSelected;
             return GestureDetector(
               onTap: () => _onNavBarItemTap(items.indexOf(item), viewModel),
-              child: Container(
-                decoration: isSelected
-                    ? BoxDecoration(
-                        color: AppColors.itemHovered,
-                        borderRadius: BorderRadius.circular(8),
-                      )
-                    : null,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                child: Text(
-                  item.label,
-                  style: TextStyle(
-                    color: isSelected ? Colors.white : AppColors.topBarText,
-                    fontWeight: FontWeight.bold,
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: Container(
+                  decoration: isSelected
+                      ? BoxDecoration(
+                    color: AppColors.itemHovered,
+                    borderRadius: BorderRadius.circular(8),
+                  )
+                      : null,
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                  child: Text(
+                    item.label,
+                    style: TextStyle(
+                      color: isSelected ? Colors.white : AppColors.topBarText,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -131,18 +138,21 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
           borderRadius: BorderRadius.circular(8)),
       child: Row(
           children: itemLists
-              .map((item) => Container(
-                  decoration: item.isSelected
-                      ? BoxDecoration(
-                          color: AppColors.itemHovered,
-                          borderRadius: BorderRadius.circular(8))
-                      : null,
-                  padding: const EdgeInsets.all(10),
-                  child: Text(item.label,
-                      style: TextStyle(
-                          color: item.isSelected
-                              ? Colors.white
-                              : AppColors.topBarText))))
+              .map((item) => MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: Container(
+                decoration: item.isSelected
+                    ? BoxDecoration(
+                    color: AppColors.itemHovered,
+                    borderRadius: BorderRadius.circular(8))
+                    : null,
+                padding: const EdgeInsets.all(10),
+                child: Text(item.label,
+                    style: TextStyle(
+                        color: item.isSelected
+                            ? Colors.white
+                            : AppColors.topBarText))),
+          ))
               .toList()),
     );
   }
