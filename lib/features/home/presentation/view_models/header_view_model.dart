@@ -14,6 +14,7 @@ class HeaderViewModel extends StateNotifier<HeaderProps> {
       final headerInfo = await _repository.getHeaderInfo();
       state = headerInfo;
     } catch (e) {
+
       state = HeaderProps(navigationLinks: [], logo: '');
     }
   }
@@ -22,6 +23,11 @@ class HeaderViewModel extends StateNotifier<HeaderProps> {
     int index,
   ) {
     state = state.toggleItem(requiredIndex: index);
+    for(int i = 0; i <state.navigationLinks.length; i++) {
+      if(state.navigationLinks[i].isSelected) {
+       print(state.navigationLinks[i].url);
+      }
+    }
   }
 }
 
