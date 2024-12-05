@@ -39,5 +39,11 @@
   "subscriptions": "Subscription",
   "plans": "Plans",
   "features": "Features",
-  "connect_with_use": "Connect with us"
+  "connect_with_use": "Connect with us",
+
+  "streamVibe_is_the_best_streaming": "StreamVibe is the best streaming experience for watching your favorite movies and shows on demand, anytime, anywhere. With StreamVibe, you can enjoy a wide variety of content, including the latest blockbusters, classic movies, popular TV shows, and more. You can also create your own watchlists, so you can easily find the content you want to watch.",
+  "got_questions": "Got questions? We've got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe.",
+  "description_streamvibe": "With StreamVibe, you can enjoy your favorite movies and TV shows anytime, anywhere. Our platform is designed to be compatible with a wide range of devices, ensuring that you never miss a moment of entertainment.",
+  "app_description": "StreamVibe is optimized for both Android and iOS smartphones. Download our app from the Google Play Store or the Apple App Store."
+
 }

@@ -38,5 +38,12 @@
   "subscriptions": "Đăng ký",
   "plans": "Gói cước",
   "features": "Tính năng",
-  "connect_with_use": "Kết nối với chúng tôi"
+  "connect_with_use": "Kết nối với chúng tôi",
+
+  "streamVibe_is_the_best_streaming": "StreamVibe là trải nghiệm phát trực tuyến tối ưu cho phép bạn xem các bộ phim và chương trình yêu thích của mình theo yêu cầu mọi lúc, mọi nơi. StreamVibe cho phép bạn thưởng thức những bộ phim bom tấn, phim kinh điển, chương trình truyền hình nổi tiếng mới nhất, v.v. Bạn cũng có thể tạo danh sách theo dõi của riêng mình để dễ dàng tìm thấy nội dung muốn xem.",
+"got_questions": "Có câu hỏi? Chúng tôi có câu trả lời! Hãy xem phần Câu hỏi thường gặp để tìm câu trả lời cho các câu hỏi phổ biến nhất về StreamVibe.",
+  "description_streamvibe": "Với StreamVibe, bạn có thể thưởng thức những bộ phim và chương trình TV yêu thích của mình mọi lúc, mọi nơi. Nền tảng của chúng tôi được thiết kế để tương thích với nhiều thiết bị, đảm bảo bạn không bao giờ bỏ lỡ khoảnh khắc giải trí nào.",
+  "app_description": "StreamVibe được tối ưu hóa cho cả điện thoại thông minh Android và iOS. Tải ứng dụng của chúng tôi từ Google Play Store hoặc Apple App Store."
+
+
 }

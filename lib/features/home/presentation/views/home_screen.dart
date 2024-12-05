@@ -4,6 +4,7 @@ import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
 import 'package:movie_app/core/domain/model/plan_model.dart';
 import 'package:movie_app/core/helpers/converter.dart';
+import 'package:movie_app/core/widgets/auth_guard.dart';
 import 'package:movie_app/core/widgets/category/category_card.dart';
 import 'package:movie_app/core/widgets/category/category_slider_container.dart';
 import 'package:movie_app/core/widgets/footer_widget.dart';
