@@ -34,7 +34,6 @@ class BannerWidget extends ConsumerWidget {
                 width: MediaQuery.sizeOf(context).width * 0.6,
                 child: Text(
                   textAlign: TextAlign.center,
-                  homeProps.banner.title,
                   AppLocalizations.of(context)!.the_best_stream_experience,
                   style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
                 ),
@@ -52,7 +51,6 @@ class BannerWidget extends ConsumerWidget {
         CustomIconButton(
             iconData: Icons.play_arrow,
             label: homeProps.banner.button,
-            //label: AppLocalizations.of(context)!.start_watching_now,
             onTap: () {})
       ],
     );

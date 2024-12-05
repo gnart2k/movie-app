@@ -56,7 +56,8 @@ class HomeScreen extends ConsumerWidget {
                           );
                         },
                         list: movies,
-                        title: "Explore our wide variety of categories",
+                        title: AppLocalizations.of(context)!
+                            .explore_our_wide_variety_of_categories,
                         subTitle:
                             "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
                         heightCard: 290,
@@ -66,11 +67,6 @@ class HomeScreen extends ConsumerWidget {
                       const MultiPlatformWidget(),
                       const FreeTrialWidget(),
                     ],
-
-                    title: AppLocalizations.of(context)!.explore_our_wide_variety_of_categories,
-                    subTitle:
-                        "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
-                    heightCard: 290,
                   ),
                 ),
                 const FooterWidget(),
