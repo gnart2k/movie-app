@@ -181,6 +181,11 @@ class _SupportFormWidgetState extends ConsumerState<SupportFormWidget> {
         const SizedBox(height: 16),
         TextField(
           maxLines: maxLines,
+          style: GoogleFonts.manrope(
+            color: AppColors.signInText,
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
+          ),
           decoration: InputDecoration(
             alignLabelWithHint: true,
             labelText: placeHolder,
@@ -245,6 +250,11 @@ Widget _buildPhoneNumberField(
           const SizedBox(width: 16),
           Expanded(
             child: TextField(
+              style: GoogleFonts.manrope(
+                color: AppColors.signInText,
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+              ),
               decoration: InputDecoration(
                 alignLabelWithHint: true,
                 labelText: placeHolder,
