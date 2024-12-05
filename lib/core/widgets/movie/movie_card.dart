@@ -11,7 +11,7 @@ class MoviesCard extends StatefulWidget {
       required this.imageUrl,
       this.hour,
       this.textViewRight,
-      this.isRating});
+      this.isRating, required this.onTap});
 
   final String title;
   final String? releasedTitle;
@@ -21,6 +21,7 @@ class MoviesCard extends StatefulWidget {
 
   final String? hour;
   final String? textViewRight;
+  final VoidCallback onTap;
 
   @override
   State<MoviesCard> createState() => _MoviesCardState();
@@ -31,22 +32,24 @@ class _MoviesCardState extends State<MoviesCard> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() {
-        isHovering = true;
-      }),
-      onExit: (_) => setState(() {
-        isHovering = false;
-      }),
-      cursor: SystemMouseCursors.click,
-      child: AnimatedContainer(
-        margin: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.linear,
-        padding: widget.isRating == true
-            ? const EdgeInsets.all(20)
-            : const EdgeInsets.all(10),
-        decoration: BoxDecoration(
+    return GestureDetector(
+      onTap: widget.onTap,
+      child: MouseRegion(
+        onEnter: (_) => setState(() {
+          isHovering = true;
+        }),
+        onExit: (_) => setState(() {
+          isHovering = false;
+        }),
+        cursor: SystemMouseCursors.click,
+        child: AnimatedContainer(
+          margin: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.linear,
+          padding: widget.isRating == true
+              ? const EdgeInsets.all(20)
+              : const EdgeInsets.all(10),
+          decoration: BoxDecoration(
             color: AppColors.itemHovered,
             border: Border.all(
               color: AppColors.cardBorder,
@@ -61,43 +64,28 @@ class _MoviesCardState extends State<MoviesCard> {
                 offset: const Offset(0, 3),
               ),
             ]
-              : [],
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: SizedBox(
-                child: Image.asset(
-                  widget.imageUrl,
-                  fit: BoxFit.fill,
+                : [],
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  child: Image.asset(
+                    widget.imageUrl,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            widget.releasedTitle == null ?
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                    padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    decoration: BoxDecoration(
-                        color: AppColors.itemHovered,
-                        border: Border.all(
-                          color: AppColors.cardBorder,
-                        ),
-                        borderRadius:
-                        const BorderRadius.all(Radius.circular(20))),
-                    child: _subContainerLeft()),
-                if (widget.textViewRight == null)
-                  const SizedBox()
-                else
+              const SizedBox(
+                height: 20,
+              ),
+              widget.releasedTitle == null ?
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                   Container(
                       padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      alignment: Alignment.center,
                       decoration: BoxDecoration(
                           color: AppColors.itemHovered,
                           border: Border.all(
@@ -105,20 +93,36 @@ class _MoviesCardState extends State<MoviesCard> {
                           ),
                           borderRadius:
                           const BorderRadius.all(Radius.circular(20))),
-                      child: _subContainerRight()),
-              ],
-            ) : Container(
-                padding:
-                const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                decoration: BoxDecoration(
-                    color: AppColors.itemHovered,
-                    border: Border.all(
-                      color: AppColors.cardBorder,
-                    ),
-                    borderRadius:
-                    const BorderRadius.all(Radius.circular(20))),
-                child: Text(widget.releasedTitle!, textAlign: TextAlign.center,)),
-          ],
+                      child: _subContainerLeft()),
+                  if (widget.textViewRight == null)
+                    const SizedBox()
+                  else
+                    Container(
+                        padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: AppColors.itemHovered,
+                            border: Border.all(
+                              color: AppColors.cardBorder,
+                            ),
+                            borderRadius:
+                            const BorderRadius.all(Radius.circular(20))),
+                        child: _subContainerRight()),
+                ],
+              ) : Container(
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  decoration: BoxDecoration(
+                      color: AppColors.itemHovered,
+                      border: Border.all(
+                        color: AppColors.cardBorder,
+                      ),
+                      borderRadius:
+                      const BorderRadius.all(Radius.circular(20))),
+                  child: Text(widget.releasedTitle!, textAlign: TextAlign.center,)),
+            ],
+          ),
         ),
       ),
     );

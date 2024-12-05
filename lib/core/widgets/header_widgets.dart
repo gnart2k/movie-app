@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
+import 'package:movie_app/core/constants/route_manager.dart';
 import 'package:movie_app/core/widgets/search/search_text_field.dart';
 import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';
 
@@ -109,7 +111,10 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
           children: items.map((item) {
             final isSelected = item.isSelected;
             return GestureDetector(
-              onTap: () => _onNavBarItemTap(items.indexOf(item), viewModel),
+              onTap: () => {
+                context.go("/${item.label.replaceAll(" & ", "").trim()}"),
+                _onNavBarItemTap(items.indexOf(item), viewModel)
+              },
               child: MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: Container(
