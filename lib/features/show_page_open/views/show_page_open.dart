@@ -41,7 +41,7 @@ class ShowPageOpenPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MovieBigBanner(),
+          MovieBigBanner(onTap: () {},),
           const SizedBox(
             height: 100,
           ),

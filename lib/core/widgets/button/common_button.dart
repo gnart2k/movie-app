@@ -5,12 +5,14 @@ class CommonButton extends StatefulWidget {
   final String label;
   final VoidCallback onTap;
   final Color backgroundColor;
+  bool enabled = true;
 
-  const CommonButton(
+  CommonButton(
       {super.key,
       required this.label,
       required this.onTap,
-      this.backgroundColor = AppColors.primary});
+      this.backgroundColor = AppColors.primary,
+       this.enabled = true});
 
   @override
   State<CommonButton> createState() => _CommonButtonState();
@@ -22,19 +24,27 @@ class _CommonButtonState extends State<CommonButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: () {
+        if(widget.enabled) {
+          widget.onTap();
+        }
+      },
       onTapDown: (_) {
-        setState(() {
-          isPressed = true;
-        });
+        if(widget.enabled) {
+          setState(() {
+            isPressed = true;
+          });
+        }
       },
       onTapUp: (_) {
-        setState(() {
-          isPressed = false;
-        });
+        if(widget.enabled) {
+          setState(() {
+            isPressed = false;
+          });
+        }
       },
       child: MouseRegion(
-        cursor: SystemMouseCursors.click,
+        cursor: widget.enabled ?  SystemMouseCursors.click : SystemMouseCursors.basic,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 1000),
           curve: Curves.linear,
