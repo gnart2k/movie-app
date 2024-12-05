@@ -2,32 +2,33 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/domain/model/review_model.dart';
 import 'package:movie_app/core/widgets/slider/slider_button.dart';
 import 'package:movie_app/core/widgets/slider/slider_indicator.dart';
+import 'package:movie_app/features/movie_open_page/data/models/review_container.dart';
+import 'package:movie_app/features/movie_open_page/presentation/view_models/review_container_view_model.dart';
 
-class ReviewContainer extends StatefulWidget {
-  final List<ReviewModel> reviewList;
-  const ReviewContainer({super.key, required this.reviewList});
+class ReviewContainer extends ConsumerStatefulWidget {
+  const ReviewContainer({super.key});
 
   @override
-  State<ReviewContainer> createState() => _ReviewContainerState();
+  ConsumerState<ReviewContainer> createState() => _ReviewContainerState();
 }
 
-class _ReviewContainerState extends State<ReviewContainer>
+class _ReviewContainerState extends ConsumerState<ReviewContainer>
     with TickerProviderStateMixin {
   late CarouselSliderController? _buttonCarouselController;
-  late int pageNumber;
   int currentPage = 0;
   bool isPressed = false;
 
   @override
   void initState() {
     _buttonCarouselController = CarouselSliderController();
-    pageNumber = widget.reviewList.length;
     super.initState();
+    ref.read(reviewSectionViewModelProvider.notifier).fetchReviewSection();
   }
 
   @override
@@ -48,6 +49,7 @@ class _ReviewContainerState extends State<ReviewContainer>
 
   @override
   Widget build(BuildContext context) {
+    final reviewSection = ref.watch(reviewSectionViewModelProvider);
     return Container(
       padding: const EdgeInsets.all(30),
       decoration: BoxDecoration(
@@ -65,7 +67,7 @@ class _ReviewContainerState extends State<ReviewContainer>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Review",
+                reviewSection.title,
                 style: GoogleFonts.manrope(
                   color: AppColors.lightGray,
                   fontSize: 18,
@@ -88,10 +90,12 @@ class _ReviewContainerState extends State<ReviewContainer>
                     duration: const Duration(milliseconds: 200),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: AppColors.cardBorder, width: 1),
-                        color: AppColors.appBackground.withOpacity(isPressed ? 0.5 : 1)),
-                    padding:
-                    const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20),
+                        border:
+                            Border.all(color: AppColors.cardBorder, width: 1),
+                        color: AppColors.appBackground
+                            .withOpacity(isPressed ? 0.5 : 1)),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 12.0, horizontal: 20),
                     child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -113,10 +117,10 @@ class _ReviewContainerState extends State<ReviewContainer>
             height: 20,
           ),
           CarouselSlider.builder(
-            itemCount: widget.reviewList.length,
+            itemCount: reviewSection.reviews.length,
             carouselController: _buttonCarouselController,
             itemBuilder: (context, index, realIndex) {
-              return _reviewContent(context, widget.reviewList[index]);
+              return _reviewContent(context, reviewSection.reviews[index]);
             },
             options: CarouselOptions(
               height: 300,
@@ -146,7 +150,7 @@ class _ReviewContainerState extends State<ReviewContainer>
               ),
               Row(
                 children: List.generate(
-                  (widget.reviewList.length - 1).ceil(),
+                  (reviewSection.reviews.length - 1).ceil(),
                   (index) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: SliderIndicator(isActive: currentPage == index),
@@ -167,7 +171,7 @@ class _ReviewContainerState extends State<ReviewContainer>
   }
 }
 
-Widget _reviewContent(BuildContext context, ReviewModel review) {
+Widget _reviewContent(BuildContext context, Review review) {
   return Card(
     color: AppColors.darkGray,
     shape: RoundedRectangleBorder(
@@ -189,7 +193,7 @@ Widget _reviewContent(BuildContext context, ReviewModel review) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      review.name,
+                      review.author,
                       style: GoogleFonts.manrope(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
@@ -211,7 +215,7 @@ Widget _reviewContent(BuildContext context, ReviewModel review) {
             ),
             const SizedBox(height: 20),
             Text(
-              review.reviewText,
+              review.comment,
               overflow: TextOverflow.ellipsis,
               maxLines: 4,
               style: GoogleFonts.manrope(
@@ -226,7 +230,7 @@ Widget _reviewContent(BuildContext context, ReviewModel review) {
   );
 }
 
-Widget _ratingItem(BuildContext context, ReviewModel review) {
+Widget _ratingItem(BuildContext context, Review review) {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
     decoration: BoxDecoration(
