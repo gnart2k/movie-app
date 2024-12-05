@@ -37,7 +37,8 @@
     "title": "Reviews",
     "reviews": [
       {
-        "author": "Aniket Roy (From India)",
+        "author": "Aniket Roy",
+        "location": "From India",
         "rating": 4.5,
         "comment": "This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it."
       }

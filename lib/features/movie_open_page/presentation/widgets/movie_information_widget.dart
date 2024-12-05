@@ -1,25 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
+import 'package:movie_app/core/widgets/button/language_switcher.dart';
+import 'package:movie_app/features/movie_open_page/presentation/view_models/movie_view_model.dart';
 
-class MovieInformation extends StatelessWidget {
+class MovieInformation extends ConsumerWidget {
   MovieInformation({super.key, this.movie});
 
   final MovieModel? movie;
-  final List<String> languageList = [
-    'English',
-    'Hindi',
-    'Tamil',
-    'Telegu',
-    'Kannada'
-  ];
+  // final List<String> languageList = [
+  //   'English',
+  //   'Hindi',
+  //   'Tamil',
+  //   'Telegu',
+  //   'Kannada'
+  // ];
 
   final List<String> genresList = ['Action', 'Adventure', 'Romantic'];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final movieProps = ref.watch(movieViewModelProvider);
+    final List<String> _languageList =
+        movieProps.movieSection.details.availableLanguages;
+
     return Container(
       padding: const EdgeInsets.all(50),
       decoration: BoxDecoration(
@@ -28,9 +35,10 @@ class MovieInformation extends StatelessWidget {
           border: Border.all(width: 1, color: AppColors.cardBorder)),
       child: Column(
         children: [
-          _releaseYear(),
-          _availableLanguage(),
-          _ratings(),
+          _releaseYear(movieProps.movieSection.details.releaseYear.toString()),
+          _availableLanguage(languageList),
+          _ratings(movieProps.movieSection.details.ratings.imdb,
+              movieProps.movieSection.details.ratings.streamVibe),
           _genres(),
           _director(),
           _music()
@@ -55,12 +63,10 @@ class MovieInformation extends StatelessWidget {
         Text(
           title,
           style: GoogleFonts.manrope(
-            color: AppColors.lightGray,
+              color: AppColors.lightGray,
               fontSize: 18,
               height: 1.5,
-              fontWeight: FontWeight.w500
-          ),
-         
+              fontWeight: FontWeight.w500),
         )
       ],
     );
@@ -100,7 +106,7 @@ class MovieInformation extends StatelessWidget {
         ));
   }
 
-  Widget _ratings() {
+  Widget _ratings(double imdbRate, double streamVibeRate) {
     return Column(
       children: [
         const SizedBox(
@@ -112,11 +118,11 @@ class MovieInformation extends StatelessWidget {
         ),
         Row(
           children: [
-            Expanded(child: _ratingItem('IMDb', 4.5)),
+            Expanded(child: _ratingItem('IMDb', imdbRate)),
             const SizedBox(
               width: 20,
             ),
-            Expanded(child: _ratingItem('Streamvibe', 4))
+            Expanded(child: _ratingItem('Streamvibe', streamVibeRate))
           ],
         )
       ],
@@ -141,7 +147,7 @@ class MovieInformation extends StatelessWidget {
     );
   }
 
-  Widget _availableLanguage() {
+  Widget _availableLanguage(List<String> languages) {
     return Container(
       margin: const EdgeInsets.only(top: 30),
       child: Column(
@@ -153,7 +159,7 @@ class MovieInformation extends StatelessWidget {
             spacing: 10,
             runSpacing: 10,
             children:
-                languageList.map((language) => _singleItem(language)).toList(),
+                languages.map((language) => _singleItem(language)).toList(),
           ),
         ],
       ),
@@ -245,7 +251,7 @@ class MovieInformation extends StatelessWidget {
     );
   }
 
-  Widget _releaseYear() {
+  Widget _releaseYear(String releaseYear) {
     return Row(
       children: [
         Column(
@@ -255,7 +261,7 @@ class MovieInformation extends StatelessWidget {
             const SizedBox(
               height: 14,
             ),
-            Text('2020',
+            Text(releaseYear,
                 style: GoogleFonts.manrope(
                     color: const Color(0xFFFFFFFF),
                     fontSize: 20,
