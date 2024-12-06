@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
@@ -35,8 +35,7 @@ class _SupportFormWidgetState extends ConsumerState<SupportFormWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  AppLocalizations.of(context)!
-                      .welcome,
+                  AppLocalizations.of(context)!.welcome,
                   style: GoogleFonts.manrope(
                     fontSize: 48,
                     fontWeight: FontWeight.w700,
@@ -44,8 +43,7 @@ class _SupportFormWidgetState extends ConsumerState<SupportFormWidget> {
                 ),
                 const SizedBox(height: 14),
                 Text(
-                  AppLocalizations.of(context)!
-                      .we_re_here,
+                  AppLocalizations.of(context)!.we_re_here,
                   style: GoogleFonts.manrope(
                       fontSize: 18,
                       color: AppColors.lightGray,
@@ -76,18 +74,14 @@ class _SupportFormWidgetState extends ConsumerState<SupportFormWidget> {
                       children: [
                         Expanded(
                             child: _buildLabelledTextField(
-                                label: AppLocalizations.of(context)!
-                                    .first_name,
-                                placeHolder:
-                                AppLocalizations.of(context)!
+                                label: AppLocalizations.of(context)!.first_name,
+                                placeHolder: AppLocalizations.of(context)!
                                     .enter_first_name)),
                         const SizedBox(width: 50),
                         Expanded(
                             child: _buildLabelledTextField(
-                                label: AppLocalizations.of(context)!
-                                    .last_name,
-                                placeHolder:
-                                AppLocalizations.of(context)!
+                                label: AppLocalizations.of(context)!.last_name,
+                                placeHolder: AppLocalizations.of(context)!
                                     .enter_last_name)),
                       ],
                     ),
@@ -96,18 +90,14 @@ class _SupportFormWidgetState extends ConsumerState<SupportFormWidget> {
                       children: [
                         Expanded(
                             child: _buildLabelledTextField(
-                                label: AppLocalizations.of(context)!
-                                    .email,
+                                label: AppLocalizations.of(context)!.email,
                                 placeHolder:
-                                AppLocalizations.of(context)!
-                                    .enter_email)),
+                                    AppLocalizations.of(context)!.enter_email)),
                         const SizedBox(width: 50),
                         Expanded(
                           child: _buildPhoneNumberField(
-                              label: AppLocalizations.of(context)!
-                                  .phone_number,
-                              placeHolder:
-                              AppLocalizations.of(context)!
+                              label: AppLocalizations.of(context)!.phone_number,
+                              placeHolder: AppLocalizations.of(context)!
                                   .enter_phone_number,
                               countryCode:
                                   supportForm.form.fields[3].countryCode),
@@ -116,11 +106,10 @@ class _SupportFormWidgetState extends ConsumerState<SupportFormWidget> {
                     ),
                     const SizedBox(height: 50),
                     _buildLabelledTextField(
-                        label: AppLocalizations.of(context)!
-                            .message,
+                        label: AppLocalizations.of(context)!.message,
                         maxLines: 6,
-                        placeHolder: AppLocalizations.of(context)!
-                            .enter_your_message),
+                        placeHolder:
+                            AppLocalizations.of(context)!.enter_your_message),
                     const SizedBox(height: 50),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -140,8 +129,7 @@ class _SupportFormWidgetState extends ConsumerState<SupportFormWidget> {
                         ),
                         Expanded(
                           child: Text(
-                            AppLocalizations.of(context)!
-                                .i_agree,
+                            AppLocalizations.of(context)!.i_agree,
                             style: GoogleFonts.manrope(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w400,
@@ -163,8 +151,7 @@ class _SupportFormWidgetState extends ConsumerState<SupportFormWidget> {
                               child: TextButton(
                                 onPressed: () {},
                                 child: Text(
-                                  AppLocalizations.of(context)!
-                                      .send_message,
+                                  AppLocalizations.of(context)!.send_message,
                                   style: GoogleFonts.manrope(
                                     color: const Color(0xFFFFFFFF),
                                     fontWeight: FontWeight.w600,

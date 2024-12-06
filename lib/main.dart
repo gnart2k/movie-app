@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/features/app/presentation/view_models/locale_viewmodel.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:movie_app/features/home/presentation/view_models/auth_viewmodel.dart';
 
 import 'core/constants/route_manager.dart';
-
 
 void main() {
   runApp(const ProviderScope(child: MainApp()));
@@ -17,11 +15,8 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final localeViewModel = ref.watch(localeProvider);
-    final authViewModel = ref.watch(authViewModelProvider);
     return MaterialApp.router(
       routerConfig: RouteGenerator.instance.router,
-
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: ref.read(localeProvider),
@@ -31,6 +26,5 @@ class MainApp extends ConsumerWidget {
               const TextTheme(bodyMedium: TextStyle(color: Colors.white))),
       debugShowCheckedModeBanner: false,
     );
-
   }
 }

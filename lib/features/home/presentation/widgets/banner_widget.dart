@@ -6,15 +6,12 @@ import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/button/icon_button.dart';
-import 'package:movie_app/features/home/presentation/view_models/home_view_model.dart';
 
 class BannerWidget extends ConsumerWidget {
   const BannerWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final homeProps = ref.watch(homeViewModelProvider);
-
     return Column(
       children: [
         const SizedBox(height: 48),
@@ -51,8 +48,7 @@ class BannerWidget extends ConsumerWidget {
         const SizedBox(height: 40),
         CustomIconButton(
             iconData: Icons.play_arrow,
-            label:  AppLocalizations.of(context)!
-                .start_watching_now,
+            label: AppLocalizations.of(context)!.start_watching_now,
             onTap: () {})
       ],
     );

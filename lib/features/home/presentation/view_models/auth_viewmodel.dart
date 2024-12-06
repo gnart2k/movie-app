@@ -12,7 +12,6 @@ final authViewModelProvider =
 class AuthViewModel extends ChangeNotifier {
   UserModel? _currentUser;
   bool _isAuthenticated = false;
-  Timer? _tokenCheckTimer;
 
   bool get isAuthenticated => _isAuthenticated;
   UserModel? get currentUser => _currentUser;
@@ -21,9 +20,9 @@ class AuthViewModel extends ChangeNotifier {
     _checkAuthentication();
     _startTokenCheckTimer();
   }
-  
+
   void _startTokenCheckTimer() {
-    _tokenCheckTimer = Timer.periodic(const Duration(seconds: 10), (_) async {
+    Timer.periodic(const Duration(seconds: 10), (_) async {
       if (await isTokenExpired) {
         await logout();
       }
@@ -57,8 +56,9 @@ class AuthViewModel extends ChangeNotifier {
 
       // create token with 1h
       final token = base64Encode(utf8.encode(DateTime.now().toIso8601String()));
-      final expiry =
-          DateTime.now().add(const Duration(seconds: 10)).millisecondsSinceEpoch;
+      final expiry = DateTime.now()
+          .add(const Duration(seconds: 10))
+          .millisecondsSinceEpoch;
 
       _currentUser = UserModel(username: username, token: token);
 
