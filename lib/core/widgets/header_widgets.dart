@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
-import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/search/search_text_field.dart';
 import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';
+import "dart:html";
 
 import '../../features/app/presentation/widgets/locale_switcher_widget.dart';
 import '../../features/app/presentation/widgets/show_history_widget.dart';
@@ -20,19 +20,21 @@ class HeaderWidgets extends ConsumerStatefulWidget {
 
 class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
   late List<NavBarProps> navbarItems;
-
+  final url = window.location.href;
   List<NavBarProps> getNavbarItems(List<NavigationLinkModel> navBarData) {
     if (navBarData.where((item) => item.isSelected).toList().isEmpty) {
-      return navBarData
-          .asMap()
-          .map((index, e) => MapEntry(
-                index,
-                index == 0
-                    ? NavBarProps(label: e.url, isSelected: true)
-                    : NavBarProps(label: e.url, isSelected: e.isSelected),
-              ))
-          .values
-          .toList();
+      int? currentIndex = navBarData.indexWhere(
+        (e) => e.url.replaceAll(" & ", "").trim() == url.split("/").last,
+      );
+
+      return navBarData.asMap().entries.map((entry) {
+        final index = entry.key;
+        final e = entry.value;
+        return NavBarProps(
+          label: e.url,
+          isSelected: index == currentIndex,
+        );
+      }).toList();
     } else {
       return navBarData
           .asMap()
@@ -61,8 +63,10 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 500, ),
-      color: widget.isChangeColor ? Colors.black :  Colors.transparent,
+      duration: const Duration(
+        milliseconds: 500,
+      ),
+      color: widget.isChangeColor ? Colors.black : Colors.transparent,
       padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 100),
       child: Row(children: [
         Expanded(
@@ -81,7 +85,11 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
       final navbarItemList =
           viewModel.watch(headerViewModelProvider).navigationLinks;
       final items = getNavbarItems(navbarItemList);
-      if (items.isEmpty) return SizedBox();
+      if (items.isEmpty) return const SizedBox();
+
+      items.map((e) =>
+          {if (e.label.replaceAll(" & ", "").trim() == url.split("/")[-1]) {}});
+
       return Container(
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
