@@ -189,7 +189,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
           cardWidgetBuilder: (movie, int itemNum) {
             return MoviesCard(
               title: movie.name,
-              imageUrl: movie.imageUrl!,
+              imageUrl: movie.imageUrl,
               hour: "1h30min",
               textViewRight: "20k",
               isRating: true,
