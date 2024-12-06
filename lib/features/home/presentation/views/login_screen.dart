@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/features/home/presentation/view_models/auth_viewmodel.dart';
-import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -138,6 +138,10 @@ class LoginScreenState extends State<LoginScreen> {
                               const SizedBox(height: 5),
                               TextField(
                                 controller: _usernameController,
+                                style: GoogleFonts.manrope(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400,
+                                ),
                                 decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.black,
@@ -165,6 +169,10 @@ class LoginScreenState extends State<LoginScreen> {
                               TextField(
                                 controller: _passwordController,
                                 obscureText: true,
+                                style: GoogleFonts.manrope(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400,
+                                ),
                                 decoration: InputDecoration(
                                   filled: true,
                                   fillColor: Colors.black,
@@ -208,11 +216,9 @@ class LoginScreenState extends State<LoginScreen> {
                                         _passwordController.text,
                                       );
                                       if (success) {
-                                        Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                              builder: (_) =>
-                                                  const HomeScreen()),
-                                        );
+                                        if (context.mounted) {
+                                          context.go('/home');
+                                        }
                                       } else {
                                         setState(() {
                                           _errorMessage =

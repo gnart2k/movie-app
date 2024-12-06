@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/features/app/presentation/app_layout.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
@@ -7,6 +8,7 @@ import 'package:movie_app/features/movie_and_show/presentation/views/movie_and_s
 import 'package:movie_app/features/show_page_open/views/show_page_open.dart';
 import 'package:movie_app/features/support_page/presentation/views/support_page.dart';
 
+import '../../features/home/presentation/view_models/auth_viewmodel.dart';
 import '../../features/movie_open_page/presentation/views/movies_open_page.dart';
 import '../../features/subscription_page/presentation/views/subscription_page.dart';
 
@@ -22,57 +24,73 @@ class Routes {
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
+
 class RouteGenerator {
   RouteGenerator._internal();
 
   static final RouteGenerator instance = RouteGenerator._internal();
   factory RouteGenerator() => instance;
+
   final router = GoRouter(
-      initialLocation: Routes.homeRoute,
-      navigatorKey: _rootNavigatorKey,
-      routes: [
-        ShellRoute(
-            navigatorKey: _shellNavigatorKey,
-            builder: (context, state, child) {
-              return AppLayout(
-                child: child,
-              );
-            },
-            routes: [
-              GoRoute(
-                  name: 'home',
-                  path: Routes.homeRoute,
-                  builder: (context, state) => const HomeScreen()),
-              GoRoute(
-                  name: 'movieAndShowPage',
-                  path: Routes.movieAndShowPage,
-                  builder: (context, state) => const MovieAndShowPage()),
-              GoRoute(
-                  name: 'support',
-                  path: Routes.support,
-                  builder: (context, state) => const SupportPage()),
-              GoRoute(
-                  name: 'subscription',
-                  path: Routes.subscription,
-                  builder: (context, state) => const SubscriptionPage()),
-              GoRoute(
-                  name: 'movieOpen',
-                  path: Routes.movieOpen,
-                  builder: (context, state) {
-                    final id = state.pathParameters['id']!;
-                    return MovieOpenPage(id: id);
-                  }),
-              GoRoute(
-                  name: 'showOpen',
-                  path: Routes.showOpen,
-                  builder: (context, state) {
-                    final id = state.pathParameters['id']!;
-                    return ShowPageOpenPage(id: id);
-                  }),
-            ]),
-        GoRoute(
-            name: 'login',
-            path: Routes.loginRoute,
-            builder: (context, state) => const LoginScreen()),
-      ]);
+    initialLocation: Routes.homeRoute,
+    navigatorKey: _rootNavigatorKey,
+    refreshListenable: authViewModelProvider.read(ProviderContainer()),
+    redirect: (context, state) async {
+      final container = ProviderScope.containerOf(context);
+      final authViewModel = container.read(authViewModelProvider);
+
+      if (!authViewModel.isAuthenticated) {
+        return '/login';
+      } else if (await authViewModel.isTokenExpired) {
+        await authViewModel.logout();
+        return '/login';
+      }
+      return null; // No redirection needed
+    },
+    routes: [
+      ShellRoute(
+          navigatorKey: _shellNavigatorKey,
+          builder: (context, state, child) {
+            return AppLayout(
+              child: child,
+            );
+          },
+          routes: [
+            GoRoute(
+                name: 'home',
+                path: Routes.homeRoute,
+                builder: (context, state) => const HomeScreen()),
+            GoRoute(
+                name: 'movieAndShowPage',
+                path: Routes.movieAndShowPage,
+                builder: (context, state) => const MovieAndShowPage()),
+            GoRoute(
+                name: 'support',
+                path: Routes.support,
+                builder: (context, state) => const SupportPage()),
+            GoRoute(
+                name: 'subscription',
+                path: Routes.subscription,
+                builder: (context, state) => const SubscriptionPage()),
+            GoRoute(
+                name: 'movieOpen',
+                path: Routes.movieOpen,
+                builder: (context, state) {
+                  final id = state.pathParameters['id']!;
+                  return MovieOpenPage(id: id);
+                }),
+            GoRoute(
+                name: 'showOpen',
+                path: Routes.showOpen,
+                builder: (context, state) {
+                  final id = state.pathParameters['id']!;
+                  return ShowPageOpenPage(id: id);
+                }),
+          ]),
+      GoRoute(
+          name: 'login',
+          path: Routes.loginRoute,
+          builder: (context, state) => const LoginScreen()),
+    ],
+  );
 }
