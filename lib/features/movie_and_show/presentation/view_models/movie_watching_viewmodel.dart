@@ -19,14 +19,15 @@ class MovieWatchingViewModel extends StateNotifier<List<MovieModel>> {
     final jsonString = sharedPreferences!.getString("movie");
     if (jsonString != null) {
       final List<dynamic> jsonList = jsonDecode(jsonString);
-      state =  jsonList.map((json) => MovieModel.fromJson(json)).toList();
+      state = jsonList.map((json) => MovieModel.fromJson(json)).toList();
     }
   }
 
   void _saveMoviesToPreferences() {
     if (sharedPreferences == null) return;
 
-    final jsonString = jsonEncode(state.map((movie) => movie.toJson()).toList());
+    final jsonString =
+        jsonEncode(state.map((movie) => movie.toJson()).toList());
     sharedPreferences!.setString("movie", jsonString);
   }
 
@@ -43,7 +44,8 @@ class MovieWatchingViewModel extends StateNotifier<List<MovieModel>> {
   }
 }
 
-final movieWatchingProvider = StateNotifierProvider<MovieWatchingViewModel, List<MovieModel>>((ref) {
+final movieWatchingProvider =
+    StateNotifierProvider<MovieWatchingViewModel, List<MovieModel>>((ref) {
   final sharedPreferences = ref.watch(sharedPreferencesProvider).value;
   return MovieWatchingViewModel(sharedPreferences);
 });

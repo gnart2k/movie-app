@@ -77,4 +77,3 @@ final movieViewModelProvider =
     StateNotifierProvider<MovieViewModel, MovieProps>(
   (ref) => MovieViewModel(ref.read(movieRepositoryProvider)),
 );
-

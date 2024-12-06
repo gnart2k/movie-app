@@ -9,7 +9,6 @@ class SubscriptionPage extends ConsumerWidget {
   const SubscriptionPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     return Column(children: [
       Container(
         padding: const EdgeInsets.symmetric(horizontal: 160),

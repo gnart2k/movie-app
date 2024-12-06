@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 
+// ignore: must_be_immutable
 class CommonButton extends StatefulWidget {
   final String label;
   final VoidCallback onTap;

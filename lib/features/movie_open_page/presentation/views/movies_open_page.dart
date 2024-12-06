@@ -14,6 +14,7 @@ import '../widgets/cast_container.dart';
 import '../widgets/description_container.dart';
 import '../widgets/review_container.dart';
 
+// ignore: must_be_immutable
 class MovieOpenPage extends ConsumerWidget {
   MovieOpenPage({super.key, required this.id});
 
@@ -39,7 +40,7 @@ class MovieOpenPage extends ConsumerWidget {
   ];
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final movieProps = ref.watch(movieViewModelProvider);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 100),
@@ -47,11 +48,13 @@ class MovieOpenPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MovieBigBanner(onTap: () {
-            ref.read(movieWatchingProvider.notifier).toggleMovieList(MovieModel(name: movieProps.movieSection.title, imageUrl: AppImages.movieBanner));
+            ref.read(movieWatchingProvider.notifier).toggleMovieList(MovieModel(
+                name: movieProps.movieSection.title,
+                imageUrl: AppImages.movieBanner));
             showDialog(
               context: context,
               builder: (context) => CustomDialog(
-                title: 'Add your movie Successful' ,
+                title: 'Add your movie Successful',
                 message: 'You just add movie to watching list',
                 isSuccess: true,
                 onOkPressed: () {
@@ -79,7 +82,7 @@ class MovieOpenPage extends ConsumerWidget {
                       children: [
                         const DescriptionContainer(
                             description:
-                            "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands."),
+                                "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands."),
                         const SizedBox(
                           height: 20,
                         ),

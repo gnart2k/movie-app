@@ -60,8 +60,10 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 500, ),
-      color: widget.isChangeColor ? Colors.black :  Colors.transparent,
+      duration: const Duration(
+        milliseconds: 500,
+      ),
+      color: widget.isChangeColor ? Colors.black : Colors.transparent,
       padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 100),
       child: Row(children: [
         Expanded(

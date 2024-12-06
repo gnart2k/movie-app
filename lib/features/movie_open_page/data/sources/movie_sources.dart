@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:movie_app/features/movie_open_page/data/models/movie_props.dart';
 

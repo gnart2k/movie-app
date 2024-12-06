@@ -1,4 +1,3 @@
-
 import 'package:movie_app/features/home/data/models/faq_section.dart';
 import 'package:movie_app/features/home/data/sources/faq_section_source.dart';
 

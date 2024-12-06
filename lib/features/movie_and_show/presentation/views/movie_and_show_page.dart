@@ -22,9 +22,9 @@ class MovieAndShowPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 100),
           child: Column(children: [
-            MovieBigBanner(onTap: () {
-
-            },),
+            MovieBigBanner(
+              onTap: () {},
+            ),
             const SizedBox(
               height: 100,
             ),
@@ -164,7 +164,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               },
             );
           },
-          list: moviesLists, 
+          list: moviesLists,
           title: moviesState.sectionMoviesList[widget.isMovies ? 2 : 5].title,
           heightCard: 350,
         ),
@@ -180,7 +180,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               },
             );
           },
-          list: moviesLists, 
+          list: moviesLists,
           title: moviesState.sectionMoviesList[widget.isMovies ? 3 : 6].title,
           heightCard: 350,
         ),
@@ -198,7 +198,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               },
             );
           },
-          list: mustWatchLists, 
+          list: mustWatchLists,
           title: moviesState.sectionMoviesList[widget.isMovies ? 4 : 7].title,
           heightCard: 450,
         ),
@@ -206,4 +206,3 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
     );
   }
 }
-
