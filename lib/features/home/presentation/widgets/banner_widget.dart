@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
@@ -6,7 +7,6 @@ import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/button/icon_button.dart';
 import 'package:movie_app/features/home/presentation/view_models/home_view_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BannerWidget extends ConsumerWidget {
   const BannerWidget({super.key});
@@ -35,7 +35,8 @@ class BannerWidget extends ConsumerWidget {
                 child: Text(
                   textAlign: TextAlign.center,
                   AppLocalizations.of(context)!.the_best_stream_experience,
-                  style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 42, fontWeight: FontWeight.bold),
                 ),
               ),
             ])),

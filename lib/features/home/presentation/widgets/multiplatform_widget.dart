@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/features/home/presentation/view_models/home_view_model.dart';

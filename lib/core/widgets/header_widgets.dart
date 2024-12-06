@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
-import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/search/search_text_field.dart';
 import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';

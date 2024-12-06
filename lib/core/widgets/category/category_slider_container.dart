@@ -63,7 +63,7 @@ class _CategorySliderContainerState<T> extends State<CategorySliderContainer<T>>
           children: [
             Expanded(
               child:
-              CommonTitle(title: widget.title, subTitle: widget.subTitle),
+                  CommonTitle(title: widget.title, subTitle: widget.subTitle),
             ),
             const SizedBox(
               width: 30,
@@ -83,8 +83,8 @@ class _CategorySliderContainerState<T> extends State<CategorySliderContainer<T>>
           carouselController: _buttonCarouselController,
           itemCount: pageNumber,
           itemBuilder: (context, index, realIndex) {
-            return _categoryContent(context, widget.list[index],
-                widget.list[index].length);
+            return _categoryContent(
+                context, widget.list[index], widget.list[index].length);
           },
           options: CarouselOptions(
               viewportFraction: 1,
@@ -102,15 +102,15 @@ class _CategorySliderContainerState<T> extends State<CategorySliderContainer<T>>
     );
   }
 
-  Widget _categoryContent(
-      BuildContext context, List<T> list, int itemNumber) {
+  Widget _categoryContent(BuildContext context, List<T> list, int itemNumber) {
     return SizedBox(
       width: double.infinity,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: list
-            .map((item) => Expanded(child: widget.cardWidgetBuilder(item, itemNumber)))
+            .map((item) =>
+                Expanded(child: widget.cardWidgetBuilder(item, itemNumber)))
             .toList(),
       ),
     );

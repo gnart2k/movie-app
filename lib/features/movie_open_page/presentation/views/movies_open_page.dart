@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
+
 import '../../../../core/domain/model/cast_model.dart';
 import '../../../../core/widgets/banner/movie_detail_banner.dart';
 import '../../../../core/widgets/dialog/custom_dialog.dart';
