@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
-
+import 'package:movie_app/core/helpers/converter.dart';
 import '../../../../core/domain/model/cast_model.dart';
 import '../../../../core/widgets/banner/movie_detail_banner.dart';
 import '../../../../core/widgets/dialog/custom_dialog.dart';
@@ -14,34 +14,15 @@ import '../widgets/cast_container.dart';
 import '../widgets/description_container.dart';
 import '../widgets/review_container.dart';
 
-// ignore: must_be_immutable
 class MovieOpenPage extends ConsumerWidget {
-  MovieOpenPage({super.key, required this.id});
+  const MovieOpenPage({super.key, required this.id});
 
   final String id;
-
-  List<List<CastModel>> casts = [
-    [
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-    ],
-    [
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-      CastModel(name: "linh", imageUrl: AppImages.characterImage),
-    ],
-  ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final movieProps = ref.watch(movieViewModelProvider);
+    if (movieProps.movieSection.buttons.isEmpty) return const SizedBox();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 100),
       child: Column(
@@ -86,7 +67,14 @@ class MovieOpenPage extends ConsumerWidget {
                         const SizedBox(
                           height: 20,
                         ),
-                        CastContainer(casts: casts),
+                        CastContainer(
+                            casts: convertTo2DArray(
+                                movieProps.castSection.castMembers
+                                    .map((e) => CastModel(
+                                        name: e.name,
+                                        imageUrl: AppImages.characterImage))
+                                    .toList(),
+                                5)),
                         const SizedBox(
                           height: 20,
                         ),

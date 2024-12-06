@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -37,6 +36,7 @@ class _AuthGuardState extends ConsumerState<AuthGuard> {
       _checkAuthentication();
     });
   }
+
 
   Future<void> _checkAuthentication() async {
     final authViewModel = ref.read(authViewModelProvider);
