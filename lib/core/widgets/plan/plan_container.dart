@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/domain/model/plan_model.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
 import 'package:movie_app/core/widgets/plan/plan_card.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../features/subscription_page/presentation/view_models/plan_viewmodel.dart';
 import '../../constants/app_colors.dart';
 import '../dialog/custom_dialog.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PlanContainer extends ConsumerStatefulWidget {
   const PlanContainer({super.key, required this.plans});
@@ -46,10 +46,8 @@ class _PlanContainerState extends ConsumerState<PlanContainer> {
           children: [
             Expanded(
                 child: CommonTitle(
-              title: AppLocalizations.of(context)!
-                  .choose_right_plan,
-              subTitle:  AppLocalizations.of(context)!
-                  .join_stream_vibe,
+              title: AppLocalizations.of(context)!.choose_right_plan,
+              subTitle: AppLocalizations.of(context)!.join_stream_vibe,
             )),
             const SizedBox(
               width: 20,
@@ -74,7 +72,8 @@ class _PlanContainerState extends ConsumerState<PlanContainer> {
                       context: context,
                       builder: (context) => CustomDialog(
                         title: AppLocalizations.of(context)!.congrat,
-                        message: '${AppLocalizations.of(context)!.you_register} $plan ',
+                        message:
+                            '${AppLocalizations.of(context)!.you_register} $plan ',
                         isSuccess: true,
                         onOkPressed: () {
                           Navigator.of(context).pop();
@@ -89,8 +88,7 @@ class _PlanContainerState extends ConsumerState<PlanContainer> {
                       context: context,
                       builder: (context) => CustomDialog(
                         title: AppLocalizations.of(context)!.notification,
-                        message:
-                        AppLocalizations.of(context)!.you_have,
+                        message: AppLocalizations.of(context)!.you_have,
                         isSuccess: false,
                         onOkPressed: () {
                           ref.read(planProvider.notifier).deleteCurrentPlan();
@@ -128,8 +126,7 @@ Widget _planControllerContainer(
     child: Row(
       children: [
         CommonButton(
-          label:  AppLocalizations.of(context)!
-              .monthly,
+          label: AppLocalizations.of(context)!.monthly,
           onTap: () {
             onTap(TimeOption.monthly);
           },
@@ -138,8 +135,7 @@ Widget _planControllerContainer(
               : Colors.black,
         ),
         CommonButton(
-            label:  AppLocalizations.of(context)!
-                .yearly,
+            label: AppLocalizations.of(context)!.yearly,
             onTap: () {
               onTap(TimeOption.yearly);
             },
