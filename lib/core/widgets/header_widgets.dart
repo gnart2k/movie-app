@@ -6,6 +6,7 @@ import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/search/search_text_field.dart';
 import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';
+import "dart:html";
 
 import '../../features/app/presentation/widgets/locale_switcher_widget.dart';
 import '../../features/app/presentation/widgets/show_history_widget.dart';
@@ -19,19 +20,21 @@ class HeaderWidgets extends ConsumerStatefulWidget {
 
 class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
   late List<NavBarProps> navbarItems;
-
+  final url = window.location.href;
   List<NavBarProps> getNavbarItems(List<NavigationLinkModel> navBarData) {
     if (navBarData.where((item) => item.isSelected).toList().isEmpty) {
-      return navBarData
-          .asMap()
-          .map((index, e) => MapEntry(
-                index,
-                index == 0
-                    ? NavBarProps(label: e.url, isSelected: true)
-                    : NavBarProps(label: e.url, isSelected: e.isSelected),
-              ))
-          .values
-          .toList();
+      int? currentIndex = navBarData.indexWhere(
+        (e) => e.url.replaceAll(" & ", "").trim() == url.split("/").last,
+      );
+
+      return navBarData.asMap().entries.map((entry) {
+        final index = entry.key;
+        final e = entry.value;
+        return NavBarProps(
+          label: e.url,
+          isSelected: index == currentIndex,
+        );
+      }).toList();
     } else {
       return navBarData
           .asMap()
@@ -83,6 +86,10 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
           viewModel.watch(headerViewModelProvider).navigationLinks;
       final items = getNavbarItems(navbarItemList);
       if (items.isEmpty) return const SizedBox();
+
+      items.map((e) =>
+          {if (e.label.replaceAll(" & ", "").trim() == url.split("/")[-1]) {}});
+
       return Container(
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
@@ -125,15 +132,41 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
   }
 
   Widget _iconContainer(BuildContext context) {
-    return const Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-      SearchTextField(),
-      SizedBox(width: 16),
+    return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+      const SearchTextField(),
+      const SizedBox(width: 16),
       ShowHistory(),
-      SizedBox(width: 16),
-      LocaleSwitcherWidget(),
+      const SizedBox(width: 16),
+      const LocaleSwitcherWidget(),
     ]);
   }
 
+  Widget _navBarList(BuildContext context, List<NavBarProps> itemLists) {
+    return Container(
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+          border: Border.all(color: AppColors.topBarBorder, width: 2),
+          borderRadius: BorderRadius.circular(8)),
+      child: Row(
+          children: itemLists
+              .map((item) => MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Container(
+                        decoration: item.isSelected
+                            ? BoxDecoration(
+                                color: AppColors.itemHovered,
+                                borderRadius: BorderRadius.circular(8))
+                            : null,
+                        padding: const EdgeInsets.all(10),
+                        child: Text(item.label,
+                            style: TextStyle(
+                                color: item.isSelected
+                                    ? Colors.white
+                                    : AppColors.topBarText))),
+                  ))
+              .toList()),
+    );
+  }
 }
 
 class NavBarProps {

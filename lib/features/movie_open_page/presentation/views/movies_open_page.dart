@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../core/domain/model/cast_model.dart';
 import '../../../../core/widgets/banner/movie_detail_banner.dart';
@@ -14,6 +13,7 @@ import '../view_models/movie_view_model.dart';
 import '../widgets/cast_container.dart';
 import '../widgets/description_container.dart';
 import '../widgets/review_container.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ignore: must_be_immutable
 class MovieOpenPage extends ConsumerWidget {
