@@ -37,7 +37,6 @@ class _PlanContainerState extends ConsumerState<PlanContainer> {
 
   @override
   Widget build(BuildContext context) {
-    final planViewModel = ref.watch(planProvider);
     final plan = ref.read(planProvider);
     return Column(
       children: [

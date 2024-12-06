@@ -15,10 +15,8 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     return MaterialApp.router(
       routerConfig: RouteGenerator.instance.router,
-
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: ref.read(localeProvider),

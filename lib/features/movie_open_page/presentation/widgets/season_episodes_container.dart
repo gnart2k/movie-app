@@ -188,19 +188,21 @@ class _SeasonEpisodesContainerState
                                     child: GestureDetector(
                                       onTap: () {
                                         ref
-                                            .read(movieWatchingProvider.notifier)
+                                            .read(
+                                                movieWatchingProvider.notifier)
                                             .toggleMovieList(MovieModel(
-                                            name: "The Stranger Thing",
-                                            imageUrl: AppImages.movieBanner,
-                                            currentEpisodes: episode['episodeNumber'],
-                                            currentSession: season['seasonNumber']
-                                        ));
+                                                name: "The Stranger Thing",
+                                                imageUrl: AppImages.movieBanner,
+                                                currentEpisodes:
+                                                    episode['episodeNumber'],
+                                                currentSession:
+                                                    season['seasonNumber']));
                                         showDialog(
                                           context: context,
                                           builder: (context) => CustomDialog(
                                             title: 'Add your movie Successful',
                                             message:
-                                            'You just add movie to watching list',
+                                                'You just add movie to watching list',
                                             isSuccess: true,
                                             onOkPressed: () {
                                               Navigator.of(context).pop();
@@ -213,9 +215,9 @@ class _SeasonEpisodesContainerState
                                       },
                                       child: Row(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                            CrossAxisAlignment.center,
                                         mainAxisAlignment:
-                                        MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                         children: [
                                           // Episode Number
                                           Text(
@@ -232,7 +234,7 @@ class _SeasonEpisodesContainerState
                                           // Episode Image
                                           ClipRRect(
                                             borderRadius:
-                                            BorderRadius.circular(8),
+                                                BorderRadius.circular(8),
                                             child: Image.network(
                                               episode['imageUrl'],
                                               width: 100,
@@ -245,7 +247,7 @@ class _SeasonEpisodesContainerState
                                           Expanded(
                                             child: Column(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Row(
                                                   children: [
@@ -254,36 +256,37 @@ class _SeasonEpisodesContainerState
                                                       child: Text(
                                                         episode['title'],
                                                         style:
-                                                        GoogleFonts.manrope(
+                                                            GoogleFonts.manrope(
                                                           fontSize: 18,
                                                           fontWeight:
-                                                          FontWeight.bold,
+                                                              FontWeight.bold,
                                                           color: Colors.white,
                                                         ),
                                                         maxLines: 2,
-                                                        overflow:
-                                                        TextOverflow.ellipsis,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
                                                       ),
                                                     ),
                                                     const Spacer(),
                                                     // Duration
                                                     Row(
                                                       mainAxisSize:
-                                                      MainAxisSize.min,
+                                                          MainAxisSize.min,
                                                       children: [
                                                         SvgPicture.asset(
                                                           AppIcons.alarmIcon,
                                                           height: 18,
                                                           width: 18,
                                                         ),
-                                                        const SizedBox(width: 4),
+                                                        const SizedBox(
+                                                            width: 4),
                                                         Text(
                                                           episode['duration'],
-                                                          style:
-                                                          GoogleFonts.manrope(
+                                                          style: GoogleFonts
+                                                              .manrope(
                                                             fontSize: 14,
                                                             fontWeight:
-                                                            FontWeight.w500,
+                                                                FontWeight.w500,
                                                             color: AppColors
                                                                 .lightGray,
                                                           ),
