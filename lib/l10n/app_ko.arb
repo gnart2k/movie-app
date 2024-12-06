@@ -42,5 +42,67 @@
   "streamVibe_is_the_best_streaming": "StreamVibe는 언제 어디서나 좋아하는 영화와 쇼를 주문형으로 시청할 수 있는 최고의 스트리밍 경험입니다. StreamVibe를 사용하면 최신 블록버스터, 고전 영화, 인기 TV 쇼 등 다양한 콘텐츠를 즐길 수 있습니다. 또한 나만의 시청 목록을 만들어서 시청하고 싶은 콘텐츠를 쉽게 찾을 수 있습니다.",
   "got_questions": "질문이 있으신가요? 저희가 답변을 드립니다! StreamVibe에 대한 가장 일반적인 질문에 대한 답변을 FAQ 섹션에서 확인해보세요.",
   "description_streamvibe": "StreamVibe를 사용하면 언제 어디서나 좋아하는 영화와 TV 프로그램을 즐길 수 있습니다. 우리의 플랫폼은 다양한 장치와 호환되도록 설계되어 있어 엔터테인먼트를 놓치지 않도록 보장합니다.",
-  "app_description": "StreamVibe는 Android 및 iOS 스마트폰 모두에 최적화되어 있습니다. Google Play 스토어 또는 Apple App 스토어에서 앱을 다운로드하세요."
+  "app_description": "StreamVibe는 Android 및 iOS 스마트폰 모두에 최적화되어 있습니다. Google Play 스토어 또는 Apple App 스토어에서 앱을 다운로드하세요.",
+
+  "whether_looking_for_comedy": "코미디로 웃고 싶거나, 드라마로 깊이 생각하고 싶거나, 다큐멘터리로 새로운 것을 배우고 싶다면",
+
+  "we_provide_you": "다양한 기기에서 스트리밍 경험을 제공합니다.",
+  "ask_question": "자주 묻는 질문",
+  "choose_right_plan": "귀하에게 적합한 요금을 선택하세요",
+  "monthly": "월간",
+  "yearly": "연간",
+  "join_stream_vibe": "StreamVibe에 가입하여 시청 취향에 맞게 조정된 유연한 구독 옵션 중에서 선택하세요. 끊임없는 엔터테인먼트를 즐길 준비를 하세요!",
+  "this_is_clear": "StreamVibe 무료 체험에 가입하도록 사용자를 독려하는 명확하고 간결한 행동 요청입니다.",
+
+  "top_10_in": "상위 10위",
+
+  "welcome": "지원 페이지에 오신 것을 환영합니다!",
+  "we_re_here": "저희 제품과 관련된 문제를 해결하는 데 도움을 드리겠습니다.",
+  "first_name": "이름",
+  "enter_first_name": "이름을 입력하세요",
+  "last_name": "성",
+  "enter_last_name": "성을 입력하세요",
+  "email": "이메일",
+  "enter_email": "이메일을 입력하세요",
+  "phone_number": "전화번호",
+  "enter_phone_number": "전화번호를 입력하세요",
+  "message": "메시지",
+  "enter_your_message": "메시지를 입력하세요",
+  "i_agree": "이용 약관 및 개인정보 보호정책에 동의합니다",
+  "send_message": "메시지 보내기",
+
+  "compare_plane": "요금제를 비교하고 나에게 맞는 요금을 찾아보세요",
+  "stream_vibe_offer": "StreamVibe는 귀하의 필요에 맞게 기본, 표준, 프리미엄의 세 가지 요금제를 제공합니다. 각 요금제의 기능을 비교하고 귀하에게 적합한 요금제를 선택하세요.",
+  "feature": "기능",
+  "basic": "기본",
+  "premium": "표준",
+  "standard": "프리미엄",
+
+
+  "add_movie_success": "영화 추가 성공",
+  "you_just_add": "시청 목록에 영화를 추가했습니다",
+  "description_title": "설명",
+
+  "season_and_episode": "시즌 및 에피소드",
+
+  "congrat": "축하합니다",
+  "you_register": "귀하는 방금 등록하셨습니다",
+  "notification": "알림",
+  "you_have": "새 요금제를 추가하기 전에 현재 요금제를 삭제해야 합니다",
+  "ok": "확인",
+  "cancel": "취소",
+
+  "you_have_already": "이미 이 요금제를 등록하셨습니다",
+
+  "connect_with_us": "우리와 연결하세요",
+
+  "choose_plan": "요금제 선택",
+  "month": "월",
+
+  "faq": "자주 묻는 질문",
+
+  "trending": "트렌딩",
+  "popular": "인기 있는",
+
+  "subscription": "구독"
 }

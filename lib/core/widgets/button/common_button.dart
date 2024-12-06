@@ -73,6 +73,8 @@ class _CommonButtonState extends State<CommonButton> {
               color: widget.backgroundColor.withOpacity(_isPressed ? 0.5 : 1)),
           padding: const EdgeInsets.all(16.0),
           child: Text(widget.label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
               style: const TextStyle(color: Colors.white)),
         ),

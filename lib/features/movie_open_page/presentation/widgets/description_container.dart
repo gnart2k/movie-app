@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DescriptionContainer extends StatelessWidget {
   const DescriptionContainer({super.key, required this.description});
@@ -21,15 +22,15 @@ class DescriptionContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Description",
-            style: TextStyle(color: AppColors.lightGray, fontSize: 18),
+           Text(
+            AppLocalizations.of(context)!.description_title,
+            style: const TextStyle(color: AppColors.lightGray, fontSize: 18),
           ),
           const SizedBox(
             height: 10,
           ),
           Text(
-            description,
+            AppLocalizations.of(context)!.app_description,
             style: const TextStyle(color: Colors.white, fontSize: 18),
           )
         ],

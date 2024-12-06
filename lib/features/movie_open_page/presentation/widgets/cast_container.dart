@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/domain/model/cast_model.dart';
 import 'package:movie_app/core/widgets/slider/slider_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../core/constants/app_colors.dart';
 
@@ -62,9 +63,9 @@ class _CastContainerState extends State<CastContainer>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                "Cast",
-                style: TextStyle(color: AppColors.lightGray, fontSize: 18),
+               Text(
+                AppLocalizations.of(context)!.cast,
+                style: const TextStyle(color: AppColors.lightGray, fontSize: 18),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,

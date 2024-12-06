@@ -33,11 +33,12 @@ class FreeTrialWidget extends StatelessWidget {
                                 .start_your_free_trial_today,
                             style: const TextStyle(fontSize: 30)),
                         const SizedBox(height: 16),
-                        const Text(
-                            "This is a clear and concise call to action that encourages users to sign up for a free trial of StreamVibe.",
+                        Text(
+                            AppLocalizations.of(context)!
+                                .this_is_clear,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 18, color: AppColors.lightGray))
                       ])),
                   CommonButton(

@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
 import 'package:movie_app/features/movie_open_page/data/models/movie_props.dart';
 import 'package:movie_app/features/movie_open_page/presentation/view_models/movie_view_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../constants/app_colors.dart';
 import '../../constants/app_icons.dart';
@@ -21,7 +22,7 @@ class MovieBigBanner extends ConsumerWidget {
     MovieModel movie = MovieModel(
         name: movieProps.movieSection.title,
         imageUrl: AppImages.movieBanner,
-        description: movieProps.movieSection.description);
+        description: AppLocalizations.of(context)!.description);
     return Container(
       margin: const EdgeInsets.only(top: 130),
       height: MediaQuery.sizeOf(context).height * 0.8,
@@ -48,7 +49,7 @@ class MovieBigBanner extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomIconButton(
-                    label: movieProps.movieSection.buttons[0].text,
+                    label: AppLocalizations.of(context)!.play_now,
                     onTap: onTap,
                     iconData: Icons.play_arrow),
                 const SizedBox(width: 12),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
@@ -29,12 +31,12 @@ class MovieInformation extends StatelessWidget {
           border: Border.all(width: 1, color: AppColors.cardBorder)),
       child: Column(
         children: [
-          _releaseYear(),
-          _availableLanguage(),
-          _ratings(),
-          _genres(),
-          _director(),
-          _music()
+          _releaseYear(context),
+          _availableLanguage(context),
+          _ratings(context),
+          _genres(context),
+          _director(context),
+          _music(context)
         ],
       ),
     );
@@ -99,13 +101,13 @@ class MovieInformation extends StatelessWidget {
         ));
   }
 
-  Widget _ratings() {
+  Widget _ratings(BuildContext context) {
     return Column(
       children: [
         const SizedBox(
           height: 30,
         ),
-        _title(Icons.star_border_outlined, 'Ratings'),
+        _title(Icons.star_border_outlined, AppLocalizations.of(context)!.ratings),
         const SizedBox(
           height: 14,
         ),
@@ -122,13 +124,13 @@ class MovieInformation extends StatelessWidget {
     );
   }
 
-  Widget _genres() {
+  Widget _genres(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _title(Icons.grid_view_outlined, 'Genres'),
+          _title(Icons.grid_view_outlined, AppLocalizations.of(context)!.genres),
           const SizedBox(height: 14),
           Wrap(
             spacing: 10,
@@ -140,13 +142,13 @@ class MovieInformation extends StatelessWidget {
     );
   }
 
-  Widget _availableLanguage() {
+  Widget _availableLanguage(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _title(Icons.translate, 'Available Language'),
+          _title(Icons.translate, AppLocalizations.of(context)!.available_language),
           const SizedBox(height: 14),
           Wrap(
             spacing: 10,
@@ -159,12 +161,12 @@ class MovieInformation extends StatelessWidget {
     );
   }
 
-  Widget _music() {
+  Widget _music(BuildContext context) {
     return Container(
         margin: const EdgeInsets.only(top: 30),
         child: Column(
           children: [
-            _title(null, 'Music'),
+            _title(null, AppLocalizations.of(context)!.music),
             const SizedBox(
               height: 14,
             ),
@@ -173,12 +175,12 @@ class MovieInformation extends StatelessWidget {
         ));
   }
 
-  Widget _director() {
+  Widget _director(BuildContext context) {
     return Container(
         margin: const EdgeInsets.only(top: 30),
         child: Column(
           children: [
-            _title(null, 'Director'),
+            _title(null, AppLocalizations.of(context)!.director),
             const SizedBox(
               height: 14,
             ),
@@ -244,13 +246,13 @@ class MovieInformation extends StatelessWidget {
     );
   }
 
-  Widget _releaseYear() {
+  Widget _releaseYear(BuildContext context) {
     return Row(
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _title(Icons.calendar_today_outlined, 'Released Year'),
+            _title(Icons.calendar_today_outlined, AppLocalizations.of(context)!.release_year),
             const SizedBox(
               height: 14,
             ),
