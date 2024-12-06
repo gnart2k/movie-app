@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -11,12 +12,22 @@ final authViewModelProvider =
 class AuthViewModel extends ChangeNotifier {
   UserModel? _currentUser;
   bool _isAuthenticated = false;
+  Timer? _tokenCheckTimer;
 
   bool get isAuthenticated => _isAuthenticated;
   UserModel? get currentUser => _currentUser;
 
   AuthViewModel() {
     _checkAuthentication();
+    _startTokenCheckTimer();
+  }
+  
+  void _startTokenCheckTimer() {
+    _tokenCheckTimer = Timer.periodic(const Duration(seconds: 10), (_) async {
+      if (await isTokenExpired) {
+        await logout();
+      }
+    });
   }
 
   Future<void> _checkAuthentication() async {
@@ -47,7 +58,7 @@ class AuthViewModel extends ChangeNotifier {
       // create token with 1h
       final token = base64Encode(utf8.encode(DateTime.now().toIso8601String()));
       final expiry =
-          DateTime.now().add(const Duration(hours: 1)).millisecondsSinceEpoch;
+          DateTime.now().add(const Duration(seconds: 10)).millisecondsSinceEpoch;
 
       _currentUser = UserModel(username: username, token: token);
 

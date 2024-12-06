@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_app/features/home/presentation/views/login_screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movie_app/features/app/presentation/app_layout.dart';
+
 import '../../features/home/presentation/view_models/auth_viewmodel.dart';
 
 class AuthGuard extends ConsumerStatefulWidget {
@@ -38,14 +40,11 @@ class _AuthGuardState extends ConsumerState<AuthGuard> {
 
   Future<void> _checkAuthentication() async {
     final authViewModel = ref.read(authViewModelProvider);
-
     // Check if token is expired or not logged in
     if (!authViewModel.isAuthenticated || await authViewModel.isTokenExpired) {
       await authViewModel.logout();
-      if (mounted) {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) => const LoginScreen()),
-        );
+      if (context.mounted) {
+        context.go('/login');
       }
     }
   }
@@ -59,6 +58,6 @@ class _AuthGuardState extends ConsumerState<AuthGuard> {
       return const SizedBox.shrink(); // Return empty widget when not validating
     }
 
-    return widget.child; // Show child widget if authentication is valid
+    return AppLayout(child: widget.child); // Show child widget if authentication is valid
   }
 }
