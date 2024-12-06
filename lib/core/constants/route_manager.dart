@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/features/app/presentation/app_layout.dart';
-import 'package:movie_app/features/home/presentation/view_models/auth_viewmodel.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 import 'package:movie_app/features/home/presentation/views/login_screen.dart';
 import 'package:movie_app/features/movie_and_show/presentation/views/movie_and_show_page.dart';

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_app/core/widgets/movie/movie_card.dart';
 import 'package:movie_app/features/home/presentation/view_models/show_page/section_movies_viewmodel.dart';
 import 'package:movie_app/features/movie_and_show/presentation/widgets/movie_category_container.dart';
@@ -28,18 +29,20 @@ class MovieAndShowPage extends StatelessWidget {
             const SizedBox(
               height: 100,
             ),
-            const MovieCategoryContainer(
-              title: "Movies",
-              childWidget: MovieCategory(
+             MovieCategoryContainer(
+              title: AppLocalizations.of(context)!
+                  .movies,
+              childWidget: const MovieCategory(
                 isMovies: true,
               ),
             ),
             const SizedBox(
               height: 100,
             ),
-            const MovieCategoryContainer(
-              title: "Shows",
-              childWidget: MovieCategory(
+            MovieCategoryContainer(
+              title: AppLocalizations.of(context)!
+                  .shows,
+              childWidget: const MovieCategory(
                 isMovies: false,
               ),
             ),
@@ -132,7 +135,8 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
             );
           },
           list: genresLists, // both popular
-          title: moviesState.sectionMoviesList[0].title,
+          title: AppLocalizations.of(context)!
+              .our_genre,
           heightCard: 290,
         ),
         const SizedBox(height: 100),
@@ -142,12 +146,14 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               title: item.name,
               imageUrl: item.imageUrl,
               itemNumber: itemNum,
-              onTopTitle: 'Top 10 In',
+              onTopTitle: AppLocalizations.of(context)!
+                  .top_10_in,
               onTop: true,
             );
           },
           list: genresLists,
-          title: moviesState.sectionMoviesList[1].title,
+          title: AppLocalizations.of(context)!
+              .popular_top_10,
           heightCard: 290,
         ),
         const SizedBox(height: 100),
@@ -165,7 +171,8 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
             );
           },
           list: moviesLists,
-          title: moviesState.sectionMoviesList[widget.isMovies ? 2 : 5].title,
+          title: AppLocalizations.of(context)!
+              .trending_now,
           heightCard: 350,
         ),
         const SizedBox(height: 100),
@@ -181,7 +188,8 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
             );
           },
           list: moviesLists,
-          title: moviesState.sectionMoviesList[widget.isMovies ? 3 : 6].title,
+          title:  AppLocalizations.of(context)!
+              .popular_top_10,
           heightCard: 350,
         ),
         const SizedBox(height: 100),
@@ -199,7 +207,8 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
             );
           },
           list: mustWatchLists,
-          title: moviesState.sectionMoviesList[widget.isMovies ? 4 : 7].title,
+          title:  AppLocalizations.of(context)!
+              .must_watch,
           heightCard: 450,
         ),
       ],

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FooterWidget extends StatelessWidget {
   const FooterWidget({super.key});
@@ -13,7 +14,7 @@ class FooterWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
       decoration: const BoxDecoration(color: AppColors.darkGray),
       child: Column(
-        children: [_listOptions(), _licenseOption()],
+        children: [_listOptions(context), _licenseOption()],
       ),
     );
   }
@@ -26,7 +27,7 @@ class IconProps {
   IconProps({required this.icon, required this.url});
 }
 
-Widget _listOptions() {
+Widget _listOptions(BuildContext context) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -36,13 +37,13 @@ Widget _listOptions() {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildSection('Home', ['Categories', 'Devices', 'Pricing', 'FAQ']),
+            _buildSection(AppLocalizations.of(context)!.home, [AppLocalizations.of(context)!.categories, AppLocalizations.of(context)!.devices, AppLocalizations.of(context)!.pricing, AppLocalizations.of(context)!.faq]),
             _buildSection(
-                'Movies', ['Genres', 'Trending', 'New Release', 'Popular']),
+                AppLocalizations.of(context)!.movies, [AppLocalizations.of(context)!.genres, AppLocalizations.of(context)!.trending, AppLocalizations.of(context)!.new_release, AppLocalizations.of(context)!.popular]),
             _buildSection(
-                'Shows', ['Genres', 'Trending', 'New Release', 'Popular']),
-            _buildSection('Support', ['Contact Us']),
-            _buildSection('Subscription', ['Plans', 'Features']),
+                AppLocalizations.of(context)!.shows, [AppLocalizations.of(context)!.genres, AppLocalizations.of(context)!.trending, AppLocalizations.of(context)!.new_release, AppLocalizations.of(context)!.popular]),
+            _buildSection(AppLocalizations.of(context)!.support, [AppLocalizations.of(context)!.contact_us]),
+            _buildSection(AppLocalizations.of(context)!.subscription, [AppLocalizations.of(context)!.plans, AppLocalizations.of(context)!.features]),
           ],
         ),
       ),
@@ -52,7 +53,7 @@ Widget _listOptions() {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("Connect with us"),
+              Text(AppLocalizations.of(context)!.connect_with_us),
               const SizedBox(height: 10),
               _iconContainer([
                 IconProps(url: "fb.com", icon: AppIcons.facebookIcon),

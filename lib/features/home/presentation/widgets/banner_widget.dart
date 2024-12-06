@@ -51,7 +51,8 @@ class BannerWidget extends ConsumerWidget {
         const SizedBox(height: 40),
         CustomIconButton(
             iconData: Icons.play_arrow,
-            label: homeProps.banner.button,
+            label:  AppLocalizations.of(context)!
+                .start_watching_now,
             onTap: () {})
       ],
     );

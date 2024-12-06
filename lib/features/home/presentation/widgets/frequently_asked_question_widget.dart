@@ -83,7 +83,8 @@ class FrequentlyAskedQuestionsWidgetState
         children: [
           Expanded(
             child: CommonTitle(
-              title: title,
+              title: AppLocalizations.of(context)!
+                  .frequently_ask,
               subTitle: AppLocalizations.of(context)!.got_questions,
             ),
           ),

@@ -9,6 +9,7 @@ import 'package:movie_app/core/constants/app_images.dart';
 import '../../../../core/domain/model/movie_model.dart';
 import '../../../../core/widgets/dialog/custom_dialog.dart';
 import '../../../movie_and_show/presentation/view_models/movie_watching_viewmodel.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SeasonEpisodesContainer extends ConsumerStatefulWidget {
   const SeasonEpisodesContainer({super.key});
@@ -104,7 +105,7 @@ class _SeasonEpisodesContainerState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Season and Episodes',
+            AppLocalizations.of(context)!.season_and_episodes,
             style: GoogleFonts.manrope(
               fontSize: 24,
               fontWeight: FontWeight.w600,
@@ -134,7 +135,7 @@ class _SeasonEpisodesContainerState
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: "Season ${season['seasonNumber']}  ",
+                                text: "${AppLocalizations.of(context)!.season} ${season['seasonNumber']}  ",
                                 style: GoogleFonts.manrope(
                                   fontSize: 24,
                                   fontWeight: FontWeight.w600,
@@ -142,7 +143,7 @@ class _SeasonEpisodesContainerState
                                 ),
                               ),
                               TextSpan(
-                                text: "${season['episodes'].length} Episodes",
+                                text: "${season['episodes'].length} ${AppLocalizations.of(context)!.episodes}",
                                 style: GoogleFonts.manrope(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,

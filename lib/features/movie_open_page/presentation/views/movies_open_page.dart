@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../core/domain/model/cast_model.dart';
 import '../../../../core/widgets/banner/movie_detail_banner.dart';
@@ -54,8 +55,8 @@ class MovieOpenPage extends ConsumerWidget {
             showDialog(
               context: context,
               builder: (context) => CustomDialog(
-                title: 'Add your movie Successful',
-                message: 'You just add movie to watching list',
+                title: AppLocalizations.of(context)!.add_movie_success,
+                message: AppLocalizations.of(context)!.you_just_add,
                 isSuccess: true,
                 onOkPressed: () {
                   Navigator.of(context).pop();
@@ -80,9 +81,9 @@ class MovieOpenPage extends ConsumerWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const DescriptionContainer(
+                         DescriptionContainer(
                             description:
-                                "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands."),
+                            AppLocalizations.of(context)!.app_description),
                         const SizedBox(
                           height: 20,
                         ),

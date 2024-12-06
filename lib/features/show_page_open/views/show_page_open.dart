@@ -9,6 +9,7 @@ import '../../movie_open_page/presentation/widgets/description_container.dart';
 import '../../movie_open_page/presentation/widgets/movie_information_widget.dart';
 import '../../movie_open_page/presentation/widgets/review_container.dart';
 import '../../movie_open_page/presentation/widgets/season_episodes_container.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShowPageOpenPage extends StatefulWidget {
   const ShowPageOpenPage({super.key, required this.id});
@@ -64,15 +65,16 @@ class _ShowPageOpenPageState extends State<ShowPageOpenPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const SeasonEpisodesContainer(),
-                        const DescriptionContainer(
+                         const SizedBox(height: 50,),
+                         DescriptionContainer(
                             description:
-                                "A fiery young man clashes with an unflinching forest officer in a south Indian village where spirituality, fate and folklore rule the lands."),
+                            AppLocalizations.of(context)!.app_description),
                         const SizedBox(
-                          height: 20,
+                          height: 50,
                         ),
                         CastContainer(casts: casts),
                         const SizedBox(
-                          height: 20,
+                          height: 50,
                         ),
                         const ReviewContainer(),
                       ],

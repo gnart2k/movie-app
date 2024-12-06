@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/domain/model/plan_model.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class PlanCard extends StatelessWidget {
   const PlanCard(
@@ -46,10 +48,10 @@ class PlanCard extends StatelessWidget {
             text: TextSpan(
               text: "\$${plan.price}",
               style: const TextStyle(color: Colors.white, fontSize: 25),
-              children: const <TextSpan>[
+              children:  <TextSpan>[
                 TextSpan(
-                  text: '/month',
-                  style: TextStyle(
+                  text: '/ ${AppLocalizations.of(context)!.month}',
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: AppColors.lightGray,
                       fontSize: 18),
@@ -66,7 +68,7 @@ class PlanCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: CommonButton(
-                    label: "Start Free Trial",
+                    label: AppLocalizations.of(context)!.start_a_free_trial,
                     onTap: () {
                       onClick(plan.title);
                     },
@@ -78,7 +80,7 @@ class PlanCard extends StatelessWidget {
                 ),
                 Expanded(
                     child: CommonButton(
-                  label: "Choose Plan",
+                  label: AppLocalizations.of(context)!.choose_plan,
                   onTap: () {
                     onClick(plan.title);
                   },
@@ -92,7 +94,7 @@ class PlanCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: CommonButton(
-                    label: "You have already register this plan",
+                    label: AppLocalizations.of(context)!.you_have_already,
                     enabled: false,
                     onTap: () {
                       onClick(plan.title);

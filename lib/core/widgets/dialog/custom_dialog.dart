@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomDialog extends StatelessWidget {
   final String title;
@@ -58,9 +59,9 @@ class CustomDialog extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.grey[400],
                     ),
-                    child: const Text(
-                      'Cancel',
-                      style: TextStyle(color: Colors.black),
+                    child: Text(
+                      AppLocalizations.of(context)!.cancel,
+                      style: const TextStyle(color: Colors.black),
                     ),
                   ),
                   const SizedBox(
@@ -71,9 +72,9 @@ class CustomDialog extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                     ),
-                    child: const Text(
-                      'OK',
-                      style: TextStyle(color: Colors.white),
+                    child: Text(
+                      AppLocalizations.of(context)!.ok,
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                 ],

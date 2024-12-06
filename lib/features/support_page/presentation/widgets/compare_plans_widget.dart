@@ -5,7 +5,7 @@ import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
 import 'package:movie_app/features/home/data/models/compare_plans.dart';
 import 'package:movie_app/features/home/presentation/view_models/compare_plans_model.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class ComparePlansWidget extends ConsumerStatefulWidget {
   const   ComparePlansWidget({super.key});
 
@@ -32,6 +32,8 @@ class ComparePlansState extends ConsumerState<ComparePlansWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+
     final state = ref.watch(comparePlansViewModelProvider);
 
     if (state.rows.isEmpty) return const SizedBox.shrink();
@@ -40,7 +42,7 @@ class ComparePlansState extends ConsumerState<ComparePlansWidget> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CommonTitle(title: state.title, subTitle: subTitle),
+        CommonTitle(title: AppLocalizations.of(context)!.compare_plane, subTitle: AppLocalizations.of(context)!.stream_vibe_offer),
         const SizedBox(height: 80),
         Table(
           border: TableBorder.all(
