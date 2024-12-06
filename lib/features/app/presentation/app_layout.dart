@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/widgets/auth_guard.dart';
 
 import '../../../core/widgets/footer_widget.dart';
 import '../../../core/widgets/header_widgets.dart';

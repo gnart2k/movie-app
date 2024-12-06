@@ -20,7 +20,8 @@ class CommonButton extends StatefulWidget {
 }
 
 class _CommonButtonState extends State<CommonButton> {
-  bool isPressed = false;
+  bool _isPressed = false;
+  bool _isHovering = false;
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +34,24 @@ class _CommonButtonState extends State<CommonButton> {
       onTapDown: (_) {
         if (widget.enabled) {
           setState(() {
-            isPressed = true;
+            _isPressed = true;
           });
         }
       },
       onTapUp: (_) {
         if (widget.enabled) {
           setState(() {
-            isPressed = false;
+            _isPressed = false;
           });
         }
       },
       child: MouseRegion(
+        onEnter: (_) => setState(() {
+          _isHovering = true;
+        }),
+        onExit: (_) => setState(() {
+          _isHovering = false;
+        }),
         cursor: widget.enabled
             ? SystemMouseCursors.click
             : SystemMouseCursors.basic,
@@ -52,8 +59,18 @@ class _CommonButtonState extends State<CommonButton> {
           duration: const Duration(milliseconds: 1000),
           curve: Curves.linear,
           decoration: BoxDecoration(
+              boxShadow: _isHovering
+                  ? [
+                BoxShadow(
+                  color: widget.backgroundColor.withOpacity(0.5),
+                  spreadRadius: 2,
+                  blurRadius: 6,
+                  offset: const Offset(8,8),
+                ),
+              ]
+                  : [],
               borderRadius: BorderRadius.circular(6),
-              color: widget.backgroundColor.withOpacity(isPressed ? 0.5 : 1)),
+              color: widget.backgroundColor.withOpacity(_isPressed ? 0.5 : 1)),
           padding: const EdgeInsets.all(16.0),
           child: Text(widget.label,
               textAlign: TextAlign.center,

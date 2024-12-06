@@ -29,7 +29,7 @@ class MoviesCard extends StatefulWidget {
 }
 
 class _MoviesCardState extends State<MoviesCard> {
-  bool isHovering = false;
+  bool _isHovering = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +37,10 @@ class _MoviesCardState extends State<MoviesCard> {
       onTap: widget.onTap,
       child: MouseRegion(
         onEnter: (_) => setState(() {
-          isHovering = true;
+          _isHovering = true;
         }),
         onExit: (_) => setState(() {
-          isHovering = false;
+          _isHovering = false;
         }),
         cursor: SystemMouseCursors.click,
         child: AnimatedContainer(
@@ -56,7 +56,7 @@ class _MoviesCardState extends State<MoviesCard> {
               color: AppColors.cardBorder,
             ),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
-            boxShadow: isHovering
+            boxShadow: _isHovering
                 ? [
                     BoxShadow(
                       color: AppColors.lightGray.withOpacity(0.2),
