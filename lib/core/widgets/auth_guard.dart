@@ -1,7 +1,9 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/features/home/presentation/views/login_screen.dart';
+
 import '../../features/home/presentation/view_models/auth_viewmodel.dart';
 
 class AuthGuard extends ConsumerStatefulWidget {
@@ -34,7 +36,6 @@ class _AuthGuardState extends ConsumerState<AuthGuard> {
       _checkAuthentication();
     });
   }
-
 
   Future<void> _checkAuthentication() async {
     final authViewModel = ref.read(authViewModelProvider);

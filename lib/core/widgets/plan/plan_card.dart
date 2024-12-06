@@ -4,7 +4,11 @@ import 'package:movie_app/core/domain/model/plan_model.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
 
 class PlanCard extends StatelessWidget {
-  const PlanCard({super.key, required this.plan,required this.isRegister, required this.onClick});
+  const PlanCard(
+      {super.key,
+      required this.plan,
+      required this.isRegister,
+      required this.onClick});
 
   final PlanModel plan;
   final bool isRegister;
@@ -53,26 +57,51 @@ class PlanCard extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 30,),
-          if (!isRegister) Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(child: CommonButton(label: "Start Free Trial", onTap: () {
-                onClick(plan.title);
-              }, backgroundColor: AppColors.primary,),),
-              const SizedBox(width: 20,),
-              Expanded(child: CommonButton(label: "Choose Plan", onTap: () {
-                onClick(plan.title);
-              }, backgroundColor: AppColors.appBackground,))
-            ],
-          ) else  Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(child: CommonButton(label: "You have already register this plan",enabled: false,onTap: () {
-                onClick(plan.title);
-              }, backgroundColor: AppColors.itemHovered,),),
-            ],
-          )
+          const SizedBox(
+            height: 30,
+          ),
+          if (!isRegister)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: CommonButton(
+                    label: "Start Free Trial",
+                    onTap: () {
+                      onClick(plan.title);
+                    },
+                    backgroundColor: AppColors.primary,
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    child: CommonButton(
+                  label: "Choose Plan",
+                  onTap: () {
+                    onClick(plan.title);
+                  },
+                  backgroundColor: AppColors.appBackground,
+                ))
+              ],
+            )
+          else
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: CommonButton(
+                    label: "You have already register this plan",
+                    enabled: false,
+                    onTap: () {
+                      onClick(plan.title);
+                    },
+                    backgroundColor: AppColors.itemHovered,
+                  ),
+                ),
+              ],
+            )
         ],
       ),
     );

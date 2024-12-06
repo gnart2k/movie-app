@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
+import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/features/home/presentation/view_models/auth_viewmodel.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 
@@ -13,10 +12,10 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   String? _errorMessage;
@@ -211,7 +210,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       if (success) {
                                         Navigator.of(context).pushReplacement(
                                           MaterialPageRoute(
-                                              builder: (_) => const HomeScreen()),
+                                              builder: (_) =>
+                                                  const HomeScreen()),
                                         );
                                       } else {
                                         setState(() {

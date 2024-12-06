@@ -19,9 +19,6 @@ class SectionMoviesViewmodel extends StateNotifier<SectionMovies> {
     try {
       final sections = await _repository.getSectionMovies();
       state = SectionMovies(sectionMoviesList: sections);
-      print('sdhs ${state.sectionMoviesList[0].genres}');
-      print('sdds ${state.sectionMoviesList[2].movies?[0].name}');
-
     } catch (e) {
       state = SectionMovies(sectionMoviesList: []);
     }

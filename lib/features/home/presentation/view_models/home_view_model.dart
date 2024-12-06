@@ -45,4 +45,3 @@ final homeRepositoryProvider = Provider(
 final homeViewModelProvider = StateNotifierProvider<HomeViewModel, HomeProps>(
   (ref) => HomeViewModel(ref.read(homeRepositoryProvider)),
 );
-

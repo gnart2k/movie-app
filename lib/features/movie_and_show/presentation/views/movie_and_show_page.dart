@@ -146,7 +146,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               onTop: true,
             );
           },
-          list: genresLists, // both popular
+          list: genresLists,
           title: moviesState.sectionMoviesList[1].title,
           heightCard: 290,
         ),
@@ -164,7 +164,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               },
             );
           },
-          list: moviesLists, //moviesLists, // trending now
+          list: moviesLists, 
           title: moviesState.sectionMoviesList[widget.isMovies ? 2 : 5].title,
           heightCard: 350,
         ),
@@ -180,7 +180,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               },
             );
           },
-          list: moviesLists, //moviesLists, //new release
+          list: moviesLists, 
           title: moviesState.sectionMoviesList[widget.isMovies ? 3 : 6].title,
           heightCard: 350,
         ),
@@ -198,7 +198,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               },
             );
           },
-          list: mustWatchLists, // mustWatchLists, //must watch movie
+          list: mustWatchLists, 
           title: moviesState.sectionMoviesList[widget.isMovies ? 4 : 7].title,
           heightCard: 450,
         ),

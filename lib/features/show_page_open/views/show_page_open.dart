@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/constants/app_images.dart';
 import '../../../core/domain/model/cast_model.dart';
-import '../../../core/domain/model/review_model.dart';
 import '../../../core/widgets/banner/movie_detail_banner.dart';
-import '../../../core/widgets/footer_widget.dart';
 import '../../home/presentation/widgets/free_trial_widget.dart';
 import '../../movie_open_page/presentation/widgets/cast_container.dart';
 import '../../movie_open_page/presentation/widgets/description_container.dart';
@@ -11,10 +10,16 @@ import '../../movie_open_page/presentation/widgets/movie_information_widget.dart
 import '../../movie_open_page/presentation/widgets/review_container.dart';
 import '../../movie_open_page/presentation/widgets/season_episodes_container.dart';
 
-class ShowPageOpenPage extends StatelessWidget {
-  ShowPageOpenPage({super.key, required this.id});
+class ShowPageOpenPage extends StatefulWidget {
+  const ShowPageOpenPage({super.key, required this.id});
 
   final String id;
+
+  @override
+  State<ShowPageOpenPage> createState() => _ShowPageOpenPageState();
+}
+
+class _ShowPageOpenPageState extends State<ShowPageOpenPage> {
   List<List<CastModel>> casts = [
     [
       CastModel(name: "linh", imageUrl: AppImages.characterImage),
@@ -41,7 +46,9 @@ class ShowPageOpenPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MovieBigBanner(onTap: () {},),
+          MovieBigBanner(
+            onTap: () {},
+          ),
           const SizedBox(
             height: 100,
           ),
