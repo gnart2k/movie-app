@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/widgets/auth_guard.dart';
+import 'package:movie_app/core/widgets/footer_widget.dart';
 
-import '../../../core/widgets/footer_widget.dart';
 import '../../../core/widgets/header_widgets.dart';
 
 class AppLayout extends StatefulWidget {
@@ -18,14 +17,10 @@ class _AppLayoutState extends State<AppLayout> {
   @override
   void initState() {
     super.initState();
-
-    // Add a listener to the scroll controller
     _scrollController.addListener(_scrollListener);
   }
 
   void _scrollListener() {
-    // Check if the scroll position is at the top or bottom
-    print(_scrollController.offset);
     if (_scrollController.offset > 400) {
       setState(() {
         isChangeColor = true;
