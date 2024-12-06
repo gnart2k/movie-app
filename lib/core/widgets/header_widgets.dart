@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
-import 'package:movie_app/core/constants/app_icons.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/widgets/search/search_text_field.dart';
 import 'package:movie_app/features/home/presentation/view_models/header_view_model.dart';
@@ -81,7 +80,7 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
       final navbarItemList =
           viewModel.watch(headerViewModelProvider).navigationLinks;
       final items = getNavbarItems(navbarItemList);
-      if (items.isEmpty) return SizedBox();
+      if (items.isEmpty) return const SizedBox();
       return Container(
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
@@ -124,41 +123,15 @@ class _HeaderWidgetsState extends ConsumerState<HeaderWidgets> {
   }
 
   Widget _iconContainer(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-      const SearchTextField(),
-      const SizedBox(width: 16),
+    return const Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+      SearchTextField(),
+      SizedBox(width: 16),
       ShowHistory(),
-      const SizedBox(width: 16),
-      const LocaleSwitcherWidget(),
+      SizedBox(width: 16),
+      LocaleSwitcherWidget(),
     ]);
   }
 
-  Widget _navBarList(BuildContext context, List<NavBarProps> itemLists) {
-    return Container(
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-          border: Border.all(color: AppColors.topBarBorder, width: 2),
-          borderRadius: BorderRadius.circular(8)),
-      child: Row(
-          children: itemLists
-              .map((item) => MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: Container(
-                        decoration: item.isSelected
-                            ? BoxDecoration(
-                                color: AppColors.itemHovered,
-                                borderRadius: BorderRadius.circular(8))
-                            : null,
-                        padding: const EdgeInsets.all(10),
-                        child: Text(item.label,
-                            style: TextStyle(
-                                color: item.isSelected
-                                    ? Colors.white
-                                    : AppColors.topBarText))),
-                  ))
-              .toList()),
-    );
-  }
 }
 
 class NavBarProps {
