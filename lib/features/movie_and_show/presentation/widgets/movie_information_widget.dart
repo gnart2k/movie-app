@@ -56,12 +56,10 @@ class MovieInformation extends StatelessWidget {
         Text(
           title,
           style: GoogleFonts.manrope(
-            color: AppColors.lightGray,
+              color: AppColors.lightGray,
               fontSize: 18,
               height: 1.5,
-              fontWeight: FontWeight.w500
-          ),
-         
+              fontWeight: FontWeight.w500),
         )
       ],
     );

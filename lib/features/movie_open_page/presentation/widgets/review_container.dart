@@ -1,11 +1,9 @@
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
-import 'package:movie_app/core/domain/model/review_model.dart';
 import 'package:movie_app/core/widgets/slider/slider_button.dart';
 import 'package:movie_app/core/widgets/slider/slider_indicator.dart';
 import 'package:movie_app/features/movie_open_page/data/models/review_container.dart';

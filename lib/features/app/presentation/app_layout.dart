@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/widgets/footer_widget.dart';
 
 import '../../../core/widgets/header_widgets.dart';
 
@@ -39,10 +40,7 @@ class _AppLayoutState extends State<AppLayout> {
           SingleChildScrollView(
             controller: _scrollController,
             child: Column(
-              children: [
-                widget.child,
-                // const FooterWidget()
-              ],
+              children: [widget.child, const FooterWidget()],
             ),
           ),
           HeaderWidgets(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
 import 'package:movie_app/features/home/data/models/faq_section.dart';
 import 'package:movie_app/features/home/presentation/view_models/faq_section_viewmodel.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FrequentlyAskedQuestionsWidget extends ConsumerStatefulWidget {
   const FrequentlyAskedQuestionsWidget({super.key});
@@ -32,7 +32,9 @@ class FrequentlyAskedQuestionsWidgetState
       child: Column(
         children: [
           _questionTitle(context, state.title),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           _questionBody(context, state.questions),
         ],
       ),
@@ -82,11 +84,12 @@ class FrequentlyAskedQuestionsWidgetState
           Expanded(
             child: CommonTitle(
               title: title,
-              subTitle:
-                  AppLocalizations.of(context)!.got_questions,
+              subTitle: AppLocalizations.of(context)!.got_questions,
             ),
           ),
-          CommonButton(label: AppLocalizations.of(context)!.ask_a_question, onTap: () {}),
+          CommonButton(
+              label: AppLocalizations.of(context)!.ask_a_question,
+              onTap: () {}),
         ],
       ),
     );
@@ -130,7 +133,7 @@ class _QuestionItemState extends ConsumerState<QuestionItem> {
       children: [
         Expanded(
             child: Container(
-              padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           decoration: const BoxDecoration(
             border: Border(
               bottom: BorderSide(

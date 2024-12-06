@@ -24,7 +24,7 @@ class CustomIconButton extends StatefulWidget {
 
 class _CustomIconButtonState extends State<CustomIconButton> {
   bool isPressed = false;
-
+  bool _isHovering = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -40,11 +40,28 @@ class _CustomIconButtonState extends State<CustomIconButton> {
         });
       },
       child: MouseRegion(
+        onEnter: (_) => setState(() {
+          print("3123");
+          _isHovering = true;
+        }),
+        onExit: (_) => setState(() {
+          _isHovering = false;
+        }),
         cursor: SystemMouseCursors.click,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 1000),
+          duration: const Duration(milliseconds: 500),
           curve: Curves.linear,
           decoration: BoxDecoration(
+              boxShadow: _isHovering
+                  ? [
+                BoxShadow(
+                  color: widget.backgroundColor.withOpacity(0.5),
+                  spreadRadius: 2,
+                  blurRadius: 6,
+                  offset: const Offset(8,8),
+                ),
+              ]
+                  : [],
             borderRadius: BorderRadius.circular(4),
             color: AppColors.primary.withOpacity(isPressed ? 0.5 : 1),
           ),

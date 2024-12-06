@@ -1,10 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/features/home/data/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
 
-final authViewModelProvider = ChangeNotifierProvider<AuthViewModel>((ref) => AuthViewModel());
+final authViewModelProvider =
+    ChangeNotifierProvider<AuthViewModel>((ref) => AuthViewModel());
 
 class AuthViewModel extends ChangeNotifier {
   UserModel? _currentUser;
@@ -41,13 +43,14 @@ class AuthViewModel extends ChangeNotifier {
 
     if (username == adminUsername && password == adminPassword) {
       final prefs = await SharedPreferences.getInstance();
-      
+
       // create token with 1h
       final token = base64Encode(utf8.encode(DateTime.now().toIso8601String()));
-      final expiry = DateTime.now().add(const Duration(hours: 1)).millisecondsSinceEpoch;
+      final expiry =
+          DateTime.now().add(const Duration(hours: 1)).millisecondsSinceEpoch;
 
       _currentUser = UserModel(username: username, token: token);
-      
+
       // save user information and token to SharedPreferences
       prefs.setString('currentUser', jsonEncode(_currentUser!.toJson()));
       prefs.setInt('expiry', expiry);

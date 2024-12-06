@@ -128,4 +128,3 @@ Widget _iconContainer(List<IconProps> icons) {
               )))
           .toList());
 }
-

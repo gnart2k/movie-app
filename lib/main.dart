@@ -24,7 +24,7 @@ class MainApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localeViewModel = ref.watch(localeProvider);
     final authViewModel = ref.watch(authViewModelProvider);
-
+    // final router = ref.watch(routerProvider);
     return MaterialApp.router(
       routerConfig: RouteGenerator.instance.router,
 
@@ -36,12 +36,7 @@ class MainApp extends ConsumerWidget {
           textTheme:
               const TextTheme(bodyMedium: TextStyle(color: Colors.white))),
       debugShowCheckedModeBanner: false,
-      // home: MovieOpenPage());
-      // home: MovieAndShowPage());
-      // home: const SupportPage());
-      // home: HomeScreen());
     );
 
-    // home: const SupportPage());
   }
 }

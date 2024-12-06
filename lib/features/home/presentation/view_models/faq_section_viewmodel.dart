@@ -27,4 +27,3 @@ final faqSectionViewModelProvider =
     StateNotifierProvider<FaqSectionViewModel, FaqSection>(
   (ref) => FaqSectionViewModel(ref.read(faqSectionRepositoryProvider)),
 );
-

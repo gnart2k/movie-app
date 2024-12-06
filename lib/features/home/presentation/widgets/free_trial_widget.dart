@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FreeTrialWidget extends StatelessWidget {
   const FreeTrialWidget({super.key});
@@ -24,10 +24,13 @@ class FreeTrialWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Expanded(child:  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(AppLocalizations.of(context)!.start_your_free_trial_today,
+                  Expanded(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                        Text(
+                            AppLocalizations.of(context)!
+                                .start_your_free_trial_today,
                             style: const TextStyle(fontSize: 30)),
                         const SizedBox(height: 16),
                         const Text(
@@ -37,7 +40,9 @@ class FreeTrialWidget extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 18, color: AppColors.lightGray))
                       ])),
-                  CommonButton(label: AppLocalizations.of(context)!.start_a_free_trial, onTap: () {})
+                  CommonButton(
+                      label: AppLocalizations.of(context)!.start_a_free_trial,
+                      onTap: () {})
                 ])),
         const SizedBox(height: 80),
       ],
