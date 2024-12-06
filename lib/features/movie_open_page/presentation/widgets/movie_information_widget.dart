@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
-import 'package:movie_app/core/widgets/button/language_switcher.dart';
 import 'package:movie_app/features/movie_open_page/presentation/view_models/movie_view_model.dart';
 
 class MovieInformation extends ConsumerWidget {
@@ -36,7 +35,7 @@ class MovieInformation extends ConsumerWidget {
       child: Column(
         children: [
           _releaseYear(movieProps.movieSection.details.releaseYear.toString()),
-          _availableLanguage(languageList),
+          _availableLanguage(_languageList),
           _ratings(movieProps.movieSection.details.ratings.imdb,
               movieProps.movieSection.details.ratings.streamVibe),
           _genres(),

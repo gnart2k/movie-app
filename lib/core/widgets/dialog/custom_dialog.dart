@@ -38,10 +38,9 @@ class CustomDialog extends StatelessWidget {
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black
-                ),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 12),
@@ -64,7 +63,9 @@ class CustomDialog extends StatelessWidget {
                       style: TextStyle(color: Colors.black),
                     ),
                   ),
-                  const SizedBox(width: 20,),
+                  const SizedBox(
+                    width: 20,
+                  ),
                   ElevatedButton(
                     onPressed: onOkPressed,
                     style: ElevatedButton.styleFrom(
@@ -84,5 +85,3 @@ class CustomDialog extends StatelessWidget {
     );
   }
 }
-
-

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:movie_app/features/home/data/models/show_page/section_movies.dart';
+
 class SectionMoviesSource {
   Future<List<Section>> fetchSectionMovies() async {
     final String response =

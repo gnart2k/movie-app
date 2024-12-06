@@ -11,7 +11,18 @@
     { "name": "Action" },
     { "name": "Drama" },
     { "name": "Comedy" },
-    { "name": "Horror" }
+    { "name": "Horror" },
+    { "name": "Romance" },
+    { "name": "Science Fiction" },
+    { "name": "Fantasy" },
+    { "name": "Thriller" },
+    { "name": "Mystery" },
+    { "name": "Documentary" },
+    { "name": "Adventure" },
+    { "name": "Animation" },
+    { "name": "Musical" },
+    { "name": "Western" },
+    { "name": "Historical" }
   ],
   "deviceCompatibility": {
     "title": "Watch on Any Device",

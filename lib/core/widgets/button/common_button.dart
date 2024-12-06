@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 
+// ignore: must_be_immutable
 class CommonButton extends StatefulWidget {
   final String label;
   final VoidCallback onTap;
@@ -55,7 +56,7 @@ class _CommonButtonState extends State<CommonButton> {
             ? SystemMouseCursors.click
             : SystemMouseCursors.basic,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 1000),
           curve: Curves.linear,
           decoration: BoxDecoration(
               boxShadow: _isHovering

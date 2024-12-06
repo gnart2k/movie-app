@@ -22,9 +22,9 @@ class MovieAndShowPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 100),
           child: Column(children: [
-            MovieBigBanner(onTap: () {
-
-            },),
+            MovieBigBanner(
+              onTap: () {},
+            ),
             const SizedBox(
               height: 100,
             ),
@@ -146,7 +146,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               onTop: true,
             );
           },
-          list: genresLists, // both popular
+          list: genresLists,
           title: moviesState.sectionMoviesList[1].title,
           heightCard: 290,
         ),
@@ -164,7 +164,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               },
             );
           },
-          list: moviesLists, //moviesLists, // trending now
+          list: moviesLists,
           title: moviesState.sectionMoviesList[widget.isMovies ? 2 : 5].title,
           heightCard: 350,
         ),
@@ -180,7 +180,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               },
             );
           },
-          list: moviesLists, //moviesLists, //new release
+          list: moviesLists,
           title: moviesState.sectionMoviesList[widget.isMovies ? 3 : 6].title,
           heightCard: 350,
         ),
@@ -189,7 +189,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
           cardWidgetBuilder: (movie, int itemNum) {
             return MoviesCard(
               title: movie.name,
-              imageUrl: movie.imageUrl!,
+              imageUrl: movie.imageUrl,
               hour: "1h30min",
               textViewRight: "20k",
               isRating: true,
@@ -198,7 +198,7 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
               },
             );
           },
-          list: mustWatchLists, // mustWatchLists, //must watch movie
+          list: mustWatchLists,
           title: moviesState.sectionMoviesList[widget.isMovies ? 4 : 7].title,
           heightCard: 450,
         ),
@@ -206,4 +206,3 @@ class MovieCategoryContainerState extends ConsumerState<MovieCategory> {
     );
   }
 }
-

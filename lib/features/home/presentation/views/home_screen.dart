@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/constants/app_images.dart';
 import 'package:movie_app/core/domain/model/movie_model.dart';
 import 'package:movie_app/core/domain/model/plan_model.dart';
 import 'package:movie_app/core/helpers/converter.dart';
-import 'package:movie_app/core/widgets/auth_guard.dart';
 import 'package:movie_app/core/widgets/category/category_card.dart';
 import 'package:movie_app/core/widgets/category/category_slider_container.dart';
-import 'package:movie_app/core/widgets/footer_widget.dart';
-import 'package:movie_app/core/widgets/header_widgets.dart';
 import 'package:movie_app/core/widgets/plan/plan_container.dart';
 import 'package:movie_app/features/home/presentation/view_models/home_view_model.dart';
 import 'package:movie_app/features/home/presentation/widgets/banner_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/free_trial_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/frequently_asked_question_widget.dart';
 import 'package:movie_app/features/home/presentation/widgets/multiplatform_widget.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -46,7 +43,7 @@ class HomeScreen extends ConsumerWidget {
                 'Access to a wider selection of movies and shows, including most new releases and exclusive content'))
         .toList();
 
-    return  Column(
+    return Column(
       children: [
         const BannerWidget(),
         const SizedBox(height: 200),
@@ -66,7 +63,7 @@ class HomeScreen extends ConsumerWidget {
                 title: AppLocalizations.of(context)!
                     .explore_our_wide_variety_of_categories,
                 subTitle:
-                "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
+                    "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
                 heightCard: 290,
               ),
               const SizedBox(height: 120),

@@ -19,7 +19,6 @@ class _ShowHistoryState extends ConsumerState<ShowHistory> {
 
   @override
   Widget build(BuildContext context) {
-    final movieWatchingViewModel = ref.watch(movieWatchingProvider);
     final List<MovieModel> movies = ref.read(movieWatchingProvider);
     return InkWell(
       onTap: () {
@@ -73,7 +72,7 @@ class _ShowHistoryState extends ConsumerState<ShowHistory> {
                             border: Border(
                               bottom: BorderSide(
                                 color: AppColors.itemHovered, // Border color
-                                width: 1,            // Border width
+                                width: 1, // Border width
                               ),
                             ),
                           ),
@@ -83,19 +82,26 @@ class _ShowHistoryState extends ConsumerState<ShowHistory> {
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
-                                  child: Image.asset(movies[index].imageUrl, width: 30, height: 30, fit: BoxFit.fill,),
+                                  child: Image.asset(
+                                    movies[index].imageUrl,
+                                    width: 30,
+                                    height: 30,
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
-                                const SizedBox(width: 20,),
+                                const SizedBox(
+                                  width: 20,
+                                ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(movies[index].name),
-
-                                    if (movies[index].currentSession != null)
-                                      ...[
-                                        const SizedBox(height: 5),
-                                        Text("Session: ${movies[index].currentSession} Episodes: ${movies[index].currentEpisodes}"),
-                                      ],
+                                    if (movies[index].currentSession !=
+                                        null) ...[
+                                      const SizedBox(height: 5),
+                                      Text(
+                                          "Session: ${movies[index].currentSession} Episodes: ${movies[index].currentEpisodes}"),
+                                    ],
                                   ],
                                 )
                               ],

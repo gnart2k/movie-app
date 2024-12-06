@@ -42,9 +42,12 @@ class _SliderControllerContainerState extends State<SliderControllerContainer> {
             },
           ),
           ...List.generate(widget.pageNumber, (index) {
-            return Padding(padding: const EdgeInsets.symmetric(horizontal: 5),child: SliderIndicator(
-              isActive: widget.currentPage == index,
-            ),);
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: SliderIndicator(
+                isActive: widget.currentPage == index,
+              ),
+            );
           }),
           SliderButton(
             iconData: Icons.navigate_next,

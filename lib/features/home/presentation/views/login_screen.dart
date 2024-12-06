@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
-import 'package:movie_app/core/constants/route_manager.dart';
 import 'package:movie_app/features/home/presentation/view_models/auth_viewmodel.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 
@@ -211,7 +210,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                         _passwordController.text,
                                       );
                                       if (success) {
-                                        context.go(Routes.homeRoute);
+                                        Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (_) => const HomeScreen()),
+                                        );
                                       } else {
                                         setState(() {
                                           _errorMessage =

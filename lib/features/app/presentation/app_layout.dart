@@ -10,10 +10,8 @@ class AppLayout extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _AppLayoutState();
-
-
-
 }
+
 class _AppLayoutState extends State<AppLayout> {
   final ScrollController _scrollController = ScrollController();
   bool isChangeColor = false;
@@ -28,33 +26,31 @@ class _AppLayoutState extends State<AppLayout> {
   void _scrollListener() {
     // Check if the scroll position is at the top or bottom
     print(_scrollController.offset);
-   if(_scrollController.offset > 400) {
-     setState(() {
-       isChangeColor = true;
-     });
-   }
-   else {
-     setState(() {
-       isChangeColor = false;
-     });
-   }
+    if (_scrollController.offset > 400) {
+      setState(() {
+        isChangeColor = true;
+      });
+    } else {
+      setState(() {
+        isChangeColor = false;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Stack(
         children: [
           SingleChildScrollView(
             controller: _scrollController,
             child: Column(
-              children: [
-                widget.child,
-                const FooterWidget()
-              ],
+              children: [widget.child, const FooterWidget()],
             ),
           ),
-          HeaderWidgets(isChangeColor: isChangeColor,),
+          HeaderWidgets(
+            isChangeColor: isChangeColor,
+          ),
         ],
       ),
     );

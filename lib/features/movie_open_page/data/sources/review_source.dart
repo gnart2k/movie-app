@@ -12,7 +12,6 @@ class ReviewSource {
       final dynamic data = json.decode(response)['reviewsSection'];
       return ReviewSection.fromJson(data);
     } catch (e) {
-      print("error loading json $e");
       throw Exception('Error fetching Support Form: $e');
     }
   }

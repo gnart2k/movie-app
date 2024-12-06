@@ -12,7 +12,6 @@ class SupportFormSource {
       final dynamic data = json.decode(response)['mainSection'];
       return SupportForm.fromJson(data);
     } catch (e) {
-      print("error loading json $e");
       throw Exception('Error fetching Support Form: $e');
     }
   }

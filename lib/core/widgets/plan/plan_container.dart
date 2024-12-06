@@ -4,6 +4,7 @@ import 'package:movie_app/core/domain/model/plan_model.dart';
 import 'package:movie_app/core/widgets/button/common_button.dart';
 import 'package:movie_app/core/widgets/plan/plan_card.dart';
 import 'package:movie_app/core/widgets/title/common_title.dart';
+
 import '../../../features/subscription_page/presentation/view_models/plan_viewmodel.dart';
 import '../../constants/app_colors.dart';
 import '../dialog/custom_dialog.dart';
@@ -36,7 +37,6 @@ class _PlanContainerState extends ConsumerState<PlanContainer> {
 
   @override
   Widget build(BuildContext context) {
-    final planViewModel = ref.watch(planProvider);
     final plan = ref.read(planProvider);
     return Column(
       children: [
@@ -66,40 +66,40 @@ class _PlanContainerState extends ConsumerState<PlanContainer> {
                 plan: widget.plans[i],
                 isRegister: plan == widget.plans[i].title,
                 onClick: (String plan) {
-                    if(ref.read(planProvider).isEmpty) {
-                      ref.read(planProvider.notifier).addPLan(plan);
-                      showDialog(
-                        context: context,
-                        builder: (context) => CustomDialog(
-                          title: 'Congratulation' ,
-                          message: 'You just register the $plan ',
-                          isSuccess: true,
-                          onOkPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          onCancelPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                      );
-                    }
-                    else{
-                      showDialog(
-                        context: context,
-                        builder: (context) => CustomDialog(
-                          title: 'Notification' ,
-                          message: 'You have to delete the current plan before add new',
-                          isSuccess: false,
-                          onOkPressed: () {
-                            ref.read(planProvider.notifier).deleteCurrentPlan();
-                            Navigator.of(context).pop();
-                          },
-                          onCancelPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                      );
-                    }
+                  if (ref.read(planProvider).isEmpty) {
+                    ref.read(planProvider.notifier).addPLan(plan);
+                    showDialog(
+                      context: context,
+                      builder: (context) => CustomDialog(
+                        title: 'Congratulation',
+                        message: 'You just register the $plan ',
+                        isSuccess: true,
+                        onOkPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        onCancelPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    );
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (context) => CustomDialog(
+                        title: 'Notification',
+                        message:
+                            'You have to delete the current plan before add new',
+                        isSuccess: false,
+                        onOkPressed: () {
+                          ref.read(planProvider.notifier).deleteCurrentPlan();
+                          Navigator.of(context).pop();
+                        },
+                        onCancelPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    );
+                  }
                 },
               )),
               if (i < widget.plans.length - 1) const SizedBox(width: 15),

@@ -43,13 +43,13 @@ class _CategoryCardState extends State<CategoryCard> {
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           boxShadow: isHovering
               ? [
-            BoxShadow(
-              color: AppColors.lightGray.withOpacity(0.2),
-              spreadRadius: 4,
-              blurRadius: 7,
-              offset: const Offset(0, 3),
-            ),
-          ]
+                  BoxShadow(
+                    color: AppColors.lightGray.withOpacity(0.2),
+                    spreadRadius: 4,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3),
+                  ),
+                ]
               : [],
         ),
         child: Column(
@@ -80,8 +80,8 @@ class _CategoryCardState extends State<CategoryCard> {
                         widget.title,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                            fontSize: 18, color: Colors.white),
+                        style:
+                            const TextStyle(fontSize: 18, color: Colors.white),
                       )
                     ],
                   ),

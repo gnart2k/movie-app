@@ -27,6 +27,7 @@ class MainApp extends ConsumerWidget {
     // final router = ref.watch(routerProvider);
     return MaterialApp.router(
       routerConfig: RouteGenerator.instance.router,
+
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: ref.read(localeProvider),

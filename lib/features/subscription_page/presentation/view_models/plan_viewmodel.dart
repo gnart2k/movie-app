@@ -6,8 +6,8 @@ import '../../../../local/share_provider.dart';
 class PlanViewModel extends StateNotifier<String> {
   PlanViewModel(this.sharedPreferences)
       : super(
-    sharedPreferences?.getString("plan") ?? "",
-  );
+          sharedPreferences?.getString("plan") ?? "",
+        );
 
   final SharedPreferences? sharedPreferences;
 
