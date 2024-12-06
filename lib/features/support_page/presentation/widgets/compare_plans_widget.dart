@@ -7,7 +7,7 @@ import 'package:movie_app/features/home/data/models/compare_plans.dart';
 import 'package:movie_app/features/home/presentation/view_models/compare_plans_model.dart';
 
 class ComparePlansWidget extends ConsumerStatefulWidget {
-  const ComparePlansWidget({super.key});
+  const   ComparePlansWidget({super.key});
 
   @override
   ComparePlansState createState() => ComparePlansState();

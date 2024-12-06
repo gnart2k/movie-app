@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:movie_app/core/constants/app_vectors.dart';
 import 'package:movie_app/core/constants/app_colors.dart';
 import 'package:movie_app/core/constants/app_images.dart';
+import 'package:movie_app/core/constants/route_manager.dart';
 import 'package:movie_app/features/home/presentation/view_models/auth_viewmodel.dart';
 import 'package:movie_app/features/home/presentation/views/home_screen.dart';
 
@@ -209,10 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         _passwordController.text,
                                       );
                                       if (success) {
-                                        Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                              builder: (_) => const HomeScreen()),
-                                        );
+                                        context.go(Routes.homeRoute);
                                       } else {
                                         setState(() {
                                           _errorMessage =
