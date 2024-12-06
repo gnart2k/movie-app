@@ -14,7 +14,7 @@ class MovieWatchingViewModel extends StateNotifier<List<MovieModel>> {
   final SharedPreferences? sharedPreferences;
 
   void _loadMoviesFromPreferences() {
-    if (sharedPreferences == null) return null;
+    if (sharedPreferences == null) return;
 
     final jsonString = sharedPreferences!.getString("movie");
     if (jsonString != null) {

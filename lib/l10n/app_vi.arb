@@ -43,7 +43,70 @@
   "streamVibe_is_the_best_streaming": "StreamVibe là trải nghiệm phát trực tuyến tối ưu cho phép bạn xem các bộ phim và chương trình yêu thích của mình theo yêu cầu mọi lúc, mọi nơi. StreamVibe cho phép bạn thưởng thức những bộ phim bom tấn, phim kinh điển, chương trình truyền hình nổi tiếng mới nhất, v.v. Bạn cũng có thể tạo danh sách theo dõi của riêng mình để dễ dàng tìm thấy nội dung muốn xem.",
 "got_questions": "Có câu hỏi? Chúng tôi có câu trả lời! Hãy xem phần Câu hỏi thường gặp để tìm câu trả lời cho các câu hỏi phổ biến nhất về StreamVibe.",
   "description_streamvibe": "Với StreamVibe, bạn có thể thưởng thức những bộ phim và chương trình TV yêu thích của mình mọi lúc, mọi nơi. Nền tảng của chúng tôi được thiết kế để tương thích với nhiều thiết bị, đảm bảo bạn không bao giờ bỏ lỡ khoảnh khắc giải trí nào.",
-  "app_description": "StreamVibe được tối ưu hóa cho cả điện thoại thông minh Android và iOS. Tải ứng dụng của chúng tôi từ Google Play Store hoặc Apple App Store."
+  "app_description": "StreamVibe được tối ưu hóa cho cả điện thoại thông minh Android và iOS. Tải ứng dụng của chúng tôi từ Google Play Store hoặc Apple App Store.",
+
+  "whether_looking_for_comedy": "Dù bạn đang tìm kiếm một bộ phim hài để cười, một bộ phim chính kịch để suy ngẫm, hay một bộ phim tài liệu để học điều gì đó mới mẻ",
+
+  "we_provide_you": "Chúng tôi mang đến cho bạn trải nghiệm phát trực tuyến trên nhiều thiết bị.",
+  "ask_question": "Các câu hỏi thường gặp",
+  "choose_right_plan": "Chọn gói phù hợp với bạn",
+  "monthly": "Hàng tháng",
+  "yearly": "Hàng năm",
+  "join_stream_vibe": "Tham gia StreamVibe và chọn từ các tùy chọn đăng ký linh hoạt được thiết kế phù hợp với sở thích xem của bạn. Sẵn sàng cho giải trí không ngừng nghỉ!",
+  "this_is_clear": "Đây là một lời kêu gọi hành động rõ ràng và ngắn gọn khuyến khích người dùng đăng ký dùng thử miễn phí StreamVibe.",
+
+  "top_10_in": "Top 10 tại",
 
 
+  "welcome": "Chào mừng bạn đến với trang hỗ trợ của chúng tôi!",
+  "we_re_here": "Chúng tôi ở đây để giúp bạn giải quyết bất kỳ vấn đề nào bạn gặp phải với sản phẩm của chúng tôi.",
+  "first_name": "Họ",
+  "enter_first_name": "Nhập họ",
+  "last_name": "Tên",
+  "enter_last_name": "Nhập tên",
+  "email": "Email",
+  "enter_email": "Nhập email của bạn",
+  "phone_number": "Số điện thoại",
+  "enter_phone_number": "Nhập số điện thoại",
+  "message": "Tin nhắn",
+  "enter_your_message": "Nhập tin nhắn của bạn",
+  "i_agree": "Tôi đồng ý với Điều khoản sử dụng và Chính sách bảo mật",
+  "send_message": "Gửi tin nhắn",
+
+
+  "compare_plane": "So sánh các gói của chúng tôi và tìm gói phù hợp với bạn",
+  "stream_vibe_offer": "StreamVibe cung cấp ba gói khác nhau để đáp ứng nhu cầu của bạn: Cơ bản, Tiêu chuẩn và Cao cấp. So sánh các tính năng của từng gói và chọn gói phù hợp nhất với bạn.",
+  "feature": "Tính năng",
+  "basic": "Cơ bản",
+  "standard": "Tiêu chuẩn",
+  "premium": "Cao cấp",
+
+
+  "add_movie_success": "Thêm phim của bạn thành công",
+  "you_just_add": "Bạn vừa thêm phim vào danh sách xem",
+  "description_title": "Mô tả",
+
+  "season_and_episode": "Mùa và Tập phim",
+
+  "congrat": "Chúc mừng",
+  "you_register": "Bạn vừa đăng ký",
+  "notification": "Thông báo",
+  "you_have": "Bạn phải xóa gói hiện tại trước khi thêm gói mới",
+  "ok": "Đồng ý",
+  "cancel": "Hủy bỏ",
+
+  "you_have_already": "Bạn đã đăng ký gói này rồi",
+
+  "choose_plan": "Chọn gói",
+
+  "month": "tháng",
+
+  "connect_with_us": "Kết nối với chúng tôi",
+
+  "faq": "Câu hỏi thường gặp",
+
+  "trending": "Xu hướng",
+  "popular": "Phổ biến",
+
+  "subscription": "Đăng ký"
 }

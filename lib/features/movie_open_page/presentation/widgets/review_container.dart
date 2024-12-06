@@ -8,6 +8,7 @@ import 'package:movie_app/core/widgets/slider/slider_button.dart';
 import 'package:movie_app/core/widgets/slider/slider_indicator.dart';
 import 'package:movie_app/features/movie_open_page/data/models/review_container.dart';
 import 'package:movie_app/features/movie_open_page/presentation/view_models/review_container_view_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ReviewContainer extends ConsumerStatefulWidget {
   const ReviewContainer({super.key});
@@ -65,7 +66,7 @@ class _ReviewContainerState extends ConsumerState<ReviewContainer>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                reviewSection.title,
+                AppLocalizations.of(context)!.reviews,
                 style: GoogleFonts.manrope(
                   color: AppColors.lightGray,
                   fontSize: 18,
@@ -94,16 +95,16 @@ class _ReviewContainerState extends ConsumerState<ReviewContainer>
                             .withOpacity(isPressed ? 0.5 : 1)),
                     padding: const EdgeInsets.symmetric(
                         vertical: 12.0, horizontal: 20),
-                    child: const Row(
+                    child:  Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.add,
                           color: Colors.white,
                         ),
-                        SizedBox(width: 4),
-                        Text("Add Your Review",
-                            style: TextStyle(color: Colors.white)),
+                        const SizedBox(width: 4),
+                        Text(AppLocalizations.of(context)!.add_your_reviews,
+                            style: const TextStyle(color: Colors.white)),
                       ],
                     ),
                   ),

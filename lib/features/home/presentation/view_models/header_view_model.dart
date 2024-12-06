@@ -23,7 +23,9 @@ class HeaderViewModel extends StateNotifier<HeaderProps> {
   ) {
     state = state.toggleItem(requiredIndex: index);
     for (int i = 0; i < state.navigationLinks.length; i++) {
-      if (state.navigationLinks[i].isSelected) {}
+      if (state.navigationLinks[i].isSelected) {
+
+      }
     }
   }
 }

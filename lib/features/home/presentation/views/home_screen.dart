@@ -63,7 +63,8 @@ class HomeScreen extends ConsumerWidget {
                 title: AppLocalizations.of(context)!
                     .explore_our_wide_variety_of_categories,
                 subTitle:
-                    "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new",
+                AppLocalizations.of(context)!
+                    .whether_looking_for_comedy,
                 heightCard: 290,
               ),
               const SizedBox(height: 120),
